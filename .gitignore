@@ -1,0 +1,14 @@
+dist
+.tmp
+
+.vscode
+.idea
+node_modules
+.eslintrc.js
+.DS_Store
+
+# Firebase / env (로컬에서만 관리)
+.env.production
+.env.local
+src/core/storage/firebase-config.js
+.github/workflows/
