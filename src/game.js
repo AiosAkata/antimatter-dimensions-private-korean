@@ -396,12 +396,12 @@ export function getGameSpeedupForDisplay() {
 export function realTimeMechanics(realDiff) {
   // Ra memory generation bypasses stored real time, but memory chunk generation is disabled when storing real time.
   // This is in order to prevent players from using time inside of Ra's reality for amplification as well
-  Ra.memoryTick(realDiff, !Enslaved.isStoringRealTime);
+  Ra.memoryTick(realDiff * (window.devSpeedModifier ?? 1), !Enslaved.isStoringRealTime);
   if (AlchemyResource.momentum.isUnlocked) {
-    player.celestials.ra.momentumTime += realDiff * Achievement(175).effectOrDefault(1);
+    player.celestials.ra.momentumTime += realDiff * (window.devSpeedModifier ?? 1) * Achievement(175).effectOrDefault(1);
   }
 
-  DarkMatterDimensions.tick(realDiff);
+  DarkMatterDimensions.tick(realDiff * (window.devSpeedModifier ?? 1));
 
   // When storing real time, skip everything else having to do with production once stats are updated
   if (Enslaved.isStoringRealTime) {
@@ -490,8 +490,9 @@ export function gameLoop(passDiff, options = {}) {
   GameCache.timeDimensionCommonMultiplier.invalidate();
   GameCache.totalIPMult.invalidate();
 
-  const blackHoleDiff = realDiff;
   const fixedSpeedActive = EternityChallenge(12).isRunning;
+  // EC12 중에는 블랙홀 충전에 modifier 미적용 (제한 시간 보호와 일관성 유지)
+  const blackHoleDiff = fixedSpeedActive ? realDiff : realDiff * window.devSpeedModifier;
   if (!Enslaved.isReleaseTick && !fixedSpeedActive) {
     let speedFactor;
     if (options.blackHoleSpeedup === undefined) {
@@ -510,7 +511,7 @@ export function gameLoop(passDiff, options = {}) {
       const amplification = Ra.unlocks.improvedStoredTime.effects.gameTimeAmplification.effectOrDefault(1);
       const beforeStore = player.celestials.enslaved.stored;
       player.celestials.enslaved.stored = Math.clampMax(player.celestials.enslaved.stored +
-        diff * (totalTimeFactor - reducedTimeFactor) * amplification, Enslaved.timeCap);
+        diff * (totalTimeFactor - reducedTimeFactor) * amplification * window.devSpeedModifier, Enslaved.timeCap);
       Enslaved.currentBlackHoleStoreAmountPerMs = (player.celestials.enslaved.stored - beforeStore) / diff;
       speedFactor = reducedTimeFactor;
     }
@@ -520,7 +521,10 @@ export function gameLoop(passDiff, options = {}) {
     Enslaved.currentBlackHoleStoreAmountPerMs = 0;
   }
   // Apply dev speed modifier on top of all other effects (not saved, resets on reload)
-  diff *= window.devSpeedModifier;
+  // EC12 실행 중에는 적용하지 않음 — 제한 시간(thisEternity.time)이 영향받지 않도록
+  if (!fixedSpeedActive) {
+    diff *= window.devSpeedModifier;
+  }
   player.celestials.ra.peakGamespeed = Math.max(player.celestials.ra.peakGamespeed, getGameSpeedupFactor());
   Enslaved.isReleaseTick = false;
 
@@ -557,7 +561,7 @@ export function gameLoop(passDiff, options = {}) {
 
 
   applyAutoprestige(realDiff);
-  updateImaginaryMachines(realDiff);
+  updateImaginaryMachines(realDiff * (window.devSpeedModifier ?? 1));
 
   const uncountabilityGain = AlchemyResource.uncountability.effectValue * Time.unscaledDeltaTime.totalSeconds;
   Currency.realities.add(uncountabilityGain);
@@ -624,7 +628,7 @@ export function gameLoop(passDiff, options = {}) {
   Achievements.autoAchieveUpdate(diff);
   V.checkForUnlocks();
   AutomatorBackend.update(realDiff);
-  Pelle.gameLoop(realDiff);
+  Pelle.gameLoop(realDiff * (window.devSpeedModifier ?? 1));
   GalaxyGenerator.loop(realDiff);
   GameEnd.gameLoop(realDiff);
 
