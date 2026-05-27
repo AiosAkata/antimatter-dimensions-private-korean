@@ -46,9 +46,7 @@ export default {
       }
     },
     setModifier(value) {
-      // 상한선 1e12: 이보다 크면 totalTimePlayed가 부동소수점 정밀도 한계에 도달해
-      // 내부 타이머가 고착되는 문제가 발생함
-      const clamped = Math.clamp(value, 1e-6, 1e12);
+      const clamped = Math.max(value, 1e-6);
       window.devSpeedModifier = clamped;
       this.modifier = clamped;
       this.inputValue = String(clamped);

@@ -290,10 +290,9 @@ export const realityUpgrades = [
     name: "Parity of Singularity",
     id: 20,
     cost: 1500,
-    requirement: () => `${formatInt(100)} days total play time after unlocking the Black Hole
-      (Currently: ${Time.timeSinceBlackHole.toStringShort(false)})`,
+    requirement: () => `Unlock the first Black Hole`,
     hasFailed: () => !BlackHole(1).isUnlocked && Currency.realityMachines.lt(100),
-    checkRequirement: () => Time.timeSinceBlackHole.totalDays >= 100 && BlackHole(1).isUnlocked,
+    checkRequirement: () => BlackHole(1).isUnlocked,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     description: "Unlock another Black Hole",
     automatorPoints: 10,
