@@ -85,9 +85,9 @@ export class DimBoost {
 
   static get lockText() {
     if (DimBoost.purchasedBoosts >= this.maxBoosts) {
-      if (Ra.isRunning) return "Locked (Ra's Reality)";
-      if (InfinityChallenge(1).isRunning) return "Locked (Infinity Challenge 1)";
-      if (NormalChallenge(8).isRunning) return "Locked (8th Antimatter Dimension Autobuyer Challenge)";
+      if (Ra.isRunning) return "잠금 (라의 현실)";
+      if (InfinityChallenge(1).isRunning) return "잠금 (무한 도전 1)";
+      if (NormalChallenge(8).isRunning) return "잠금 (8번째 반물질 차원 자동구매기 도전)";
     }
     return null;
   }
@@ -130,26 +130,26 @@ export class DimBoost {
 
     let newUnlock = "";
     if (!allNDUnlocked && boosts < DimBoost.maxDimensionsUnlockable - 4) {
-      newUnlock = `unlock the ${boosts + 5}th Dimension`;
+      newUnlock = `${boosts + 5}번째 차원 해금`;
     } else if (boosts === 4 && !NormalChallenge(10).isRunning && !EternityChallenge(3).isRunning) {
-      newUnlock = "unlock Sacrifice";
+      newUnlock = "희생 해금";
     }
 
-    const formattedMultText = `give a ${formatX(DimBoost.power, 2, 1)} multiplier `;
-    let dimensionRange = `to the 1st Dimension`;
-    if (boosts > 0) dimensionRange = `to Dimensions 1-${Math.min(boosts + 1, 8)}`;
-    if (boosts >= DimBoost.maxDimensionsUnlockable - 1) dimensionRange = `to all Dimensions`;
+    const formattedMultText = `${formatX(DimBoost.power, 2, 1)} 배율 부여`;
+    let dimensionRange = `(1번째 차원)`;
+    if (boosts > 0) dimensionRange = `(1~${Math.min(boosts + 1, 8)}번째 차원)`;
+    if (boosts >= DimBoost.maxDimensionsUnlockable - 1) dimensionRange = `(모든 차원)`;
 
     let boostEffects;
     if (NormalChallenge(8).isRunning) boostEffects = newUnlock;
     else if (newUnlock === "") boostEffects = `${formattedMultText} ${dimensionRange}`;
-    else boostEffects = `${newUnlock} and ${formattedMultText} ${dimensionRange}`;
+    else boostEffects = `${newUnlock} 및 ${formattedMultText} ${dimensionRange}`;
 
     if (boostEffects === "") return "현재 차원 부스트는 쓸모없습니다";
     const areDimensionsKept = (Perk.antimatterNoReset.isBought || Achievement(111).canBeApplied) &&
       (!Pelle.isDoomed || PelleUpgrade.dimBoostResetsNothing.isBought);
-    if (areDimensionsKept) return boostEffects[0].toUpperCase() + boostEffects.substring(1);
-    return `Reset your Dimensions to ${boostEffects}`;
+    if (areDimensionsKept) return boostEffects;
+    return `차원을 초기화하여 ${boostEffects}`;
   }
 
   static get purchasedBoosts() {
