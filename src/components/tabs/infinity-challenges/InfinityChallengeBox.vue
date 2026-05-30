@@ -60,10 +60,10 @@ export default {
     </template>
     <template #bottom>
       <div class="l-challenge-box__bottom--infinity">
-        <span>Goal: {{ format(config.goal) }} antimatter</span>
+        <span>목표: {{ format(config.goal) }} 반물질</span>
         <DescriptionDisplay
           :config="config.reward"
-          title="Reward:"
+          title="보상:"
         />
         <EffectDisplay
           :config="config.reward"

@@ -86,34 +86,33 @@ export default {
         class="o-primary-btn--subtab-option"
         @click="maxAll"
       >
-        Max all
+        모두 최대 구매
       </PrimaryButton>
       <PrimaryButton
         v-if="isAnyAutobuyerUnlocked && !isEC8Running"
         class="o-primary-btn--subtab-option"
         @click="toggleAllAutobuyers"
       >
-        Toggle all autobuyers
+        모든 자동 구매 토글
       </PrimaryButton>
     </div>
     <div>
       <p>
-        You have
+        당신은
         <span class="c-infinity-dim-description__accent">{{ format(infinityPower, 2, 1) }}</span>
-        Infinity Power,
+        무한 파워를 가지고 있으며,
         <br>
         <span v-if="!isEC9Running">
-          increased by
+          배율이
           <span class="c-infinity-dim-description__accent">{{ formatPow(conversionRate, 2, 3) }}</span>
         </span>
         <span v-else>
-          translated
+          변환된
         </span>
-        to a
         <span class="c-infinity-dim-description__accent">{{ formatX(dimMultiplier, 2, 1) }}</span>
-        multiplier on all
-        <span v-if="!isEC9Running">Antimatter Dimensions.</span>
-        <span v-else>Time Dimensions due to Eternity Challenge 9.</span>
+        의 배율로 모든
+        <span v-if="!isEC9Running">반물질 차원에 적용됩니다.</span>
+        <span v-else>시간 차원에 영원 도전 9에 의해 적용됩니다.</span>
       </p>
     </div>
     <div
@@ -129,25 +128,25 @@ export default {
         @click="buyTesseract"
       >
         <p>
-          Buy a Tesseract ({{ tesseractCountString }})
+          테서랙트 구매 ({{ tesseractCountString }})
         </p>
-        <p>Increase Infinity Dimension caps by {{ format(nextDimCapIncrease, 2) }}</p>
-        <p><b>Costs: {{ format(tesseractCost) }} IP</b></p>
+        <p>무한 차원 상한을 {{ format(nextDimCapIncrease, 2) }} 만큼 증가</p>
+        <p><b>비용: {{ format(tesseractCost) }} IP</b></p>
       </button>
     </div>
     <div v-if="isEnslavedRunning">
-      All Infinity Dimensions are limited to a single purchase.
+      모든 무한 차원은 1회 구매만 가능합니다.
     </div>
     <div v-else>
-      All Infinity Dimensions except for the 8th are limited to a maximum of {{ format(totalDimCap, 2) }}
-      purchases each.
+      8번 무한 차원을 제외한 모든 무한 차원은 최대 {{ format(totalDimCap, 2) }}
+      회 구매 제한이 있습니다.
     </div>
-    <div>You are getting {{ format(powerPerSecond, 2, 0) }} {{ incomeType }} per second.</div>
+    <div>초당 {{ format(powerPerSecond, 2, 0) }} {{ incomeType }}를 얻고 있습니다.</div>
     <b
       v-if="isEC8Running"
       class="l-infinity-dim-tab__ec8-purchases"
     >
-      You have {{ quantifyInt("purchase", EC8PurchasesLeft) }} left within Eternity Challenge 8.
+      영원 도전 8 내에서 {{ quantifyInt("purchase", EC8PurchasesLeft) }} 남았습니다.
     </b>
     <div class="l-dimensions-container">
       <InfinityDimensionRow
@@ -157,7 +156,7 @@ export default {
       />
     </div>
     <div v-if="showLockedDimCostNote">
-      Hold shift to see the Infinity Point cost for locked Infinity Dimensions.
+      Shift를 누르면 잠금된 무한 차원의 무한 포인트 비용을 볼 수 있습니다.
     </div>
   </div>
 </template>

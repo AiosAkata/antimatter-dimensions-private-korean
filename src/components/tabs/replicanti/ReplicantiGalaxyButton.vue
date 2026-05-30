@@ -22,14 +22,14 @@ export default {
   computed: {
     resetActionDisplay() {
       return this.isDivideUnlocked && !Pelle.isDoomed
-        ? `Divide Replicanti by ${format(Number.MAX_VALUE, 1, 1)}`
-        : "Reset Replicanti amount";
+        ? `복제체를 ${format(Number.MAX_VALUE, 1, 1)}로 나누기`
+        : "복제체 수량 초기화";
     },
     galaxyCountDisplay() {
       const bought = this.boughtGalaxies;
       const extra = this.extraGalaxies;
       const galaxyCount = extra > 0 ? `${formatInt(bought)}+${formatInt(extra)}` : formatInt(bought);
-      return `Currently: ${galaxyCount}`;
+      return `현재: ${galaxyCount}`;
     },
     autobuyer() {
       return Autobuyer.replicantiGalaxy;
@@ -37,7 +37,7 @@ export default {
     autobuyerTextDisplay() {
       const auto = this.isAutoActive;
       const disabled = !this.isAutoEnabled;
-      return `Auto Galaxy ${auto ? "ON" : "OFF"}${disabled ? " (disabled)" : ""}`;
+      return `자동 갤럭시 ${auto ? "켜짐" : "꺼짐"}${disabled ? " (비활성화됨)" : ""}`;
     },
   },
   methods: {
@@ -70,7 +70,7 @@ export default {
       class="o-primary-btn--replicanti-galaxy"
       @click="handleClick"
     >
-      {{ resetActionDisplay }} for a Replicanti Galaxy
+      {{ resetActionDisplay }} (복제체 갤럭시 1개 획득)
       <br>
       {{ galaxyCountDisplay }}
     </PrimaryButton>

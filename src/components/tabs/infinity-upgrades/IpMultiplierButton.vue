@@ -48,19 +48,19 @@ export default {
     >
       <template v-if="isCapped">
         <br>
-        <span>(Capped at {{ quantify("Infinity Point", upgrade.config.costCap) }})</span>
+        <span>({{ quantify("무한 포인트", upgrade.config.costCap) }}(으)로 제한됨)</span>
       </template>
     </InfinityUpgradeButton>
     <PrimaryButton
       class="l--spoon-btn-group__little-spoon o-primary-btn--small-spoon"
       @click="buyMaxIPMult()"
     >
-      Max Infinity Point mult
+      최대 무한 포인트 배율
     </PrimaryButton>
     <PrimaryToggleButton
       v-if="isAutoUnlocked"
       v-model="isAutobuyerActive"
-      label="Autobuy IP mult"
+      label="무한 포인트 배율 자동구매"
       class="l--spoon-btn-group__little-spoon o-primary-btn--small-spoon"
     />
   </div>

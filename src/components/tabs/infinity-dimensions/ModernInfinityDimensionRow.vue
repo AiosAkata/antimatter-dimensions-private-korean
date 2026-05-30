@@ -142,7 +142,7 @@ export default {
         v-if="isAutobuyerUnlocked && !isEC8Running"
         v-model="isAutobuyerOn"
         class="o-primary-btn--id-auto"
-        label="Auto:"
+        label="자동:"
       />
       <PrimaryButton
         v-else
@@ -150,7 +150,7 @@ export default {
         class="o-primary-btn--id-auto"
         @click="buyMaxInfinityDimension"
       >
-        Buy Max
+        최대 구매
       </PrimaryButton>
     </div>
   </div>
