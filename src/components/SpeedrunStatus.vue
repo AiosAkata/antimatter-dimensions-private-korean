@@ -22,24 +22,24 @@ export default {
   },
   computed: {
     statusText() {
-      if (this.isComplete) return `<span style="color: var(--color-good)">Finished!</span>`;
+      if (this.isComplete) return `<span style="color: var(--color-good)">완료!</span>`;
       return this.hasStarted
-        ? `<span style="color: var(--color-good)">Running!</span>`
-        : `<span style="color: var(--color-bad)">Not Started Yet</span>`;
+        ? `<span style="color: var(--color-good)">진행 중!</span>`
+        : `<span style="color: var(--color-bad)">아직 시작 안 함</span>`;
     },
     segmentText() {
-      return this.isSegmented ? "Segmented Speedrun (imported save)" : "Single-segment Speedrun (no save import)";
+      return this.isSegmented ? "세그먼트 스피드런 (저장 파일 불러오기)" : "싱글 세그먼트 스피드런 (저장 파일 불러오기 없음)";
     },
     iapText() {
-      return this.usedSTD ? "IAPs have been used" : "No IAPs Used";
+      return this.usedSTD ? "IAP를 사용했음" : "IAP를 사용하지 않음";
     },
     offlineText() {
       const stateText = this.offlineProgress
-        ? `<span style="color: var(--color-good)">Enabled</span>`
-        : `<span style="color: var(--color-bad)">Disabled</span>`;
+        ? `<span style="color: var(--color-good)">활성화됨</span>`
+        : `<span style="color: var(--color-bad)">비활성화됨</span>`;
       const fractionText = this.offlineFraction === 0
-        ? "(No offline time used)"
-        : `(${formatPercents(this.offlineFraction, 2)} time spent offline)`;
+        ? "(오프라인 시간 미사용)"
+        : `(오프라인 시간 ${formatPercents(this.offlineFraction, 2)} 사용)`;
       return `${stateText} ${fractionText}`;
     },
     collapseIcon() {
@@ -73,14 +73,14 @@ export default {
     },
     milestoneName(id) {
       const db = GameDatabase.speedrunMilestones;
-      return id === 0 ? "None" : db.find(m => m.id === id).name;
+      return id === 0 ? "없음" : db.find(m => m.id === id).name;
     },
     changeName() {
       if (this.hasStarted) return;
       Modal.changeName.show();
     },
     collapseText() {
-      return this.isCollapsed ? "Expand" : `Click to collapse Speedrun info`;
+      return this.isCollapsed ? "펼치기" : `스피드런 정보 축소`;
     },
     toggleCollapse() {
       player.speedrun.hideInfo = !this.isCollapsed;
@@ -99,13 +99,13 @@ export default {
     class="c-speedrun-status"
   >
     <div v-if="!isCollapsed">
-      <b>Speedrun Status (<span v-html="statusText" />)</b>
+      <b>스피드런 상태 (<span v-html="statusText" />)</b>
       <br>
       <span
         :class="{ 'c-speedrun-status--can-change': !hasStarted }"
         @click="changeName"
       >
-        Player Name: {{ saveName }}
+        플레이어 이름: {{ saveName }}
       </span>
       <br>
       <i>{{ segmentText }}</i>
@@ -117,11 +117,11 @@ export default {
         @click="openSeedModal()"
       >{{ seedText }}</span>
       <br>
-      Total real playtime since start: {{ timePlayedStr }}
+      시작 이후 총 실제 플레이 시간: {{ timePlayedStr }}
       <br>
-      Offline Progress: <span v-html="offlineText" />
+      오프라인 진행: <span v-html="offlineText" />
       <br>
-      Most Recent Milestone: {{ milestoneName(mostRecent) }} <span v-if="mostRecent">({{ timeSince }} ago)</span>
+      최근 마일스톤: {{ milestoneName(mostRecent) }} <span v-if="mostRecent">({{ timeSince }} 전)</span>
       <br>
     </div>
     <div
