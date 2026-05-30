@@ -95,11 +95,11 @@ export default {
       switch (this.currMode) {
         case AUTO_ETERNITY_MODE.TIME:
           return this.nextTime > 0
-            ? `Will trigger in ${TimeSpan.fromSeconds(this.nextTime).toStringShort()}`
-            : "Will trigger ASAP";
+            ? `${TimeSpan.fromSeconds(this.nextTime).toStringShort()}후 발동`
+            : "즉시 발동";
         case AUTO_ETERNITY_MODE.X_HIGHEST:
         default:
-          return `Will trigger at ${format(this.nextValue, 2)} ${this.autobuyer.name === "Infinity" ? "IP" : "EP"}`;
+          return `${format(this.nextValue, 2)} ${this.autobuyer.name === "Infinity" ? "IP" : "EP"}에서 발동`;
       }
     }
   },
@@ -188,7 +188,7 @@ export default {
   >
     {{ name }}
     <br>
-    Requirement: {{ format(antimatterCost) }} Total Antimatter {{ showEternity }}
+    요구사항: {{ format(antimatterCost) }} 총 반물질 {{ showEternity }}
   </div>
 </template>
 

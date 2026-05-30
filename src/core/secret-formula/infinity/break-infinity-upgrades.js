@@ -30,41 +30,41 @@ export const breakInfinityUpgrades = {
   totalAMMult: {
     id: "totalMult",
     cost: 1e4,
-    description: "Antimatter Dimensions gain a multiplier based on total antimatter produced",
+    description: "반물질 차원이 생산된 총 반물질을 기반으로 하는 배율을 획득합니다",
     effect: () => Math.pow(player.records.totalAntimatter.exponent + 1, 0.5),
     formatEffect: value => formatX(value, 2, 2)
   },
   currentAMMult: {
     id: "currentMult",
     cost: 5e4,
-    description: "Antimatter Dimensions gain a multiplier based on current antimatter",
+    description: "반물질 차원이 현재 반물질을 기반으로 하는 배율을 획득합니다",
     effect: () => Math.pow(Currency.antimatter.exponent + 1, 0.5),
     formatEffect: value => formatX(value, 2, 2)
   },
   galaxyBoost: {
     id: "postGalaxy",
     cost: 5e11,
-    description: () => `All Galaxies are ${formatPercents(0.5)} stronger`,
+    description: () => `모든 은하가 ${formatPercents(0.5)} 더 강해집니다`,
     effect: 1.5
   },
   infinitiedMult: {
     id: "infinitiedMult",
     cost: 1e5,
-    description: "Antimatter Dimensions gain a multiplier based on Infinities",
+    description: "반물질 차원이 무한을 기반으로 하는 배율을 획득합니다",
     effect: () => 1 + Currency.infinitiesTotal.value.pLog10() * 10,
     formatEffect: value => formatX(value, 2, 2)
   },
   achievementMult: {
     id: "achievementMult",
     cost: 1e6,
-    description: "Antimatter Dimensions gain a multiplier based on Achievements completed",
+    description: "반물질 차원이 완성된 업적을 기반으로 하는 배율을 획득합니다",
     effect: () => Math.max(Math.pow((Achievements.effectiveCount - 30), 3) / 40, 1),
     formatEffect: value => formatX(value, 2, 2)
   },
   slowestChallengeMult: {
     id: "challengeMult",
     cost: 1e7,
-    description: "Antimatter Dimensions gain a multiplier based on how fast your slowest challenge run is",
+    description: "반물질 차원이 가장 느린 도전 실행이 얼마나 빠른지를 기반으로 하는 배율을 획득합니다",
     effect: () => Decimal.clampMin(50 / Time.worstChallenge.totalMinutes, 1),
     formatEffect: value => formatX(value, 2, 2),
     hasCap: true,
@@ -73,10 +73,10 @@ export const breakInfinityUpgrades = {
   infinitiedGen: {
     id: "infinitiedGeneration",
     cost: 2e7,
-    description: "Passively generate Infinities based on your fastest Infinity",
+    description: "가장 빠른 무한을 기반으로 무한을 수동으로 생성합니다",
     effect: () => player.records.bestInfinity.time,
     formatEffect: value => {
-      if (value === Number.MAX_VALUE && !Pelle.isDoomed) return "No Infinity generation";
+      if (value === Number.MAX_VALUE && !Pelle.isDoomed) return "무한 생성 없음";
       let infinities = DC.D1;
       infinities = infinities.timesEffectsOf(
         RealityUpgrade(5),
@@ -93,21 +93,21 @@ export const breakInfinityUpgrades = {
   autobuyMaxDimboosts: {
     id: "autobuyMaxDimboosts",
     cost: 5e9,
-    description: "Unlock the buy max Dimension Boost Autobuyer mode"
+    description: "차원 부스트 자동구매기 최대 구매 모드를 해제합니다"
   },
   autobuyerSpeed: {
     id: "autoBuyerUpgrade",
     cost: 1e15,
-    description: "Autobuyers unlocked or improved by Normal Challenges work twice as fast"
+    description: "일반 도전으로 해제되거나 개선된 자동구매기가 2배 빠르게 작동합니다"
   },
   tickspeedCostMult: rebuyable({
     id: 0,
     initialCost: 1e6,
     costIncrease: 5,
     maxUpgrades: 8,
-    description: "Reduce post-infinity Tickspeed Upgrade cost multiplier scaling",
+    description: "무한 이후 틱속도 업그레이드 비용 배율 스케일링을 감소시킵니다",
     afterEC: () => (EternityChallenge(11).completions > 0
-      ? `After EC11: ${formatX(Player.tickSpeedMultDecrease, 2, 2)}`
+      ? `EC11 이후: ${formatX(Player.tickSpeedMultDecrease, 2, 2)}`
       : ""
     ),
     noLabel: true,
@@ -118,9 +118,9 @@ export const breakInfinityUpgrades = {
     initialCost: 1e7,
     costIncrease: 5e3,
     maxUpgrades: 7,
-    description: "Reduce post-infinity Antimatter Dimension cost multiplier scaling",
+    description: "무한 이후 반물질 차원 비용 배율 스케일링을 감소시킵니다",
     afterEC: () => (EternityChallenge(6).completions > 0
-      ? `After EC6: ${formatX(Player.dimensionMultDecrease, 2, 2)}`
+      ? `EC6 이후: ${formatX(Player.dimensionMultDecrease, 2, 2)}`
       : ""
     ),
     noLabel: true,
@@ -133,14 +133,14 @@ export const breakInfinityUpgrades = {
     maxUpgrades: 10,
     effect: value => Player.bestRunIPPM.times(value / 20),
     description: () => {
-      let generation = `Generate ${formatInt(5 * player.infinityRebuyables[2])}%`;
+      let generation = `${formatInt(5 * player.infinityRebuyables[2])}% 획득`;
       if (!BreakInfinityUpgrade.ipGen.isCapped) {
-        generation += ` ➜ ${formatInt(5 * (1 + player.infinityRebuyables[2]))}%`;
+        generation += ` ➜ ${formatInt(5 * (1 + player.infinityRebuyables[2]))}% 획득`;
       }
-      return `${generation} of your best IP/min from your last 10 Infinities`;
+      return `마지막 10개의 무한에서 최고 IP/분의 ${generation}`;
     },
     isDisabled: effect => effect.eq(0),
-    formatEffect: value => `${format(value, 2, 1)} IP/min`,
+    formatEffect: value => `${format(value, 2, 1)} IP/분`,
     noLabel: false
   })
 };

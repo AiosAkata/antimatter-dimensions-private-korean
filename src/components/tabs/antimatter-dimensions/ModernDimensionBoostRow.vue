@@ -67,8 +67,8 @@ export default {
 
 <template>
   <div class="reset-container dimboost">
-    <h4>Dimension Boost ({{ boostCountText }})</h4>
-    <span>Requires: {{ formatInt(requirement.amount) }} {{ dimName }} Antimatter D</span>
+    <h4>차원 부스트 ({{ boostCountText }})</h4>
+    <span>필요: {{ formatInt(requirement.amount) }} {{ dimName }} 반물질 D</span>
     <button
       :class="classObject"
       @click.exact="dimensionBoost(true)"

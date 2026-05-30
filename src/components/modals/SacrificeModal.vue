@@ -45,7 +45,7 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      Dimensional Sacrifice
+      차원 희생
     </template>
     <div class="c-modal-message__text">
       {{ message }}

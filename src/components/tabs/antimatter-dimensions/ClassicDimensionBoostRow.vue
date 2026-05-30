@@ -72,8 +72,8 @@ export default {
 <template>
   <div class="c-dimension-row c-antimatter-dim-row c-antimatter-prestige-row">
     <div class="l-dim-row__prestige-text c-dim-row__label c-dim-row__label--amount">
-      Dimension Boost ({{ boostCountText }}):
-      requires {{ formatInt(requirement.amount) }} {{ dimName }} Dimensions
+      차원 부스트 ({{ boostCountText }}):
+      {{ formatInt(requirement.amount) }} {{ dimName }} 차원 필요
     </div>
     <PrimaryButton
       :enabled="isBuyable"

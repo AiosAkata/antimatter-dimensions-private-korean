@@ -26,12 +26,12 @@ export default {
       return Autobuyer.antimatterDimension(this.tier);
     },
     name() {
-      return `${AntimatterDimension(this.tier).shortDisplayName} Dimension Autobuyer`;
+      return `${AntimatterDimension(this.tier).shortDisplayName} 차원 자동구매기`;
     },
     modeDisplay() {
       switch (this.mode) {
-        case AUTOBUYER_MODE.BUY_SINGLE: return "Buys singles";
-        case AUTOBUYER_MODE.BUY_10: return "Buys max";
+        case AUTOBUYER_MODE.BUY_SINGLE: return "단품 구입";
+        case AUTOBUYER_MODE.BUY_10: return "최대 구입";
       }
       throw "Unknown Dimension Autobuyer mode";
     }

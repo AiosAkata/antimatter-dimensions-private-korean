@@ -34,11 +34,11 @@ export default {
     buttonText() {
       if (this.lockText !== null) return this.lockText;
       const reset = [];
-      if (!Achievement(111).isUnlocked) reset.push("Dimensions");
-      if (!Achievement(143).isUnlocked) reset.push("Dimension Boosts");
+      if (!Achievement(111).isUnlocked) reset.push("차원");
+      if (!Achievement(143).isUnlocked) reset.push("차원 부스트");
       return reset.length === 0
-        ? `Increase the power of Tickspeed upgrades`
-        : `Reset your ${makeEnumeration(reset)} to increase the power of Tickspeed upgrades`;
+        ? `틱속도 업그레이드의 효력 증대`
+        : `${makeEnumeration(reset)}을(를) 초기화하여 틱속도 업그레이드의 효력 증대`;
     },
     sumText() {
       const parts = [Math.max(this.galaxies.normal, 0)];
@@ -52,9 +52,9 @@ export default {
     },
     typeName() {
       switch (this.type) {
-        case GALAXY_TYPE.NORMAL: return "Antimatter Galaxies";
-        case GALAXY_TYPE.DISTANT: return "Distant Antimatter Galaxies";
-        case GALAXY_TYPE.REMOTE: return "Remote Antimatter Galaxies";
+        case GALAXY_TYPE.NORMAL: return "반물질 은하";
+        case GALAXY_TYPE.DISTANT: return "먼 반물질 은하";
+        case GALAXY_TYPE.REMOTE: return "원거리 반물질 은하";
       }
       return undefined;
     },
@@ -64,14 +64,14 @@ export default {
     costScalingText() {
       switch (this.type) {
         case GALAXY_TYPE.DISTANT:
-          return `Each Galaxy is more expensive past ${quantifyInt("Galaxy", this.distantStart)}`;
+          return `${quantifyInt("은하", this.distantStart)} 이후 각 은하는 더 비쌈`;
         case GALAXY_TYPE.REMOTE: {
           const scalings = [
-            { type: "distant", function: "quadratic", amount: this.distantStart },
-            { type: "remote", function: "exponential", amount: this.remoteStart }
+            { type: "먼", function: "이차", amount: this.distantStart },
+            { type: "원거리", function: "지수", amount: this.remoteStart }
           ];
-          return `Increased Galaxy cost scaling: ${scalings.sort((a, b) => a.amount - b.amount)
-            .map(scaling => `${scaling.function} scaling past ${this.formatGalaxies(scaling.amount)} (${scaling.type})`)
+          return `증가된 은하 비용 스케일링: ${scalings.sort((a, b) => a.amount - b.amount)
+            .map(scaling => `${scaling.amount} ${scaling.type}에 ${scaling.function} 스케일링`)
             .join(", ").capitalize()}`;
         }
       }
@@ -123,7 +123,7 @@ export default {
 <template>
   <div class="reset-container galaxy">
     <h4>{{ typeName }} ({{ sumText }})</h4>
-    <span>Requires: {{ formatInt(requirement.amount) }} {{ dimName }} Antimatter D</span>
+    <span>필요: {{ formatInt(requirement.amount) }} {{ dimName }} 반물질 D</span>
     <span v-if="hasIncreasedScaling">{{ costScalingText }}</span>
     <button
       :class="classObject"

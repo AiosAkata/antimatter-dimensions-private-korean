@@ -22,11 +22,10 @@ export default {
   <div class="l-challenges-tab">
     <ChallengeTabHeader />
     <div>
-      Some Normal Challenges have requirements to be able to run that challenge.
+      일부 일반 도전에는 도전을 실행할 수 있는 요구사항이 있습니다.
     </div>
     <div>
-      If you have an active Big Crunch Autobuyer, it will attempt to Crunch
-      as soon as possible when reaching Infinite antimatter.
+      활성화된 빅 크런치 자동구매기가 있는 경우, 무한 반물질에 도달하면 가능한 한 빨리 크런치를 시도합니다.
     </div>
     <ChallengeGrid
       v-slot="{ challenge }"

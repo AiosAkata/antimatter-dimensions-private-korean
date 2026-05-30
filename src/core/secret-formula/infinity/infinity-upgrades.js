@@ -11,11 +11,11 @@ export const infinityUpgrades = {
   totalTimeMult: {
     id: "timeMult",
     cost: 1,
-    description: "Antimatter Dimensions gain a multiplier based on time played",
+    description: "반물질 차원이 플레이 시간을 기반으로 한 배율을 획득합니다",
     effect: () => Math.pow(Time.totalTimePlayed.totalMinutes / 2, 0.15),
     formatEffect: value => formatX(value, 2, 2),
     charged: {
-      description: "Antimatter Dimensions gain a power effect based on time played and Teresa level",
+      description: "반물질 차원이 플레이 시간과 테레사 레벨을 기반으로 한 파워 효과를 획득합니다",
       effect: () => 1 +
         Math.log10(Math.log10(Time.totalTimePlayed.totalMilliseconds)) *
         Math.pow(Ra.pets.teresa.level, 0.5) / 150,
@@ -26,11 +26,11 @@ export const infinityUpgrades = {
     id: "18Mult",
     cost: 1,
     checkRequirement: () => InfinityUpgrade.totalTimeMult.isBought,
-    description: "1st and 8th Antimatter Dimensions gain a multiplier based on Infinities",
+    description: "1번째와 8번째 반물질 차원이 무한을 기반으로 한 배율을 획득합니다",
     effect: () => dimInfinityMult(),
     formatEffect: value => formatX(value, 1, 1),
     charged: {
-      description: "1st and 8th Antimatter Dimensions gain a power effect based on Infinities and Teresa level",
+      description: "1번째와 8번째 반물질 차원이 무한과 테레사 레벨을 기반으로 한 파워 효과를 획득합니다",
       effect: () => chargedDimInfinityMult(),
       formatEffect: value => formatPow(value, 4, 4)
     }
@@ -39,11 +39,11 @@ export const infinityUpgrades = {
     id: "27Mult",
     cost: 1,
     checkRequirement: () => InfinityUpgrade.buy10Mult.isBought,
-    description: "2nd and 7th Antimatter Dimensions gain a multiplier based on Infinities",
+    description: "2번째와 7번째 반물질 차원이 무한을 기반으로 한 배율을 획득합니다",
     effect: () => dimInfinityMult(),
     formatEffect: value => formatX(value, 1, 1),
     charged: {
-      description: "2nd and 7th Antimatter Dimensions gain a power effect based on Infinities and Teresa level",
+      description: "2번째와 7번째 반물질 차원이 무한과 테레사 레벨을 기반으로 한 파워 효과를 획득합니다",
       effect: () => chargedDimInfinityMult(),
       formatEffect: value => formatPow(value, 4, 4)
     }
@@ -52,11 +52,11 @@ export const infinityUpgrades = {
     id: "36Mult",
     cost: 1,
     checkRequirement: () => InfinityUpgrade.dim18mult.isBought,
-    description: "3rd and 6th Antimatter Dimensions gain a multiplier based on Infinities",
+    description: "3번째와 6번째 반물질 차원이 무한을 기반으로 한 배율을 획득합니다",
     effect: () => dimInfinityMult(),
     formatEffect: value => formatX(value, 1, 1),
     charged: {
-      description: "3rd and 6th Antimatter Dimensions gain a power effect based on Infinities and Teresa level",
+      description: "3번째와 6번째 반물질 차원이 무한과 테레사 레벨을 기반으로 한 파워 효과를 획득합니다",
       effect: () => chargedDimInfinityMult(),
       formatEffect: value => formatPow(value, 4, 4)
     }
@@ -65,11 +65,11 @@ export const infinityUpgrades = {
     id: "45Mult",
     cost: 1,
     checkRequirement: () => InfinityUpgrade.dim27mult.isBought,
-    description: "4th and 5th Antimatter Dimensions gain a multiplier based on Infinities",
+    description: "4번째와 5번째 반물질 차원이 무한을 기반으로 한 배율을 획득합니다",
     effect: () => dimInfinityMult(),
     formatEffect: value => formatX(value, 1, 1),
     charged: {
-      description: "4th and 5th Antimatter Dimensions gain a power effect based on Infinities and Teresa level",
+      description: "4번째와 5번째 반물질 차원이 무한과 테레사 레벨을 기반으로 한 파워 효과를 획득합니다",
       effect: () => chargedDimInfinityMult(),
       formatEffect: value => formatPow(value, 4, 4)
     }
@@ -79,10 +79,10 @@ export const infinityUpgrades = {
     cost: 1,
     checkRequirement: () => InfinityUpgrade.dim36mult.isBought,
     description: () =>
-      `Decrease the number of Dimensions needed for Dimension Boosts and Antimatter Galaxies by ${formatInt(9)}`,
+      `차원 부스트와 반물질 은하에 필요한 차원의 수를 ${formatInt(9)}만큼 감소시킵니다`,
     effect: 9,
     charged: {
-      description: () => "Decrease Dimension Boost requirement based on Teresa level",
+      description: () => "차원 부스트 요구치를 테레사 레벨을 기반으로 감소시킵니다",
       effect: () => 1 / (1 + Math.sqrt(Ra.pets.teresa.level) / 10),
       formatEffect: value => `${formatX(value, 4, 4)}`
     }
@@ -90,12 +90,12 @@ export const infinityUpgrades = {
   buy10Mult: {
     id: "dimMult",
     cost: 1,
-    description: () => `Increase the multiplier for buying ${formatInt(10)} Antimatter Dimensions`,
+    description: () => `${formatInt(10)}개의 반물질 차원을 구입할 때의 배율을 증가시킵니다`,
     effect: () => 1.1,
     formatEffect: () => `${formatX(2, 0, 1)} ➜ ${formatX(2.2, 0, 1)}`,
     charged: {
-      description: () => `The multiplier for buying ${formatInt(10)} Antimatter Dimensions gains ` +
-        "a power effect based on Teresa level",
+      description: () => `${formatInt(10)}개의 반물질 차원을 구입할 때의 배율이 ` +
+        "테레사 레벨을 기반으로 한 파워 효과를 획득합니다",
       effect: () => 1 + Ra.pets.teresa.level / 200,
       formatEffect: value => formatPow(value, 3, 3)
     }
@@ -104,10 +104,10 @@ export const infinityUpgrades = {
     id: "galaxyBoost",
     cost: 2,
     checkRequirement: () => InfinityUpgrade.dim45mult.isBought,
-    description: "All Galaxies are twice as strong",
+    description: "모든 은하가 2배 더 강해집니다",
     effect: 2,
     charged: {
-      description: "All Galaxies are stronger based on Teresa level",
+      description: "모든 은하가 테레사 레벨을 기반으로 더 강해집니다",
       effect: () => 2 + Math.sqrt(Ra.pets.teresa.level) / 100,
       formatEffect: value => `+${formatPercents(value - 1)}`
     }
@@ -115,12 +115,12 @@ export const infinityUpgrades = {
   thisInfinityTimeMult: {
     id: "timeMult2",
     cost: 3,
-    description: "Antimatter Dimensions gain a multiplier based on time spent in current Infinity",
+    description: "반물질 차원이 현재 무한에 소비한 시간을 기반으로 한 배율을 획득합니다",
     effect: () => Decimal.max(Math.pow(Time.thisInfinity.totalMinutes / 4, 0.25), 1),
     formatEffect: value => formatX(value, 2, 2),
     charged: {
       description:
-        "Antimatter Dimensions gain a power effect based on time spent in current Infinity and Teresa level",
+        "반물질 차원이 현재 무한에 소비한 시간과 테레사 레벨을 기반으로 한 파워 효과를 획득합니다",
       effect: () => 1 +
         Math.log10(Math.log10(Time.thisInfinity.totalMilliseconds + 100)) *
         Math.sqrt(Ra.pets.teresa.level) / 150,
@@ -131,11 +131,11 @@ export const infinityUpgrades = {
     id: "unspentBonus",
     cost: 5,
     checkRequirement: () => InfinityUpgrade.thisInfinityTimeMult.isBought,
-    description: "Multiplier to 1st Antimatter Dimension based on unspent Infinity Points",
+    description: "1번째 반물질 차원에 대한 배율을 미사용 무한 포인트를 기반으로 합니다",
     effect: () => Currency.infinityPoints.value.dividedBy(2).pow(1.5).plus(1),
     formatEffect: value => formatX(value, 2, 2),
     charged: {
-      description: "Multiplier to 1st Antimatter Dimension based on unspent Infinity Points, powered by Teresa level",
+      description: "1번째 반물질 차원에 대한 배율을 미사용 무한 포인트를 기반으로 하며, 테레사 레벨로 강화됩니다",
       effect: () => Currency.infinityPoints.value.dividedBy(2).pow(Math.sqrt(Ra.pets.teresa.level) * 1.5).plus(1),
       formatEffect: value => formatX(value, 2, 2)
     }
@@ -144,11 +144,11 @@ export const infinityUpgrades = {
     id: "resetMult",
     cost: 7,
     checkRequirement: () => InfinityUpgrade.unspentIPMult.isBought,
-    description: "Increase Dimension Boost multiplier",
+    description: "차원 부스트 배율을 증가시킵니다",
     effect: () => 2.5,
     formatEffect: () => `${formatX(2, 0, 1)} ➜ ${formatX(2.5, 0, 1)}`,
     charged: {
-      description: "Dimension Boost multiplier gains a power effect based on Teresa level",
+      description: "차원 부스트 배율이 테레사 레벨을 기반으로 한 파워 효과를 획득합니다",
       effect: () => 1 + Ra.pets.teresa.level / 200,
       formatEffect: value => formatPow(value, 3, 3)
     }
@@ -157,7 +157,7 @@ export const infinityUpgrades = {
     id: "passiveGen",
     cost: 10,
     checkRequirement: () => InfinityUpgrade.dimboostMult.isBought,
-    description: () => `Passively generate Infinity Points ${formatInt(10)} times slower than your fastest Infinity`,
+    description: () => `가장 빠른 무한보다 ${formatInt(10)}배 느리게 수동으로 무한 포인트를 생성합니다`,
     // Cutting corners: this is not actual effect, but it is totalIPMult that is displyed on upgrade
     effect: () => (Teresa.isRunning || V.isRunning || Pelle.isDoomed ? DC.D0 : GameCache.totalIPMult.value),
     formatEffect: value => {
@@ -168,8 +168,8 @@ export const infinityUpgrades = {
     },
     charged: {
       description: () =>
-        `Gain Reality Machines each real-time second proportional to amount gained on Reality,
-        increasing with Teresa level`,
+        `현실에서 획득한 양에 비례하여 실시간 초당 현실 기계를 획득하며,
+        테레사 레벨에 따라 증가합니다`,
       effect: () => Math.pow(Ra.pets.teresa.level, 2) *
         Ra.unlocks.continuousTTBoost.effects.autoPrestige.effectOrDefault(1),
       formatEffect: value => formatX(value, 2, 1)
@@ -179,37 +179,37 @@ export const infinityUpgrades = {
     id: "skipReset1",
     cost: 20,
     description: () =>
-      `Start every reset with ${formatInt(1)} Dimension Boost, automatically unlocking the 5th Antimatter Dimension`,
+      `매 리셋마다 ${formatInt(1)}개의 차원 부스트로 시작하여 5번째 반물질 차원을 자동으로 해금합니다`,
   },
   skipReset2: {
     id: "skipReset2",
     cost: 40,
     checkRequirement: () => InfinityUpgrade.skipReset1.isBought,
     description: () =>
-      `Start every reset with ${formatInt(2)} Dimension Boosts, automatically unlocking the 6th Antimatter Dimension`,
+      `매 리셋마다 ${formatInt(2)}개의 차원 부스트로 시작하여 6번째 반물질 차원을 자동으로 해금합니다`,
   },
   skipReset3: {
     id: "skipReset3",
     cost: 80,
     checkRequirement: () => InfinityUpgrade.skipReset2.isBought,
     description: () =>
-      `Start every reset with ${formatInt(3)} Dimension Boosts, automatically unlocking the 7th Antimatter Dimension`,
+      `매 리셋마다 ${formatInt(3)}개의 차원 부스트로 시작하여 7번째 반물질 차원을 자동으로 해금합니다`,
   },
   skipResetGalaxy: {
     id: "skipResetGalaxy",
     cost: 300,
     checkRequirement: () => InfinityUpgrade.skipReset3.isBought,
     description: () =>
-      `Start every reset with ${formatInt(4)} Dimension Boosts, automatically unlocking the 8th Antimatter Dimension;
-      and an Antimatter Galaxy`,
+      `매 리셋마다 ${formatInt(4)}개의 차원 부스트로 시작하여 8번째 반물질 차원을 자동으로 해금하며,
+      반물질 은하 1개를 획득합니다`,
   },
   ipOffline: {
     id: "ipOffline",
     cost: 1000,
     checkRequirement: () => Achievement(41).isUnlocked,
     description: () => (player.options.offlineProgress
-      ? `Only while offline, gain ${formatPercents(0.5)} of your best IP/min without using Max All`
-      : "This upgrade would give offline Infinity Point generation, but offline progress is currently disabled"),
+      ? `오프라인 중에만 최대 구매 없이 달성한 최고 IP/분의 ${formatPercents(0.5)}를 획득합니다`
+      : "이 업그레이드는 오프라인 무한 포인트 생성을 제공하지만 오프라인 진행이 현재 비활성화되어 있습니다"),
     effect: () => (player.options.offlineProgress
       ? player.records.thisEternity.bestIPMsWithoutMaxAll.times(TimeSpan.fromMinutes(1).totalMilliseconds / 2)
       : DC.D0),
@@ -222,7 +222,7 @@ export const infinityUpgrades = {
     checkRequirement: () => Achievement(41).isUnlocked,
     costCap: DC.E6E6,
     costIncreaseThreshold: DC.E3E6,
-    description: () => `Multiply Infinity Points from all sources by ${formatX(2)}`,
+    description: () => `모든 출처의 무한 포인트를 ${formatX(2)}로 배수합니다`,
     // Normally the multiplier caps at e993k or so with 3300000 purchases, but if the cost is capped then we just give
     // an extra e7k to make the multiplier look nice
     effect: () => (player.IPMultPurchases >= 3300000 ? DC.E1E6 : DC.D2.pow(player.IPMultPurchases)),
