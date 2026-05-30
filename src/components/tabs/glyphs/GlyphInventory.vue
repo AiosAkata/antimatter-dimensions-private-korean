@@ -88,7 +88,7 @@ export default {
 
 <template>
   <div class="l-glyph-inventory">
-    Click and drag or double-click to equip Glyphs.
+    클릭하고 드래그하거나 더블 클릭하여 글리프를 장착합니다.
     <div
       v-for="row in rowCount"
       :key="protectedRows + row"

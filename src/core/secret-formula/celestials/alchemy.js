@@ -11,7 +11,7 @@ export const alchemyResources = {
     tier: 1,
     uiOrder: 1,
     unlockedAt: 2,
-    description: "provides a power to Antimatter Dimensions",
+    description: "반물질 차원에 거듭제곱을 제공합니다.",
     formatEffect: value => `Antimatter Dimension multipliers ${formatPow(value, 4, 4)}`
   },
   "infinity": {
@@ -23,7 +23,7 @@ export const alchemyResources = {
     tier: 1,
     uiOrder: 2,
     unlockedAt: 3,
-    description: "provides a power to Infinity Dimensions",
+    description: "무한 차원에 거듭제곱을 제공합니다.",
     formatEffect: value => `Infinity Dimension multipliers ${formatPow(value, 4, 4)}`
   },
   "time": {
@@ -35,7 +35,7 @@ export const alchemyResources = {
     tier: 1,
     uiOrder: 3,
     unlockedAt: 4,
-    description: "provides a power to Time Dimensions",
+    description: "시간 차원에 거듭제곱을 제공합니다.",
     formatEffect: value => `Time Dimension multipliers ${formatPow(value, 4, 4)}`
   },
   "replication": {
@@ -47,7 +47,7 @@ export const alchemyResources = {
     tier: 1,
     uiOrder: 4,
     unlockedAt: 5,
-    description: `increases Replication speed`,
+    description: `복제 속도를 증가시킵니다.`,
     formatEffect: value => `Replication speed is increased by ${formatX(value, 2, 2)}`
   },
   "dilation": {
@@ -59,7 +59,7 @@ export const alchemyResources = {
     tier: 1,
     uiOrder: 5,
     unlockedAt: 6,
-    description: "increases Dilated Time production",
+    description: "팽창된 시간 생산을 증가시킵니다.",
     formatEffect: value => `Dilated Time production is increased by ${formatX(value, 2, 2)}`
   },
 
@@ -73,7 +73,7 @@ export const alchemyResources = {
     tier: 2,
     uiOrder: 3,
     unlockedAt: 8,
-    description: "reduces Replicanti slowdown when above the cap",
+    description: "상한선 이상일 때 복제체 속도 저하를 줄입니다.",
     formatEffect: value => `Replicanti interval increases slower ${formatX(1.2, 1, 1)} ➜
       ${formatX(value, 4, 4)} per ${format(Number.MAX_VALUE, 2)}`,
     reagents: [
@@ -96,7 +96,7 @@ export const alchemyResources = {
     tier: 2,
     uiOrder: 2,
     unlockedAt: 9,
-    description: "provides a power to Eternity generation",
+    description: "영원 생성에 거듭제곱을 제공합니다.",
     formatEffect: value => `Eternity generation ${formatPow(value, 4, 4)}`,
     reagents: [
       {
@@ -118,7 +118,7 @@ export const alchemyResources = {
     tier: 2,
     uiOrder: 1,
     unlockedAt: 10,
-    description: "provides a large multiplier to all Dimensions",
+    description: "모든 차원에 큰 배수를 제공합니다.",
     formatEffect: value => `All Dimensions ${formatX(value)}`,
     reagents: [
       {
@@ -140,7 +140,7 @@ export const alchemyResources = {
     tier: 2,
     uiOrder: 5,
     unlockedAt: 11,
-    description: "provides an additional power for very large multipliers",
+    description: "매우 큰 배수에 추가 거듭제곱을 제공합니다.",
     formatEffect: value => `All Antimatter Dimension multipliers are ${formatPow(1.05, 2, 2)}
       if they are above ${format(value)} `,
     reagents: [
@@ -163,7 +163,7 @@ export const alchemyResources = {
     tier: 2,
     uiOrder: 4,
     unlockedAt: 12,
-    description: "increases the strength of Tachyon Galaxies based on Replicanti",
+    description: "복제체에 기반한 타키온 갤럭시의 강도를 증가시킵니다.",
     formatEffect: value => `Tachyon Galaxies are ${formatPercents(value, 2, 2)} stronger
       per ${format(DC.E1E6)} Replicanti`,
     reagents: [
@@ -188,7 +188,7 @@ export const alchemyResources = {
     tier: 1,
     uiOrder: 1.5,
     unlockedAt: 7,
-    description: "increases Relic Shard gain",
+    description: "유물 파편 획득을 증가시킵니다.",
     formatEffect: value => `Relic Shard gain is multiplied ${formatX(value, 2, 2)}`
   },
   "synergism": {
@@ -203,7 +203,7 @@ export const alchemyResources = {
     tier: 3,
     uiOrder: 2,
     unlockedAt: 13,
-    description: "increases the yield of Alchemy Reactions",
+    description: "연금술 반응의 수확량을 증가시킵니다.",
     formatEffect(value) {
       return `Alchemy Reaction efficiency ${formatPercents(0.3)} ➜ ${formatPercents(value, 2, 2)}
         ${(!Achievement(175).isUnlocked && value >= 1) ? " (Capped)" : ""}`;
@@ -232,7 +232,7 @@ export const alchemyResources = {
     tier: 3,
     uiOrder: 3,
     unlockedAt: 15,
-    description: "provides a power to all Dimensions that permanently grows over time",
+    description: "시간에 따라 영구적으로 증가하는 모든 차원에 거듭제곱을 제공합니다.",
     formatEffect: value => `All Dimensions ${formatPow(Ra.momentumValue, 4, 4)}, increasing by
       ${format(0.005 * Achievement(175).effectOrDefault(1), 3, 3)}
       per real-time hour after the resource is unlocked, up to a maximum of ${formatPow(value, 4, 4)}`,
@@ -260,7 +260,7 @@ export const alchemyResources = {
     tier: 3,
     uiOrder: 4,
     unlockedAt: 14,
-    description: "gives all basic Alchemy Resources upon refinement",
+    description: "정제 시 모든 기본 연금술 자원을 제공합니다.",
     formatEffect: value => `Refined Glyphs also give ${formatPercents(value, 2)} of their value ` +
       "to all other base resources",
     reagents: [
@@ -285,7 +285,7 @@ export const alchemyResources = {
     tier: 4,
     uiOrder: 2,
     unlockedAt: 18,
-    description: "multiplies Infinity Points based on Replicanti",
+    description: "복제체에 기반한 무한 포인트를 곱합니다.",
     formatEffect: value => `Infinity Points multiplied by Replicanti${formatPow(value, 2, 3)}`,
     reagents: [
       {
@@ -307,7 +307,7 @@ export const alchemyResources = {
     tier: 4,
     uiOrder: 2,
     unlockedAt: 17,
-    description: "multiplies Antimatter Dimensions based on Reality Machines",
+    description: "현실 기계에 기반한 반물질 차원을 곱합니다.",
     formatEffect: value => `Multiply Antimatter Dimensions by Reality Machines${formatPow(value, 2, 2)}`,
     reagents: [
       {
@@ -329,7 +329,7 @@ export const alchemyResources = {
     tier: 4,
     uiOrder: 3,
     unlockedAt: 19,
-    description: "passively generates Realities and Perk Points",
+    description: "수동적으로 현실과 특전 포인트를 생성합니다.",
     formatEffect: value => `Generate ${format(value, 2, 2)} Realities and Perk Points per second`,
     reagents: [
       {
@@ -355,7 +355,7 @@ export const alchemyResources = {
     tier: 4,
     uiOrder: 1,
     unlockedAt: 20,
-    description: "makes Tesseracts stronger",
+    description: "테서랙트를 더 강하게 만듭니다.",
     formatEffect: value => `Tesseracts are +${formatPercents(value, 2, 2)} stronger`,
     reagents: [
       {
@@ -377,7 +377,7 @@ export const alchemyResources = {
     tier: 4,
     uiOrder: 5,
     unlockedAt: 16,
-    description: "makes each Reality simulate more Realities",
+    description: "각 현실이 더 많은 현실을 시뮬레이션하도록 합니다.",
     formatEffect: value => `Each Reality simulates ${format(value, 2, 3)} additional Realities, giving all
       the same rewards as if it was amplified`,
     reagents: [
@@ -401,7 +401,7 @@ export const alchemyResources = {
     tier: 4,
     uiOrder: 4,
     unlockedAt: 21,
-    description: "makes each Alchemy Reaction have a chance to happen twice",
+    description: "각 연금술 반응이 두 번 발생할 기회를 만듭니다.",
     formatEffect: value => `Any Alchemy Reaction has a ${formatPercents(value, 2, 2)}
       chance of triggering again`,
     reagents: [
@@ -429,7 +429,7 @@ export const alchemyResources = {
     effect: amount => Math.floor(amount),
     tier: 5,
     unlockedAt: 25,
-    description: "can be consumed to create Reality Glyphs",
+    description: "소비하여 현실 글리프를 생성할 수 있습니다.",
     formatEffect: value => `Consume all Reality Resource to create a level ${formatInt(value)} Reality Glyph`,
     reagents: [
       {

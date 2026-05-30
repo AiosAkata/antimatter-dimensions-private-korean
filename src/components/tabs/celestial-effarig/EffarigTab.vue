@@ -100,39 +100,39 @@ export default {
     <div class="l-effarig-shop-and-run">
       <div class="l-effarig-shop">
         <div class="c-effarig-relics">
-          You have {{ quantify("Relic Shard", relicShards, 2, 0) }}.
+          {{ quantify("유물 조각", relicShards, 2, 0) }}을 가지고 있습니다.
           <br>
           <span v-if="relicShardRarityAlwaysMax">
-            The rarity of new Glyphs is being increased by +{{ formatPercents(shardRarityBoost, 2) }}.
+            새 글리프의 희귀도가 +{{ formatPercents(shardRarityBoost, 2) }}씩 증가하고 있습니다.
           </span>
           <span v-else>
-            Each new Glyph will have its rarity increased
+            각 새 글리프는 희귀도가
             <br>
-            by a random value between +{{ formatPercents(0) }} and +{{ formatPercents(shardRarityBoost, 2) }}.
+            +{{ formatPercents(0) }}에서 +{{ formatPercents(shardRarityBoost, 2) }} 사이의 무작위 값으로 증가합니다.
           </span>
           <span v-if="shardPower > 1">
             <br>
-            Glyph Sacrifice gain is also being raised to {{ formatPow(shardPower, 0, 2) }}.
+            글리프 희생 획득도 {{ formatPow(shardPower, 0, 2) }}으로 상향되고 있습니다.
           </span>
         </div>
         <div class="c-effarig-relic-description">
-          You will gain {{ quantify("Relic Shard", shardsGained, 2) }} next Reality
-          ({{ format(currentShardsRate, 2) }}/min).
+          다음 현실에서 {{ quantify("유물 조각", shardsGained, 2) }}을 얻을 것입니다
+          ({{ format(currentShardsRate, 2) }}/분).
           <span v-if="amplification !== 0">
             <br>
-            Due to amplification of your current Reality,
+            현재 현실의 증폭으로 인해,
             <br>
-            you will actually gain a total of
-            {{ quantify("Relic Shard", amplifiedShards, 2) }} ({{ format(amplifiedShardsRate, 2) }}/min).
+            실제로 총
+            {{ quantify("유물 조각", amplifiedShards, 2) }}을 얻을 것입니다 ({{ format(amplifiedShardsRate, 2) }}/분).
           </span>
         </div>
         <div class="c-effarig-relic-description">
           <br>
-          More Eternity Points slightly increases Relic Shards
+          더 많은 영원 포인트는 획득한 유물 조각을
           <br>
-          gained. More distinct Glyph effects significantly
+          약간 증가시킵니다. 더 많은 서로 다른 글리프 효과는
           <br>
-          increases Relic Shards gained.
+          획득한 유물 조각을 크게 증가시킵니다.
         </div>
         <EffarigUnlockButton
           v-for="(unlock, i) in shopUnlocks"
@@ -148,7 +148,7 @@ export default {
           class="c-effarig-shop-button c-effarig-shop-button--available"
           @click="createCursedGlyph"
         >
-          Get a Cursed Glyph...
+          저주받은 글리프 획득...
         </button>
       </div>
       <div
@@ -157,7 +157,7 @@ export default {
       >
         <div class="c-effarig-run-description">
           <span :class="{ 'o-pelle-disabled': isDoomed }">
-            Enter Effarig's Reality.
+            에파리그의 현실에 진입합니다.
           </span>
         </div>
         <div

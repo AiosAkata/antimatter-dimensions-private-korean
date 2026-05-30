@@ -67,25 +67,25 @@ export default {
     },
     completionsDisplay() {
       const maxStr = Number.isFinite(this.limit) ? formatInt(this.maxCompletions) : "∞";
-      return `${formatInt(this.completions)}/${maxStr} ${pluralize("completion", this.completions)}`;
+      return `${formatInt(this.completions)}/${maxStr} ${pluralize("완료", this.completions)}`;
     },
     progressDisplay() {
       const condenseCount = this.remainingSingularities / this.singularitiesPerCondense;
       let thisSingularityTime, extraTime, timeText;
       switch (this.milestoneMode) {
         case SINGULARITY_MILESTONE_RESOURCE.SINGULARITIES:
-          return `In ${quantify("Singularity", this.remainingSingularities, 2)}`;
+          return `${quantify("특이점", this.remainingSingularities, 2)}에서`;
         case SINGULARITY_MILESTONE_RESOURCE.CONDENSE_COUNT:
-          return `Condense ${quantify("time", condenseCount, 2, 2)}`;
+          return `${quantify("번", condenseCount, 2, 2)} 응축`;
         case SINGULARITY_MILESTONE_RESOURCE.MANUAL_TIME:
           thisSingularityTime = Math.clampMin(0, this.currentCondenseTime);
           extraTime = Math.ceil(condenseCount - 1) * this.baseCondenseTime;
-          return `In ${TimeSpan.fromSeconds(thisSingularityTime + extraTime).toStringShort()} (manual)`;
+          return `${TimeSpan.fromSeconds(thisSingularityTime + extraTime).toStringShort()}에 (수동)`;
         case SINGULARITY_MILESTONE_RESOURCE.AUTO_TIME:
           thisSingularityTime = Math.clampMin(0, this.currentCondenseTime + this.autoCondenseDelay);
           extraTime = Math.ceil(condenseCount - 1) * (this.baseCondenseTime + this.autoCondenseDelay);
-          timeText = `In ${TimeSpan.fromSeconds(thisSingularityTime + extraTime).toStringShort()}`;
-          return this.autoSingActive ? timeText : `Auto-Singularity is OFF`;
+          timeText = `${TimeSpan.fromSeconds(thisSingularityTime + extraTime).toStringShort()}에`;
+          return this.autoSingActive ? timeText : `자동 특이점이 꺼져 있습니다`;
         default:
           throw new Error("Unrecognized Singularity Milestone mode");
       }

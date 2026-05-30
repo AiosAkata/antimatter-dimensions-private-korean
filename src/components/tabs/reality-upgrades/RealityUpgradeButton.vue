@@ -106,7 +106,7 @@ export default {
           <br>
           <DescriptionDisplay
             :config="requirementConfig"
-            label="Requirement:"
+            label="요구 사항:"
             class="c-reality-upgrade-btn__requirement"
           />
         </template>
@@ -119,7 +119,7 @@ export default {
             v-if="!isBought"
             :config="config"
             br
-            name="Reality Machine"
+            name="현실 기계"
           />
         </template>
         <b v-if="automatorPoints && !isBought">

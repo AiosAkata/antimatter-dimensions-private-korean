@@ -32,29 +32,29 @@ export default {
       {
         pet: Ra.pets.teresa,
         scalingUpgradeVisible: () => Ra.unlocks.chargedInfinityUpgrades.isUnlocked,
-        scalingUpgradeText: () => `You can Charge ${quantifyInt("Infinity Upgrade", Ra.totalCharges)}.`,
+        scalingUpgradeText: () => `${quantifyInt("무한 업그레이드", Ra.totalCharges)}를 충전할 수 있습니다.`,
       },
       {
         pet: Ra.pets.effarig,
         scalingUpgradeVisible: () => AlchemyResources.all.filter(r => r.isUnlocked).length > 0,
         scalingUpgradeText: () => {
           const resources = AlchemyResources.all.filter(r => r.isUnlocked).length;
-          return `You have unlocked ${quantifyInt("Alchemy Resource", resources)}.`;
+          return `${quantifyInt("연금술 자원", resources)}을 해금했습니다.`;
         },
       },
       {
         pet: Ra.pets.enslaved,
         scalingUpgradeVisible: () => Ra.unlocks.improvedStoredTime.isUnlocked,
-        scalingUpgradeText: () => `Stored game time
-          ${formatX(Ra.unlocks.improvedStoredTime.effects.gameTimeAmplification.effectOrDefault(1), 2)} and real time
-          +${formatInt(Ra.unlocks.improvedStoredTime.effects.realTimeCap.effectOrDefault(0) / (1000 * 3600))} hours`,
+        scalingUpgradeText: () => `저장된 게임 시간
+          ${formatX(Ra.unlocks.improvedStoredTime.effects.gameTimeAmplification.effectOrDefault(1), 2)} 및 실시간
+          +${formatInt(Ra.unlocks.improvedStoredTime.effects.realTimeCap.effectOrDefault(0) / (1000 * 3600))} 시간`,
       },
       {
         pet: Ra.pets.v,
         scalingUpgradeVisible: () => Ra.unlocks.unlockHardV.isUnlocked,
         scalingUpgradeText: () => {
           const triadCount = Ra.unlocks.unlockHardV.effectOrDefault(0);
-          return `You have unlocked ${quantifyInt("Triad Study", triadCount)}.`;
+          return `${quantifyInt("삼원 연구", triadCount)}를 해금했습니다.`;
         },
       }
     ],
@@ -77,8 +77,8 @@ export default {
       return GameDatabase.celestials.descriptions[4].effects().replace(/^\w/u, c => c.toUpperCase()).split("\n");
     },
     memoryDescription() {
-      return `Within Ra's Reality, Memory Chunks for Celestial Memories
-        will be generated based on certain resource amounts.`;
+      return `라의 현실 내에서 셀레스티얼 기억을 위한 기억 청크가
+        특정 자원 양에 따라 생성됩니다.`;
     },
     isDoomed: () => Pelle.isDoomed,
   },
@@ -112,23 +112,23 @@ export default {
     <div class="c-ra-memory-header">
       <CelestialQuoteHistory celestial="ra" />
       <div v-if="!isRaCapped">
-        Each Memory Chunk generates a base of one Memory per second<span v-if="memoriesPerChunk > 1">,
-          which has been increased to {{ quantify("Memory", memoriesPerChunk, 2, 3) }} per second</span>.
+        각 기억 청크는 초당 기본 1개의 기억을 생성합니다<span v-if="memoriesPerChunk > 1">,
+          이는 초당 {{ quantify("기억", memoriesPerChunk, 2, 3) }}으로 증가했습니다</span>.
         <br>
-        Storing real time prevents Memory Chunk generation, but Memories will still be gained normally.
+        실시간 저장은 기억 청크 생성을 방지하지만 기억은 여전히 정상적으로 획득됩니다.
         <span v-if="memoriesPerChunk > 1">
           <br>
-          This is being increased due to {{ memoryBoosts }}.
+          이는 {{ memoryBoosts }}으로 인해 증가합니다.
         </span>
       </div>
       <div v-else>
-        All Memories have been returned.
+        모든 기억이 반환되었습니다.
       </div>
     </div>
     <div>
-      Mouse-over the icons below the bar to see descriptions of upgrades,
+      아래의 막대 아래 아이콘에 마우스를 올려 업그레이드 설명을 확인하세요,
       <br>
-      and mouse-over <i class="fas fa-question-circle" /> icons for specific resource information.
+      그리고 <i class="fas fa-question-circle" /> 아이콘에 마우스를 올려 특정 자원 정보를 확인하세요.
     </div>
     <div class="l-ra-all-pets-container">
       <RaPet
@@ -140,9 +140,8 @@ export default {
     <div class="l-ra-non-pets">
       <button class="c-ra-run-button">
         <h2 :class="{ 'o-pelle-disabled': isDoomed }">
-          <span v-if="isRunning">You are in </span>
-          <span v-else>Start </span>
-          Ra's Reality
+          <span v-if="isRunning">라의 현실에 있습니다 </span>
+          <span v-else>라의 현실 시작 </span>
         </h2>
         <div
           :class="runButtonClassObject"
@@ -166,11 +165,11 @@ export default {
         class="c-ra-remembrance-unlock"
       >
         <h1 :style="petStyle">
-          Remembrance
+          기억
         </h1>
         <span :style="petStyle">
-          Whichever Celestial has Remembrance will get {{ formatX(remembranceMult) }} Memory Chunk gain. The other
-          Celestials will get {{ formatX(remembranceNerf, 1, 1) }} Memory Chunk gain.
+          기억을 가진 셀레스티얼은 {{ formatX(remembranceMult) }} 기억 청크 획득을 얻습니다. 다른
+          셀레스티얼은 {{ formatX(remembranceNerf, 1, 1) }} 기억 청크 획득을 얻습니다.
         </span>
         <div
           v-if="hasRemembrance"
@@ -186,8 +185,8 @@ export default {
           v-else
           class="c-ra-remembrance-unlock-inner"
         >
-          Unlocked by getting {{ formatInt(remembranceReq) }} total Celestial Memory levels
-          (you need {{ formatInt(remembranceReq - totalLevels) }} more)
+          총 {{ formatInt(remembranceReq) }}개의 셀레스티얼 기억 레벨을 획득하여 해금됨
+          ({{ formatInt(remembranceReq - totalLevels) }}개가 더 필요함)
         </div>
       </div>
     </div>

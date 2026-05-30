@@ -39,13 +39,13 @@ export default {
       const effarigSettings = this.effarigSettings;
       if (effarigSettings.RM && effarigSettings.glyph &&
         (this.effect.id === "effarigrm" || this.effect.id === "effarigglyph")) {
-        return "RM multiplier and Glyph instability cannot occur together on the same Glyph!";
+        return "RM 배율과 글리프 불안정성은 같은 글리프에서 동시에 발생할 수 없습니다!";
       }
       if (this.effect.id === "effarigrm" && effarigSettings.glyph) {
-        return "This effect is mutually exclusive with Glyph instability!";
+        return "이 효과는 글리프 불안정성과 상호 배타적입니다!";
       }
       if (this.effect.id === "effarigglyph" && effarigSettings.RM) {
-        return "This effect is mutually exclusive with RM multiplier!";
+        return "이 효과는 RM 배율과 상호 배타적입니다!";
       }
       return "";
     },

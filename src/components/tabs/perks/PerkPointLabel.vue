@@ -70,37 +70,37 @@ export default {
 
 <template>
   <div class="c-perk-tab__header">
-    You have <span class="c-perk-tab__perk-points">{{ format(pp, 2) }}</span> {{ pluralize("Perk Point", pp) }}.
+    <span class="c-perk-tab__perk-points">{{ format(pp, 2) }}</span> {{ pluralize("특전 포인트", pp) }}가 있습니다.
     <br>
-    Perk choices are permanent and cannot be respecced.
+    특전 선택은 영구적이며 리스펙할 수 없습니다.
     <br>
-    Diamond-shaped perks also give Automator Points.
+    다이아몬드 모양의 특전도 자동화기 포인트를 제공합니다.
     <br>
     <div class="perk-settings">
       <PrimaryButton
         class="o-primary-btn c-button-perk-layout"
         @click="cycleLayout"
       >
-        Perk Layout: {{ layoutText }}
+        특전 레이아웃: {{ layoutText }}
       </PrimaryButton>
       <PrimaryButton
         :class="physicsClassObject()"
         @click="togglePhysics"
       >
-        Physics: {{ physicsText }}
+        물리: {{ physicsText }}
       </PrimaryButton>
       <br>
       <PrimaryButton
         class="o-primary-btn"
         @click="centerTree"
       >
-        Center Tree on START
+        START에서 트리 중앙 정렬
       </PrimaryButton>
       <PrimaryButton
         class="o-primary-btn"
         @click="straightenEdges"
       >
-        Straighten Edges
+        모서리 정렬
       </PrimaryButton>
     </div>
   </div>

@@ -51,29 +51,29 @@ export default {
       v-if="darkMatter.lt(matterRequirement)"
       class="l-laitela-annihilation-button"
     >
-      Annihilation requires {{ format(matterRequirement, 2) }} Dark Matter
+      소멸은 {{ format(matterRequirement, 2) }} 암흑 물질이 필요합니다
     </button>
     <button
       v-else
       class="l-laitela-annihilation-button c-laitela-annihilation-button"
       @click="annihilate"
     >
-      <b>Annihilate your Dark Matter Dimensions</b>
+      <b>암흑 물질 차원 소멸</b>
     </button>
     <br>
     <br>
     <span v-if="darkMatterMult > 1">
-      Current multiplier to all Dark Matter Dimensions: <b>{{ formatX(darkMatterMult, 2, 2) }}</b>
+      모든 암흑 물질 차원에 대한 현재 배율: <b>{{ formatX(darkMatterMult, 2, 2) }}</b>
       <br>
       <br>
-      Annihilation will reset your Dark Matter and Dark Matter Dimension amounts, but also add
-      <b>+{{ format(darkMatterMultGain, 2, 2) }}</b> to your Annihilation multiplier.
+      소멸은 암흑 물질과 암흑 물질 차원의 양을 초기화하지만, 또한
+      <b>+{{ format(darkMatterMultGain, 2, 2) }}</b>를 소멸 배율에 추가합니다.
       <br>
-      (<b>{{ formatX(darkMatterMultRatio, 2, 2) }}</b> from previous multiplier)
+      (<b>{{ formatX(darkMatterMultRatio, 2, 2) }}</b> 이전 배율에서)
       <span v-if="autobuyerUnlocked">
         <br>
         <br>
-        Auto-Annihilate when adding
+        다음을 추가할 때 자동 소멸
         <input
           v-model="autoAnnihilationInput"
           type="text"
@@ -81,12 +81,12 @@ export default {
           class="c-small-autobuyer-input c-laitela-annihilation-input"
           @change="handleAutoAnnihilationInputChange()"
         >
-        to the multiplier.
+        배율로.
       </span>
     </span>
     <span v-else>
-      Annihilation will reset your Dark Matter and Dark Matter Dimension amounts, but will give a permanent
-      multiplier of <b>{{ formatX(1 + darkMatterMultGain, 2, 2) }}</b> to all Dark Matter Dimensions.
+      소멸은 암흑 물질과 암흑 물질 차원의 양을 초기화하지만, 모든 암흑 물질 차원에 대한
+      <b>{{ formatX(1 + darkMatterMultGain, 2, 2) }}</b>의 영구적인 배율을 제공합니다.
     </span>
   </div>
 </template>

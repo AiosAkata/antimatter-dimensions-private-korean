@@ -42,18 +42,18 @@ export default {
 
 <template>
   <h3 v-if="isUnlocked">
-    {{ description }} State:
+    {{ description }} 상태:
     <template v-if="isPermanent">
-      Permanently Active
+      영구적으로 활성화됨
     </template>
     <template v-else-if="isActive">
-      Active ({{ nextChange }} remaining)
+      활성 ({{ nextChange }} 남음)
     </template>
     <template v-else-if="id === 2 && isCharged">
-      Charged (Activates with Black Hole 1, {{ nextChange }} remaining)
+      충전됨 (블랙홀 1로 활성화, {{ nextChange }} 남음)
     </template>
     <template v-else>
-      Inactive (Activation in {{ nextChange }})
+      비활성 ({{ nextChange }}에 활성화)
     </template>
   </h3>
 </template>

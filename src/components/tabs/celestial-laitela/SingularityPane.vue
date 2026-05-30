@@ -25,12 +25,12 @@ export default {
   computed: {
     isDoomed: () => Pelle.isDoomed,
     singularityFormText() {
-      const formText = this.singularitiesGained === 1 ? "all Dark Energy into a Singularity"
-        : `all Dark Energy into ${quantify("Singularity", this.singularitiesGained, 2)}`;
+      const formText = this.singularitiesGained === 1 ? "모든 암흑 에너지를 특이점으로 변환"
+        : `모든 암흑 에너지를 ${quantify("특이점", this.singularitiesGained, 2)}으로 변환`;
       if (this.canPerformSingularity) {
-        return `Condense ${formText}`;
+        return `응축 ${formText}`;
       }
-      return `Reach ${format(this.singularityCap)} Dark Energy to condense ${formText}`;
+      return `${format(this.singularityCap)} 암흑 에너지에 도달하여 ${formText}`;
     },
     singularityWaitText() {
       let singularityTime = this.currentTimeToSingularity;
@@ -38,10 +38,10 @@ export default {
         singularityTime += this.extraTimeAfterSingularity;
         if (!this.isAutoEnabled) return "";
         return singularityTime > 0
-          ? `(Auto-condensing in ${TimeSpan.fromSeconds(singularityTime).toStringShort()})`
-          : "(Will immediately auto-condense)";
+          ? `(${TimeSpan.fromSeconds(singularityTime).toStringShort()}에 자동 응축)`
+          : "(즉시 자동 응축)";
       }
-      return `(Enough Dark Energy in ${TimeSpan.fromSeconds(singularityTime).toStringShort()})`;
+      return `(${TimeSpan.fromSeconds(singularityTime).toStringShort()}에 충분한 암흑 에너지)`;
     },
     baseSingularityTime() {
       return TimeSpan.fromSeconds(this.baseTimeToSingularity).toStringShort();
@@ -54,21 +54,21 @@ export default {
       return this.formatRate(this.singularitiesGained / totalTime);
     },
     autoSingularityRate() {
-      if (this.hasAutoSingularity && !this.isAutoEnabled) return "Auto-Singularity is OFF";
+      if (this.hasAutoSingularity && !this.isAutoEnabled) return "자동 특이점이 꺼져 있습니다";
       const totalTime = this.baseTimeToSingularity + this.extraTimeAfterSingularity;
       return this.formatRate(this.singularitiesGained / totalTime);
     },
     decreaseTooltip() {
-      if (this.singularityCapIncreases === 0) return "You cannot decrease the cap any further!";
+      if (this.singularityCapIncreases === 0) return "한계를 더 이상 감소시킬 수 없습니다!";
       const singularities = this.singularitiesGained / this.perStepFactor;
       return this.willCondenseOnDecrease
-        ? `Decreasing the cap will immediately auto-condense for
-          ${quantify("Singularity", singularities, 2)}!`
+        ? `한계를 감소시키면 즉시 자동 응축으로
+          ${quantify("특이점", singularities, 2)}을 얻습니다!`
         : null;
     },
     increaseTooltip() {
       return this.singularityCapIncreases >= 50
-        ? "You cannot increase the cap any further!"
+        ? "한계를 더 이상 증가시킬 수 없습니다!"
         : null;
     }
   },
@@ -103,9 +103,9 @@ export default {
       Singularity.decreaseCap();
     },
     formatRate(rate) {
-      if (rate < 1 / 60) return `${format(3600 * rate, 2, 3)} per hour`;
-      if (rate < 1) return `${format(60 * rate, 2, 3)} per minute`;
-      return `${format(rate, 2, 3)} per second`;
+      if (rate < 1 / 60) return `${format(3600 * rate, 2, 3)} / 시간`;
+      if (rate < 1) return `${format(60 * rate, 2, 3)} / 분`;
+      return `${format(rate, 2, 3)} / 초`;
     },
     condenseClassObject() {
       return {
@@ -123,7 +123,7 @@ export default {
   <div class="c-laitela-singularity-container">
     <div>
       <h2>
-        You have {{ quantify("Singularity", singularities, 2) }}
+        {{ quantify("특이점", singularities, 2) }}을 가지고 있습니다
       </h2>
       <button
         :class="condenseClassObject()"
@@ -140,7 +140,7 @@ export default {
     </div>
     <div v-if="singularities !== 0">
       <div class="o-laitela-matter-amount">
-        You have {{ format(darkEnergy, 2, 4) }} Dark Energy. (+{{ format(darkEnergyGainPerSecond, 2, 4) }}/s)
+        {{ format(darkEnergy, 2, 4) }} 암흑 에너지를 가지고 있습니다. (+{{ format(darkEnergyGainPerSecond, 2, 4) }}/초)
       </div>
       <div v-if="unlockedBulkSingularity">
         <button
@@ -149,7 +149,7 @@ export default {
           :ach-tooltip="decreaseTooltip"
           @click="decreaseCap"
         >
-          Decrease Singularity cap.
+          특이점 한계 감소.
         </button>
         <button
           class="c-laitela-singularity__cap-control"
@@ -157,32 +157,32 @@ export default {
           :ach-tooltip="increaseTooltip"
           @click="increaseCap"
         >
-          Increase Singularity cap.
+          특이점 한계 증가.
         </button>
         <br>
-        Each step increases the required Dark Energy by {{ formatX(10) }},
+        각 단계는 필요한 암흑 에너지를 {{ formatX(10) }}배로 증가시키고,
         <br>
-        but also increases gained Singularities by {{ formatX(perStepFactor) }}.
+        획득한 특이점을 {{ formatX(perStepFactor) }}배로도 증가시킵니다.
       </div>
       <div v-else>
         <br>
-        Reach {{ format(10) }} Singularities
+        {{ format(10) }}개의 특이점에 도달하여
         <br>
-        to unlock Bulk Singularities.
+        대량 특이점을 해금합니다.
         <br>
       </div>
       <br>
-      Total time to <span v-if="hasAutoSingularity">(auto-)</span>condense:
+      응축하는 데 걸리는 총 시간<span v-if="hasAutoSingularity"> (자동)</span>:
       {{ baseSingularityTime }}
       <span v-if="hasAutoSingularity && autoSingularityFactor !== 1">
         (+{{ additionalSingularityTime }})
       </span>
       <br>
-      <span v-if="hasAutoSingularity && autoSingularityFactor !== 1">Manual </span>
-      Singularity gain rate: {{ manualSingularityRate }}
+      <span v-if="hasAutoSingularity && autoSingularityFactor !== 1">수동 </span>
+      특이점 획득 속도: {{ manualSingularityRate }}
       <br>
       <span v-if="hasAutoSingularity && autoSingularityFactor !== 1">
-        Automatic Singularity gain rate: {{ autoSingularityRate }}
+        자동 특이점 획득 속도: {{ autoSingularityRate }}
       </span>
     </div>
   </div>

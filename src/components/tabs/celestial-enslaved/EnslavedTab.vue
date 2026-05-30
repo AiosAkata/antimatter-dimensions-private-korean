@@ -53,8 +53,8 @@ export default {
       return Enslaved.storedTimeInsideEnslaved(this.storedBlackHole);
     },
     realityTitle() {
-      if (this.isRunning) return "You are inside The Nameless Ones' Reality";
-      return "Start The Nameless Ones' Reality";
+      if (this.isRunning) return "이름없는 자의 현실 내부에 있습니다";
+      return "이름없는 자의 현실 시작";
     },
     runButtonClassObject() {
       return {
@@ -68,9 +68,9 @@ export default {
       return GameDatabase.celestials.descriptions[2].effects().split("\n");
     },
     realTimeButtonText() {
-      if (!this.offlineEnabled) return "Offline Progress is disabled";
-      if (this.autoStoreReal) return "Offline time stored";
-      return "Offline time used for production";
+      if (!this.offlineEnabled) return "오프라인 진행이 비활성화됨";
+      if (this.autoStoreReal) return "오프라인 시간 저장됨";
+      return "오프라인 시간은 생산에 사용됨";
     },
     // Use this here since Nameless has a fairly non-standard character, and SFCs don't support using \uf0c1
     enslavedSymbol: () => Enslaved.symbol,
@@ -210,7 +210,7 @@ export default {
       <PrimaryToggleButton
         v-model="autoRelease"
         class="o-primary-btn--subtab-option"
-        label="Pulse Black Hole:"
+        label="블랙홀 맥동:"
       />
     </div>
     <div class="l-enslaved-celestial-tab--inner">
@@ -224,7 +224,7 @@ export default {
               {{ realityTitle }}
             </div>
             <div v-if="completed">
-              <b>(Completed)</b>
+              <b>(완료됨)</b>
             </div>
             <div
               :class="runButtonClassObject"
@@ -247,8 +247,8 @@ export default {
             >
               {{ line }}
             </div>
-            <b>Reward: Unlock Tesseracts, which let you increase Infinity Dimension caps
-              (see Infinity Dimension tab)</b>
+            <b>보상: 무한 차원 한계를 증가시킬 수 있는 하이퍼큐브 해금
+              (무한 차원 탭 참조)</b>
           </div>
         </div>
       </div>
@@ -258,13 +258,12 @@ export default {
           class="o-primary-btn"
           onclick="Modal.enslavedHints.show()"
         >
-          Examine the Reality more closely...
+          현실을 더 자세히 살펴보기...
         </PrimaryButton>
         <div class="l-enslaved-top-container">
           <div class="l-enslaved-top-container__half">
-            While charging, game speed multipliers are {{ hasAutoRelease ? "decreased" : "disabled" }},
-            and the lost speed is converted into stored game time. Discharging the Black Hole allows you to skip
-            forward in time. Stored game time is also used to unlock certain upgrades.
+            충전 중일 때 게임 속도 배율은 {{ hasAutoRelease ? "감소" : "비활성화" }}되고,
+            잃은 속도는 저장된 게임 시간으로 변환됩니다. 블랙홀을 방전하면 시간을 건너뛸 수 있습니다. 저장된 게임 시간은 특정 업그레이드를 해금하는 데도 사용됩니다.
             <button
               :class="storeGameTimeClass"
               @click="toggleStoreBlackHole"
@@ -276,23 +275,23 @@ export default {
                 {{ timeDisplayShort(storedBlackHole) }}
               </div>
               <div>
-                {{ isStoringBlackHole ? "Charging Black Hole": "Charge Black Hole" }}
+                {{ isStoringBlackHole ? "블랙홀 충전 중": "블랙홀 충전" }}
               </div>
             </button>
             <button
               :class="dischargeClass"
               @click="useStored"
             >
-              <span>Discharge Black Hole</span>
+              <span>블랙홀 방전</span>
               <p v-if="isRunning">
-                {{ timeDisplayShort(nerfedBlackHoleTime) }} in this Reality
+                이 현실에서 {{ timeDisplayShort(nerfedBlackHoleTime) }}
               </p>
             </button>
           </div>
           <div class="l-enslaved-top-container__half">
-            Storing real time completely halts all production, setting game speed to {{ formatInt(0) }}.
-            You can use stored real time to "amplify" a Reality, simulating repeated runs of it.
-            Amplified Realities give all the rewards that normal Realities do.
+            실시간을 저장하면 모든 생산이 완전히 중단되고 게임 속도가 {{ formatInt(0) }}로 설정됩니다.
+            저장된 실시간을 사용하여 현실을 "증폭"할 수 있고, 반복 실행을 시뮬레이션할 수 있습니다.
+            증폭된 현실은 일반 현실이 주는 모든 보상을 제공합니다.
             <button
               :class="[storeRealTimeClass,
                        {'l-fixed-setting': hasReachedCurrentCap}]"
@@ -302,7 +301,7 @@ export default {
                 {{ timeDisplayShort(storedReal) }}
               </div>
               <div>
-                {{ isStoringReal ? "Storing real time": "Store real time" }}
+                {{ isStoringReal ? "실시간 저장 중": "실시간 저장" }}
               </div>
             </button>
             <button
@@ -315,10 +314,10 @@ export default {
               {{ realTimeButtonText }}
             </button>
             <div>
-              Efficiency: {{ storedRealEfficiencyDesc }}
+              효율성: {{ storedRealEfficiencyDesc }}
             </div>
             <div>
-              Maximum stored real time: {{ storedRealCapDesc }}
+              최대 저장 실시간: {{ storedRealCapDesc }}
             </div>
           </div>
         </div>
@@ -334,10 +333,10 @@ export default {
           >
             {{ unlock.description() }}
             <div v-if="!hasUnlock(unlock)">
-              Costs: {{ timeDisplayShort(unlock.price) }}
+              비용: {{ timeDisplayShort(unlock.price) }}
             </div>
             <span v-if="isStoringBlackHole && !hasUnlock(unlock) && timeUntilBuy(unlock.price) > 0">
-              Time to obtain: {{ timeDisplayShort(timeUntilBuy(unlock.price)) }}
+              획득까지 시간: {{ timeDisplayShort(timeUntilBuy(unlock.price)) }}
             </span>
           </button>
         </div>

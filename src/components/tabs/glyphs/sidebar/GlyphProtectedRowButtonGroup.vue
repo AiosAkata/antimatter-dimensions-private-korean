@@ -14,8 +14,8 @@ export default {
   },
   computed: {
     questionMarkTooltip() {
-      return `Protected slots are unaffected by anything which may move or purge Glyphs.
-        New Glyphs will never be inserted into these slots.`;
+      return `보호된 슬롯은 글리프를 이동하거나 삭제할 수 있는 어떤 것의 영향도 받지 않습니다.
+        새 글리프는 이러한 슬롯에 삽입되지 않습니다.`;
     }
   },
   watch: {
@@ -62,30 +62,30 @@ export default {
       >
         ?
       </div>
-      Protected Slots: ({{ quantifyInt("row", protectedRows) }})
+      보호된 슬롯: ({{ quantifyInt("행", protectedRows) }})
     </div>
     <button
       :class="addRowButtonClass()"
       @click="addRow"
     >
-      Add a protected row
+      보호된 행 추가
       <div
         v-if="isProtectedRowsMax()"
         class="c-glyph-inventory-option__tooltip"
       >
-        One row is permanently un-protected for new Glyphs
+        한 행은 새 글리프에 대해 영구적으로 보호되지 않습니다
       </div>
     </button>
     <button
       :class="removeRowButtonClass()"
       @click="removeRow"
     >
-      Remove a protected row
+      보호된 행 제거
     </button>
     <ToggleButton
       v-model="moveGlyphs"
       class="c-glyph-inventory-option"
-      label="Move Glyphs on changing row count:"
+      label="행 수 변경 시 글리프 이동:"
     />
   </div>
 </template>

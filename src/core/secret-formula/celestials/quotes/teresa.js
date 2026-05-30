@@ -2,30 +2,30 @@ export const teresaQuotes = {
   initial: {
     id: 0,
     lines: [
-      "We have been observing you.",
-      "You have shown promise with your bending of Reality.",
-      "We are the Celestials, and we want you to join us.",
-      "My name is Teresa, the Celestial Of Reality.",
-      "Prove your worth.",
+      "우리는 당신을 관찰해 왔습니다.",
+      "당신은 현실을 구부리는 것에 약속을 보여줬습니다.",
+      "우리는 셀레스티얼이며, 당신이 우리에게 합류하길 원합니다.",
+      "나의 이름은 테레사, 현실의 셀레스티얼입니다.",
+      "당신의 가치를 증명하세요.",
     ]
   },
   unlockReality: {
     id: 1,
     lines: [
-      "I will let you inside my Reality, mortal. Do not get crushed by it."
+      "나의 현실 안으로 당신을 들여보겠습니다, 필멸자여. 그것에 짓눌리지 마세요."
     ]
   },
   completeReality: {
     id: 2,
     lines: [
-      "Why are you still here... you were supposed to fail."
+      "당신은 왜 여전히 여기에 있습니까... 당신은 실패했어야 했습니다."
     ]
   },
   effarig: {
     id: 3,
     lines: [
-      "You are still no match for us.",
-      "I hope the others succeed where I have failed."
+      "당신은 여전히 우리의 상대가 아닙니다.",
+      "다른 사람들이 내가 실패한 곳에서 성공하길 바랍니다."
     ]
   }
 };

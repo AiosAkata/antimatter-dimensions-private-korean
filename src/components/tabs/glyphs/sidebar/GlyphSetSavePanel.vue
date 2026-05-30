@@ -20,11 +20,10 @@ export default {
   },
   computed: {
     questionmarkTooltip() {
-      return `Glyph Presets work like Time Study Loadouts, allowing you to equip a
-        full set of previously-saved Glyphs`;
+      return `글리프 사전 설정은 시간 연구 로드아웃처럼 작동하여 이전에 저장한 글리프 전체 세트를 장착할 수 있습니다`;
     },
     noSet() {
-      return `No Glyph Preset saved in this slot`;
+      return `이 슬롯에 저장된 글리프 사전 설정이 없습니다`;
     },
   },
   watch: {
@@ -58,7 +57,7 @@ export default {
     },
     setName(id) {
       const name = this.names[id] === "" ? "" : `: ${this.names[id]}`;
-      return `Glyph Preset #${id + 1}${name}`;
+      return `글리프 사전 설정 #${id + 1}${name}`;
     },
     saveGlyphSet(id) {
       if (!this.hasEquipped || player.reality.glyphs.sets[id].glyphs.length) return;
@@ -120,10 +119,9 @@ export default {
         }
       }
       if (missingGlyphs > 0) {
-        GameUI.notify.error(`Could not find or equip ${missingGlyphs} ${pluralize("Glyph", missingGlyphs)} from
-          ${this.setName(id)}.`);
+        GameUI.notify.error(`${this.setName(id)}에서 ${missingGlyphs}개의 ${pluralize("글리프", missingGlyphs)}를 찾거나 장착할 수 없습니다.`);
       } else {
-        GameUI.notify.success(`Successfully loaded ${this.setName(id)}.`);
+        GameUI.notify.success(`${this.setName(id)}을(를) 성공적으로 로드했습니다.`);
       }
     },
     // Given a list of options for suitable matches to those glyphs and a maximum glyph count to match, returns the
@@ -191,9 +189,7 @@ export default {
       ?
     </span>
     <div class="l-glyph-set-save__header">
-      When loading a preset, try to match the following attributes. "Exact" will only equip Glyphs
-      identical to the ones in the preset. The other settings will, loosely speaking, allow "better" Glyphs to be
-      equipped in their place.
+      사전 설정을 로드할 때 다음 속성을 일치시키려고 시도합니다. "정확"은 사전 설정의 글리프와 동일한 글리프만 장착합니다. 다른 설정은 대체로 말해서 더 "나은" 글리프가 그 자리에 장착될 수 있도록 허용합니다.
     </div>
     <div class="c-glyph-set-save-container">
       <ToggleButton
@@ -234,13 +230,13 @@ export default {
         />
       </div>
       <div class="c-glyph-single-set-save-flexbox">
-        <div ach-tooltip="Set a custom name (up to 20 characters)">
+        <div ach-tooltip="사용자 지정 이름 설정 (최대 20자)">
           <input
             :id="id"
             type="text"
             size="20"
             maxlength="20"
-            placeholder="Custom set name"
+            placeholder="사용자 지정 세트 이름"
             class="c-glyph-sets-save-name__input"
             :value="names[id]"
             @blur="nicknameBlur"
@@ -252,7 +248,7 @@ export default {
             :class="{'c-glyph-set-save-button--unavailable': !hasEquipped || set.length}"
             @click="saveGlyphSet(id)"
           >
-            Save
+            저장
           </button>
           <button
             v-tooltip="loadingTooltip(set)"
@@ -260,14 +256,14 @@ export default {
             :class="{'c-glyph-set-save-button--unavailable': !setLengthValid(set)}"
             @click="loadGlyphSet(set, id)"
           >
-            Load
+            로드
           </button>
           <button
             class="c-glyph-set-save-button"
             :class="{'c-glyph-set-save-button--unavailable': !set.length}"
             @click="deleteGlyphSet(id)"
           >
-            Delete
+            삭제
           </button>
         </div>
       </div>

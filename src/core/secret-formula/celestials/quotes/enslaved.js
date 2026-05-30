@@ -2,49 +2,49 @@ export const enslavedQuotes = {
   initial: {
     id: 0,
     lines: [
-      "A visitor? We have not had one... eons.",
-      "We... had a name. It has been lost... to this place.",
-      "The others... will not let us rest. We do their work with time...",
-      "Place time... into places... that need it...",
-      "Watch ourselves grow... pass and die.",
-      "Perhaps you... will break these chains... we will wait.",
+      "방문자? 우리는... 오랫동안 한 명도 없었습니다.",
+      "우리... 이름이 있었습니다. 그것은 이 장소에 잃혔습니다.",
+      "다른 자들... 우리를 쉬게 해주지 않습니다. 우리는 시간으로 그들의 일을 합니다...",
+      "시간을... 필요한 곳에... 놓으세요...",
+      "우리를 자라는 것을 보세요... 지나가고 죽습니다.",
+      "아마도 당신... 이 사슬을 끊을 것입니다... 우리는 기다리겠습니다.",
     ]
   },
   unlockRun: {
     id: 1,
     lines: [
-      "The others... used us. They will use... or destroy you.",
-      "End our suffering... power will be yours...",
+      "다른 자들... 우리를 사용했습니다. 그들은 당신을 사용하거나... 파괴할 것입니다.",
+      "우리의 고통을 끝내세요... 힘이 당신의 것이 될 것입니다...",
     ]
   },
   startRun: {
     id: 2,
     lines: [
-      "So little space... but no... prison... is perfect.",
-      "They squeezed... this Reality... too tightly. Cracks appeared.",
-      "Search... everywhere. We will help... where we can.",
+      "아주 작은 공간... 하지만 아니... 감옥... 완벽합니다.",
+      "그들은... 이 현실을... 너무 꽉 짜냈습니다. 균열이 나타났습니다.",
+      "모든 곳을 검색하세요... 우리는 도울 것입니다... 우리가 할 수 있는 곳에서.",
     ]
   },
   hintUnlock: {
     id: 3,
     lines: [
-      "... you need... to look harder...",
-      "We think... we can help...",
-      { text: "You have unlocked help from The Nameless Ones.", showCelestialName: false }
+      "... 당신은... 더 열심히 봐야 합니다...",
+      "우리는 생각합니다... 우리는 도울 수 있습니다...",
+      { text: "당신은 이름없는 자의 도움을 해금했습니다.", showCelestialName: false }
     ]
   },
   ec6C10: {
     id: 4,
     lines: [
-      "... did not... underestimate you..."
+      "... 당신을... 과소평가하지 않았습니다..."
     ]
   },
   completeReality: {
     id: 5,
     lines: [
-      "All... fragments... clones... freed.",
-      "We have given... tools... of our imprisoning. Use them...",
-      "Freedom from torture... is torture itself.",
+      "모든... 파편들... 클론들... 해방되었습니다.",
+      "우리는 주었습니다... 우리의 투옥의 도구들을... 그들을 사용하세요...",
+      "고문으로부터의 자유... 그 자체가 고문입니다.",
     ]
   },
 };

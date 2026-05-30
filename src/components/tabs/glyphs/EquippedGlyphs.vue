@@ -29,21 +29,21 @@ export default {
       return this.slotCount + 1;
     },
     respecTooltip() {
-      const reset = Pelle.isDoomed ? "Armageddon" : "Reality";
+      const reset = Pelle.isDoomed ? "아마겟돈" : "현실";
       return this.respec
-        ? `Respec is active and will place your currently - equipped Glyphs into your inventory after ${reset}.`
-        : `Your currently-equipped Glyphs will stay equipped on ${reset}.`;
+        ? `리스펙이 활성화되었으며 현재 장착된 글리프를 ${reset} 후 인벤토리에 배치합니다.`
+        : `현재 장착된 글리프는 ${reset}에서 장착 상태로 유지됩니다.`;
     },
     undoTooltip() {
-      if (!this.undoSlotsAvailable) return "You do not have available inventory space to unequip Glyphs to";
+      if (!this.undoSlotsAvailable) return "글리프를 장착 해제할 수 있는 인벤토리 공간이 없습니다";
       return this.undoAvailable
-        ? ("Unequip the last equipped Glyph and rewind Reality to when you equipped it." +
-          " (Most resources will be fully reset)")
-        : "Undo is only available for Glyphs equipped during this Reality";
+        ? ("마지막으로 장착한 글리프를 장착 해제하고 장착했을 때의 현실로 되감기합니다." +
+          " (대부분의 자원이 완전히 초기화됩니다)")
+        : "실행 취소는 이 현실 동안 장착한 글리프에만 사용 가능합니다";
     },
     unequipText() {
-      if (Pelle.isDoomed) return "Unequip Glyphs on Armageddon";
-      return "Unequip Glyphs on Reality";
+      if (Pelle.isDoomed) return "아마겟돈에서 글리프 장착 해제";
+      return "현실에서 글리프 장착 해제";
     },
     isDoomed() {
       return Pelle.isDoomed;
@@ -204,23 +204,23 @@ export default {
         :ach-tooltip="undoTooltip"
         @click="undo"
       >
-        <span>Rewind to <b>undo</b> the last equipped Glyph</span>
+        <span>마지막 장착 글리프를 <b>실행 취소</b>하도록 되감기</span>
       </button>
       <button
         class="l-glyph-equip-button c-reality-upgrade-btn"
         @click="toggleRespecIntoProtected"
       >
-        Unequip Glyphs to:
+        글리프 장착 해제 대상:
         <br>
-        <span v-if="respecIntoProtected">Protected slots</span>
-        <span v-else>Main inventory</span>
+        <span v-if="respecIntoProtected">보호된 슬롯</span>
+        <span v-else>메인 인벤토리</span>
       </button>
       <button
         class="l-glyph-equip-button-short c-reality-upgrade-btn"
         :class="{'tutorial--glow': cosmeticGlow}"
         @click="showOptionModal"
       >
-        Open Glyph Visual Options
+        글리프 시각적 옵션 열기
       </button>
     </div>
   </div>

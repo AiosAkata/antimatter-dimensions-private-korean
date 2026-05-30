@@ -68,30 +68,30 @@ export default {
       >
         ?
       </div>
-      Auto Glyph Arrangement:
+      자동 글리프 배치:
     </div>
     <ButtonCycle
       v-model="autoSort"
       class="c-glyph-inventory-option"
-      text="Auto-sort Mode:"
+      text="자동 정렬 모드:"
       :labels="sortModes"
     />
     <ToggleButton
       v-model="autoCollapse"
       class="c-glyph-inventory-option"
-      label="Auto-collapse space:"
+      label="자동 공간 축소:"
     />
     <ToggleButton
       v-if="showAutoAutoClean"
       v-model="autoAutoClean"
       class="c-glyph-inventory-option"
-      label="Auto-purge on Realities:"
+      label="현실에서 자동 삭제:"
     />
     <ToggleButton
       v-if="showAutoAutoClean"
       v-model="applyFilterToPurge"
       class="c-glyph-inventory-option"
-      label="Never Auto-purge Glyphs accepted by filter:"
+      label="필터가 수락한 글리프는 자동으로 삭제하지 않음:"
       tooltip-class="c-glyph-inventory-option__tooltip"
       :tooltip-content="keepTooltip"
     />

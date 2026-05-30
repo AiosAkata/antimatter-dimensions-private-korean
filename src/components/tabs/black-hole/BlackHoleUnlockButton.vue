@@ -31,9 +31,9 @@ export default {
     class="l-reality-upgrade-btn c-reality-upgrade-btn c-reality-upgrade-btn--black-hole-unlock"
     @click="unlock"
   >
-    Unleash the Black Hole
+    블랙홀 해제
     <br>
-    Cost: {{ formatInt(100) }} Reality Machines
+    비용: {{ formatInt(100) }} 현실 기계
   </button>
 </template>
 

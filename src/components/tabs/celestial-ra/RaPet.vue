@@ -149,7 +149,7 @@ export default {
       <br v-else>
       <div v-if="!isCapped">
         <div>
-          {{ name }} {{ pet.id === "enslaved" ? "have" : "has" }} {{ quantify("Memory", memories, 2) }}
+          {{ name }}{{ pet.id === "enslaved" ? "은" : "는" }} {{ quantify("기억", memories, 2) }}을 가지고 있습니다
         </div>
       </div>
       <div
@@ -168,18 +168,18 @@ export default {
                 class="c-ra-pet-upgrade__tooltip"
               >
                 <div class="c-ra-pet-upgrade__tooltip__name">
-                  {{ name }}'s Recollection
+                  {{ name }}의 회상
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__description">
-                  Gain {{ formatPercents(0.3) }} more Memories
+                  {{ formatPercents(0.3) }} 더 많은 기억 획득
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__footer">
-                  Cost: {{ quantify("Memory", memoryUpgradeCost, 2, 2) }}
+                  비용: {{ quantify("기억", memoryUpgradeCost, 2, 2) }}
                   <span v-if="memories <= memoryUpgradeCost">
                     {{ nextMemoryUpgradeEstimate }}
                   </span>
                   <br>
-                  Currently: {{ formatX(currentMemoryMult, 2, 2) }}
+                  현재: {{ formatX(currentMemoryMult, 2, 2) }}
                 </div>
               </div>
               <div
@@ -187,10 +187,10 @@ export default {
                 class="c-ra-pet-upgrade__tooltip"
               >
                 <div class="c-ra-pet-upgrade__tooltip__name">
-                  {{ name }}'s Recollection
+                  {{ name }}의 회상
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__description">
-                  Capped: {{ formatX(currentMemoryMult, 2, 2) }}
+                  상한선 도달: {{ formatX(currentMemoryMult, 2, 2) }}
                 </div>
               </div>
             </div>
@@ -212,18 +212,18 @@ export default {
                 class="c-ra-pet-upgrade__tooltip"
               >
                 <div class="c-ra-pet-upgrade__tooltip__name">
-                  {{ name }}'s Fragmentation
+                  {{ name }}의 분산
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__description">
-                  Gain {{ formatPercents(0.5) }} more Memory Chunks
+                  {{ formatPercents(0.5) }} 더 많은 기억 청크 획득
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__footer">
-                  Cost: {{ quantify("Memory", chunkUpgradeCost, 2, 2) }}
+                  비용: {{ quantify("기억", chunkUpgradeCost, 2, 2) }}
                   <span v-if="memories <= chunkUpgradeCost">
                     {{ nextMemoryChunkUpgradeEstimate }}
                   </span>
                   <br>
-                  Currently: {{ formatX(currentChunkMult, 2, 2) }}
+                  현재: {{ formatX(currentChunkMult, 2, 2) }}
                 </div>
               </div>
               <div
@@ -231,10 +231,10 @@ export default {
                 class="c-ra-pet-upgrade__tooltip"
               >
                 <div class="c-ra-pet-upgrade__tooltip__name">
-                  {{ name }}'s Fragmentation
+                  {{ name }}의 분산
                 </div>
                 <div class="c-ra-pet-upgrade__tooltip__description">
-                  Capped: {{ formatX(currentChunkMult, 2, 2) }}
+                  상한선 도달: {{ formatX(currentChunkMult, 2, 2) }}
                 </div>
               </div>
             </div>
@@ -253,17 +253,17 @@ export default {
       </div>
       <div v-if="!isCapped">
         <div>
-          {{ quantify("Memory Chunk", memoryChunks, 2, 2) }}, {{ quantify("Memory", memoriesPerSecond, 2, 2) }}/sec
+          {{ quantify("기억 청크", memoryChunks, 2, 2) }}, {{ quantify("기억", memoriesPerSecond, 2, 2) }}/초
         </div>
         <div>
-          Gaining {{ quantify("Memory Chunk", memoryChunksPerSecond, 2, 2) }}/sec
+          {{ quantify("기억 청크", memoryChunksPerSecond, 2, 2) }}/초 획득 중
           <span :ach-tooltip="chunkTooltip">
             <i class="fas fa-question-circle" />
           </span>
         </div>
       </div>
       <div v-if="memoryMultiplier > 1 && !isRaCapped">
-        Multiplying all Memory production by {{ format(memoryMultiplier, 2, 3) }}
+        모든 기억 생산을 {{ format(memoryMultiplier, 2, 3) }}배로 증폭
         <span :ach-tooltip="memoryGainTooltip">
           <i class="fas fa-question-circle" />
         </span>

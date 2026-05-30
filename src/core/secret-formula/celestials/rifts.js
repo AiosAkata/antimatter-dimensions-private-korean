@@ -28,12 +28,12 @@ export const pelleRifts = {
       {
         resource: "vacuum",
         requirement: 0.04,
-        description: "You can equip a single basic Glyph with decreased level and rarity"
+        description: "감소된 레벨과 희귀성으로 단일 기본 글리프를 장착할 수 있습니다."
       },
       {
         resource: "vacuum",
         requirement: 0.06,
-        description: () => `Uncap Replicanti and make its unlock and upgrades ${formatX(1e130)} cheaper`,
+        description: () => `복제체의 상한을 제거하고 해금과 업그레이드를 ${formatX(1e130)} 더 저렴하게 만듭니다.`,
         effect: () => 1e130
       },
       {
@@ -67,7 +67,7 @@ export const pelleRifts = {
       {
         resource: "decay",
         requirement: 0.2,
-        description: "First rebuyable Pelle upgrade also affects 1st Infinity Dimension",
+        description: "첫 번째 구매 가능한 펠레 업그레이드는 1차 무한 차원에도 영향을 줍니다.",
         effect: () => {
           const x = player.celestials.pelle.rebuyables.antimatterDimensionMult;
           return Decimal.pow(1e50, x - 9);
@@ -77,14 +77,14 @@ export const pelleRifts = {
       {
         resource: "decay",
         requirement: 0.6,
-        description: () => `When Replicanti exceeds ${format(DC.E1300)},
-          all Galaxies are ${formatPercents(0.1)} more effective`,
+        description: () => `복제체가 ${format(DC.E1300)}을 초과하면,
+          모든 갤럭시는 ${formatPercents(0.1)} 더 효과적입니다.`,
         effect: () => (Replicanti.amount.gt(DC.E1300) ? 1.1 : 1)
       },
       {
         resource: "decay",
         requirement: 1,
-        description: "Increase max Replicanti Galaxies based on total Rift milestones",
+        description: "총 균열 이정표에 기반한 최대 복제체 갤럭시를 증가시킵니다.",
         effect: () => {
           const x = PelleRifts.totalMilestones();
           return x ** 2 - 2 * x;
@@ -131,12 +131,12 @@ export const pelleRifts = {
       {
         resource: "chaos",
         requirement: 0.15,
-        description: "Glyphs gain a new Pelle-specific effect",
+        description: "글리프는 새로운 펠레 고유 효과를 얻습니다.",
       },
       {
         resource: "chaos",
         requirement: 1,
-        description: () => `You gain ${formatPercents(0.01)} of your EP gained on Eternity per second`,
+        description: () => `영원에서 획득한 EP의 ${formatPercents(0.01)}를 매초 획득합니다.`,
       },
     ],
     galaxyGeneratorText: "Your Galaxies are too fragmented, you must stabilize the $value"
@@ -158,7 +158,7 @@ export const pelleRifts = {
       {
         resource: "recursion",
         requirement: 0.10,
-        description: "Dimensional Boosts are more powerful based on EC completions",
+        description: "차원 부스트는 영원 도전 완료에 기반해 더 강력합니다.",
         effect: () => Math.max(100 * EternityChallenges.completions ** 2, 1) *
           Math.max(1e4 ** (EternityChallenges.completions - 40), 1),
         formatEffect: x => `Dimension Boost power ${formatX(x, 2, 2)}`
@@ -166,14 +166,14 @@ export const pelleRifts = {
       {
         resource: "recursion",
         requirement: 0.15,
-        description: "Infinity Dimensions are stronger based on EC completions",
+        description: "무한 차원은 영원 도전 완료에 기반해 더 강합니다.",
         effect: () => Decimal.pow("1e1500", ((EternityChallenges.completions - 25) / 20) ** 1.7).max(1),
         formatEffect: x => `Infinity Dimensions ${formatX(x)}`
       },
       {
         resource: "recursion",
         requirement: 1,
-        description: "Permanently unlock the Galaxy Generator",
+        description: "갤럭시 생성기를 영구적으로 해금합니다.",
       },
     ],
     galaxyGeneratorText: "Creating more Galaxies is unsustainable, you must focus the $value to allow more"
@@ -195,7 +195,7 @@ export const pelleRifts = {
       {
         resource: "paradox",
         requirement: 0.15,
-        description: "Time Dimensions 5-8 are much cheaper, unlock more Dilation upgrades",
+        description: "시간 차원 5-8은 훨씬 저렴하며, 더 많은 팽창 업그레이드를 해금합니다.",
         // FIXME: Not a great solution
         onStateChange: () => {
           updateTimeDimensionCosts();
@@ -204,13 +204,13 @@ export const pelleRifts = {
       {
         resource: "paradox",
         requirement: 0.25,
-        description: () => `Dilated Time gain becomes Tachyon Particles ${formatPow(1.4, 1, 1)}`,
+        description: () => `팽창된 시간 획득이 타키온 입자로 ${formatPow(1.4, 1, 1)}됩니다.`,
         effect: 1.4
       },
       {
         resource: "paradox",
         requirement: 0.5,
-        description: "Dilation rebuyable purchase count improves Infinity Power conversion rate",
+        description: "팽창 구매 가능 구매 횟수는 무한 거듭제곱 전환 비율을 개선합니다.",
         effect: () => Math.min(
           1.1075 ** (Object.values(player.dilation.rebuyables).sum() - 60),
           712

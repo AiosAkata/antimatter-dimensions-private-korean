@@ -11,10 +11,10 @@ export default {
   }),
   computed: {
     tooltip() {
-      if (this.isDoomed) return "You cannot amplify a Doomed Reality";
-      if (this.isDisabled) return "You cannot amplify Celestial Realities";
+      if (this.isDoomed) return "운명의 현실은 증폭할 수 없습니다";
+      if (this.isDisabled) return "셀레스티얼 현실은 증폭할 수 없습니다";
       if (!this.canAmplify) {
-        return "Store more real time or complete the Reality faster to amplify";
+        return "실시간을 더 저장하거나 현실을 빠르게 완료하여 증폭합니다";
       }
       return null;
     },
@@ -51,16 +51,16 @@ export default {
     @click="toggleActive"
   >
     <div v-if="isDoomed">
-      You cannot amplify Doomed Realities.
+      운명의 현실은 증폭할 수 없습니다.
     </div>
     <div v-else-if="canAmplify">
-      <span v-if="isActive">Will be amplified:</span>
-      <span v-else>Amplify this Reality:</span>
+      <span v-if="isActive">증폭될 예정:</span>
+      <span v-else>이 현실 증폭:</span>
       <br>
-      All rewards ×{{ formatInt(ratio) }}
+      모든 보상 ×{{ formatInt(ratio) }}
     </div>
     <div v-else>
-      Not enough stored real time to amplify.
+      증폭하기에 저장된 실시간이 충분하지 않습니다.
     </div>
   </button>
 </template>

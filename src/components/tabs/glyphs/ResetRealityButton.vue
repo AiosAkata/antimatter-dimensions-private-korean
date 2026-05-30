@@ -11,10 +11,10 @@ export default {
   },
   computed: {
     resetText() {
-      if (this.isDoomed) return "Start this Armageddon over";
-      if (this.isInCelestialReality && !this.resetCelestial) return "Exit this Celestial early";
-      if (this.isInCelestialReality && this.resetCelestial) return "Restart this Celestial";
-      return "Start this Reality over";
+      if (this.isDoomed) return "이 아마겟돈 재시작";
+      if (this.isInCelestialReality && !this.resetCelestial) return "이 셀레스티얼 조기 종료";
+      if (this.isInCelestialReality && this.resetCelestial) return "이 셀레스티얼 재시작";
+      return "이 현실 재시작";
     },
   },
   methods: {

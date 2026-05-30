@@ -199,21 +199,21 @@ export default {
         class="o-primary-btn--subtab-option"
         @click="showAlchemyHowTo"
       >
-        Click for alchemy info
+        연금술 정보 보기
       </PrimaryButton>
       <PrimaryButton
         v-if="!isDoomed"
         class="o-primary-btn--subtab-option"
         @click="toggleAllReactions"
       >
-        {{ allReactionsDisabled ? "Enable" : "Disable" }} all reactions
+        {{ allReactionsDisabled ? "활성화" : "비활성화" }} 모든 반응
       </PrimaryButton>
       <PrimaryButton
         v-if="realityCreationVisible"
         :class="realityGlyphCreationClass"
         onclick="Modal.realityGlyph.show()"
       >
-        View Reality Glyph creation
+        현실 글리프 생성 보기
       </PrimaryButton>
     </div>
     <AlchemyResourceInfo
@@ -221,12 +221,12 @@ export default {
       :resource="infoResource"
     />
     <br>
-    Glyphs can now be refined using your Glyph filter in the Glyphs tab.
+    글리프는 이제 글리프 탭의 글리프 필터를 사용하여 정제할 수 있습니다.
     <br>
-    When refining a Glyph, it will only give you resources up to a cap
-    of {{ formatX(capFactor) }} its highest refinement value.
+    글리프를 정제할 때 최고 정제 값의 {{ formatX(capFactor) }} 상한선까지만
+    자원을 제공합니다.
     <span v-if="reactionsAvailable">
-      Reactions trigger once every time you Reality, unaffected by amplification from stored real time.
+      반응은 현실을 맞이할 때마다 한 번씩 발동하며 저장된 실시간의 증폭의 영향을 받지 않습니다.
     </span>
     <div
       class="l-alchemy-circle"

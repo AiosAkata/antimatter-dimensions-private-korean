@@ -73,15 +73,15 @@ export default {
       };
     },
     pourText() {
-      return this.isPouredAmountCapped ? "Filled" : "Pour RM";
+      return this.isPouredAmountCapped ? "채워짐" : "RM 붓기";
     },
     runDescription() {
       return GameDatabase.celestials.descriptions[0].effects();
     },
     lastMachinesString() {
       return this.lastMachines.lt(DC.E10000)
-        ? `${quantify("Reality Machine", this.lastMachines, 2)}`
-        : `${quantify("Imaginary Machine", this.lastMachines.dividedBy(DC.E10000), 2)}`;
+        ? `${quantify("현실 기계", this.lastMachines, 2)}`
+        : `${quantify("상상의 기계", this.lastMachines.dividedBy(DC.E10000), 2)}`;
     },
     unlockInfoTooltipArrowStyle() {
       return {
@@ -145,7 +145,7 @@ export default {
   <div class="l-teresa-celestial-tab">
     <CelestialQuoteHistory celestial="teresa" />
     <div>
-      You have {{ quantify("Reality Machine", rm, 2, 2) }}.
+      현실 기계를 {{ quantify("Reality Machine", rm, 2, 2) }}개 가지고 있습니다.
     </div>
     <div class="l-mechanics-container">
       <div
@@ -154,7 +154,7 @@ export default {
       >
         <div class="c-teresa-unlock c-teresa-run-button">
           <span :class="{ 'o-pelle-disabled': isDoomed }">
-            Start Teresa's Reality.
+            테레사의 현실 시작
           </span>
           <div
             :class="runButtonClassObject"
@@ -165,22 +165,22 @@ export default {
           {{ runDescription }}
           <br><br>
           <div>
-            This Reality can be repeated for a stronger reward based on the antimatter gained within it.
+            이 현실은 내에서 획득한 반물질을 기반으로 더 강한 보상을 위해 반복할 수 있습니다.
             <br><br>
             <span v-if="showRunReward">
-              Your record antimatter in Teresa's Reality is {{ format(bestAM, 2) }},
-              achieved with {{ lastMachinesString }}.
+              테레사의 현실에서의 기록 반물질은 {{ format(bestAM, 2) }}이며,
+              {{ lastMachinesString }}로 달성했습니다.
               <br><br>
-              Glyph Set used:
+              사용된 글리프 세트:
               <GlyphSetPreview
-                text="Teresa's Best Glyph Set"
+                text="테레사의 최고 글리프 세트"
                 :text-hidden="true"
                 :force-name-color="false"
                 :glyphs="bestAMSet"
               />
             </span>
             <span v-else>
-              You have not completed Teresa's Reality yet.
+              아직 테레사의 현실을 완료하지 않았습니다.
             </span>
           </div>
         </div>
@@ -188,14 +188,14 @@ export default {
           v-if="showRunReward"
           class="c-teresa-unlock"
         >
-          Teresa Reality reward: Glyph Sacrifice power {{ formatX(runReward, 2, 2) }}
+          테레사 현실 보상: 글리프 희생 배율 {{ formatX(runReward, 2, 2) }}
         </div>
         <div
           v-if="hasEPGen"
           class="c-teresa-unlock"
         >
           <span :class="{ 'o-pelle-disabled': isDoomed }">
-            Every second, you gain {{ formatPercents(0.01) }} of your peaked Eternity Points per minute this Reality.
+            매초마다 이 현실에서 분당 획득한 영원 포인트의 {{ formatPercents(0.01) }}를 얻습니다.
           </span>
         </div>
       </div>
@@ -220,7 +220,7 @@ export default {
             :style="{ height: percentage}"
           >
             <div class="c-rm-store-label">
-              {{ formatX(rmMult, 2, 2) }} RM gain
+              {{ formatX(rmMult, 2, 2) }} RM 획득
               <br>
               {{ format(pouredAmount, 2, 2) }}/{{ format(pouredAmountCap, 2, 2) }}
             </div>
@@ -255,14 +255,14 @@ export default {
         class="c-teresa-shop"
       >
         <span class="o-teresa-pp">
-          You have {{ quantify("Perk Point", perkPoints, 2, 0) }}.
+          {{ quantify("특전", perkPoints, 2, 0) }}을 가지고 있습니다.
         </span>
         <PerkShopUpgradeButton
           v-for="upgrade in upgrades"
           :key="upgrade.id"
           :upgrade="upgrade"
         />
-        You can now modify the appearance of your Glyphs to look like Music Glyphs.
+        이제 글리프의 외관을 음악 글리프처럼 보이게 수정할 수 있습니다.
       </div>
       <div
         v-else

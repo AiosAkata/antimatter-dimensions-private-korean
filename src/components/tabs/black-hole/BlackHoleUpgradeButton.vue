@@ -80,7 +80,7 @@ export default {
       <CostDisplay
         v-if="!isCapped"
         :config="costConfig"
-        name="Reality Machine"
+        name="현실 기계"
       />
     </button>
     <PrimaryToggleButton

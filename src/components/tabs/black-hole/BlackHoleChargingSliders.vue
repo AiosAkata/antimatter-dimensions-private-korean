@@ -22,12 +22,11 @@ export default {
   computed: {
     infoTooltip() {
       return this.isLaitela
-        ? "The physics of this Reality do not allow Black Hole Inversion"
-        : "Black Hole must be paused to activate Inversion";
+        ? "이 현실의 물리학은 블랙홀 반전을 허용하지 않습니다"
+        : "블랙홀 반전을 활성화하려면 일시 중지해야 합니다";
     },
     reqLockText() {
-      return `Inversion strength cannot be modified due to Lock for
-        "${ImaginaryUpgrade(24).name}"`;
+      return `"${ImaginaryUpgrade(24).name}"의 잠금으로 인해 반전 강도를 수정할 수 없습니다`;
     }
   },
   methods: {
@@ -68,8 +67,8 @@ export default {
       class="l-black-hole-sliders"
     >
       <b>
-        Inverted Black Hole divides game speed by {{ format(negativeBHDivisor, 2, 2) }}.
-        (Currently {{ isInverted ? "active" : "inactive" }}<span
+        반전 블랙홀은 게임 속도를 {{ format(negativeBHDivisor, 2, 2) }}로 나눕니다.
+        (현재 {{ isInverted ? "활성" : "비활성" }}<span
           v-if="negativeSlider !== 0 && !isInverted"
           :ach-tooltip="infoTooltip"
         >
@@ -89,8 +88,8 @@ export default {
         {{ reqLockText }}
       </div>
       <br>
-      Inverting the Black Hole only affects its own speedup, no other upgrades or effects, although
-      it will also indirectly affect the Effarig Game speed power effect.
+      블랙홀 반전은 자신의 속도 향상만 영향을 미치고, 다른 업그레이드나 효과는 영향을 주지 않습니다.
+      단, Effarig 게임 속도 전력 효과에도 간접적으로 영향을 미칩니다.
     </div>
   </div>
 </template>

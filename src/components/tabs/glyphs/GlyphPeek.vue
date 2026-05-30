@@ -61,19 +61,19 @@ export default {
     >
       <GlyphSetPreview
         :show-name="false"
-        :text="'Upcoming Glyph selection:'"
+        :text="'예정된 글리프 선택:'"
         :glyphs="glyphs"
         :ignore-modified-level="true"
         :show-sacrifice="canSacrifice"
         :flip-tooltip="true"
         :sort="false"
       />
-      (Click to bring up details)
+      (클릭하여 세부정보 보기)
     </div>
     <div v-else>
-      Purchase the Reality study to see
+      현실 연구 구매하여
       <br>
-      this Reality's Glyph choices
+      이 현실의 글리프 선택지를 확인합니다
     </div>
   </div>
 </template>

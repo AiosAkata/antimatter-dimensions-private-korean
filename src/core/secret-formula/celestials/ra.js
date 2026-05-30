@@ -2,30 +2,30 @@ export const ra = {
   pets: {
     teresa: {
       id: "teresa",
-      name: "Teresa",
+      name: "테레사",
       color: "#8596ea",
-      chunkGain: "Eternity Points",
-      memoryGain: "current RM",
+      chunkGain: "영원 포인트",
+      memoryGain: "현재 RM",
       requiredUnlock: () => undefined,
       rawMemoryChunksPerSecond: () => 4 * Math.pow(Currency.eternityPoints.value.pLog10() / 1e4, 3),
       memoryProductionMultiplier: () => Ra.unlocks.teresaXP.effectOrDefault(1)
     },
     effarig: {
       id: "effarig",
-      name: "Effarig",
+      name: "에파리그",
       color: "#ea8585",
-      chunkGain: "Relic Shards gained",
-      memoryGain: "best Glyph level",
+      chunkGain: "획득한 유물 파편",
+      memoryGain: "최고 글리프 레벨",
       requiredUnlock: () => Ra.unlocks.effarigUnlock,
       rawMemoryChunksPerSecond: () => 4 * Math.pow(Effarig.shardsGained, 0.1),
       memoryProductionMultiplier: () => Ra.unlocks.effarigXP.effectOrDefault(1)
     },
     enslaved: {
       id: "enslaved",
-      name: "The Nameless Ones",
+      name: "이름없는 자",
       color: "#f1aa7f",
-      chunkGain: "Time Shards",
-      memoryGain: "total time played",
+      chunkGain: "시간 파편",
+      memoryGain: "총 플레이 시간",
       requiredUnlock: () => Ra.unlocks.enslavedUnlock,
       rawMemoryChunksPerSecond: () => 4 * Math.pow(Currency.timeShards.value.pLog10() / 3e5, 2),
       memoryProductionMultiplier: () => Ra.unlocks.enslavedXP.effectOrDefault(1)
@@ -34,8 +34,8 @@ export const ra = {
       id: "v",
       name: "V",
       color: "#ead584",
-      chunkGain: "Infinity Power",
-      memoryGain: "total Memory levels",
+      chunkGain: "무한 거듭제곱",
+      memoryGain: "총 기억 레벨",
       requiredUnlock: () => Ra.unlocks.vUnlock,
       rawMemoryChunksPerSecond: () => 4 * Math.pow(Currency.infinityPower.value.pLog10() / 1e7, 1.5),
       memoryProductionMultiplier: () => Ra.unlocks.vXP.effectOrDefault(1)
@@ -44,7 +44,7 @@ export const ra = {
   unlocks: {
     autoTP: {
       id: 0,
-      reward: "Tachyon Particles are given immediately when Time Dilation is active",
+      reward: "시간 팽창이 활성화되면 타키온 입자가 즉시 제공됩니다.",
       pet: "teresa",
       level: 1,
       displayIcon: `<span class="fas fa-atom"></span>`,
@@ -52,8 +52,7 @@ export const ra = {
     },
     chargedInfinityUpgrades: {
       id: 1,
-      reward: () => `Unlock Charged Infinity Upgrades. You get one more maximum
-        Charged Infinity Upgrade every ${formatInt(2)} levels`,
+      reward: () => `충전된 무한 업그레이드를 해금합니다. ${formatInt(2)}레벨마다 추가 충전된 무한 업그레이드를 얻습니다.`,
       effect: () => Math.min(12, Math.floor(Ra.pets.teresa.level / 2)),
       pet: "teresa",
       level: 2,
@@ -62,7 +61,7 @@ export const ra = {
     },
     teresaXP: {
       id: 2,
-      reward: "All Memory Chunks produce more Memories based on Reality Machines",
+      reward: "모든 기억 청크는 현실 기계에 기반한 더 많은 기억을 생성합니다.",
       effect: () => 1 + Math.pow(Currency.realityMachines.value.pLog10() / 100, 0.5),
       pet: "teresa",
       level: 5,
@@ -70,7 +69,7 @@ export const ra = {
     },
     alteredGlyphs: {
       id: 3,
-      reward: "Unlock Altered Glyphs, which grant new effects to Glyphs based on Glyph Sacrifice",
+      reward: "변형된 글리프를 해금합니다. 글리프 희생에 기반한 글리프에 새로운 효과를 부여합니다.",
       pet: "teresa",
       level: 10,
       displayIcon: `<span class="fas fa-bolt"></span>`,
@@ -78,22 +77,21 @@ export const ra = {
     },
     effarigUnlock: {
       id: 4,
-      reward: "Unlock Effarig's Memories",
+      reward: "에파리그의 기억을 해금합니다.",
       pet: "teresa",
       level: 8,
       displayIcon: `Ϙ`
     },
     perkShopIncrease: {
       id: 5,
-      reward: "Purchase caps are raised in Teresa's Perk Point Shop",
+      reward: "테레사의 특전 포인트 상점에서 구매 상한선이 증가합니다.",
       pet: "teresa",
       level: 15,
       displayIcon: `<span class="fas fa-project-diagram"></span>`
     },
     unlockDilationStartingTP: {
       id: 6,
-      reward: `In non-Celestial Realities, gain Tachyon Particles as if you reached the square root of your total
-        antimatter in Dilation. Any multipliers to TP gain are applied retroactively, even outside Dilation`,
+      reward: `비셀레스티얼 현실에서, 팽창에서 총 반물질의 제곱근에 도달한 것처럼 타키온 입자를 획득합니다. TP 획득에 대한 모든 배수는 팽창 외에서도 소급 적용됩니다.`,
       effect: () => player.records.totalAntimatter.pow(0.5),
       pet: "teresa",
       level: 25,
@@ -101,8 +99,7 @@ export const ra = {
     },
     extraGlyphChoicesAndRelicShardRarityAlwaysMax: {
       id: 7,
-      reward: () => `Get ${formatX(2)} Glyph choices and the bonus to Glyph rarity from Relic Shards
-        is always its maximum value`,
+      reward: () => `${formatX(2)} 글리프 선택을 얻고 유물 파편의 글리프 희귀성 보너스는 항상 최대값입니다.`,
       effect: 2,
       pet: "effarig",
       level: 1,
@@ -110,15 +107,14 @@ export const ra = {
     },
     unlockGlyphAlchemy: {
       id: 8,
-      reward: `Unlock Glyph Alchemy, which adds alchemical resources you can increase by Refining Glyphs. You unlock
-        more resources through Effarig levels. Access through a new Reality tab.`,
+      reward: `글리프 연금술을 해금합니다. 글리프 정제로 증가시킬 수 있는 연금술 자원을 추가합니다. 에파리그 레벨을 통해 더 많은 자원을 해금할 수 있습니다. 새로운 현실 탭을 통해 접근할 수 있습니다.`,
       pet: "effarig",
       level: 2,
       displayIcon: `<span class="fas fa-vial"></span>`
     },
     effarigXP: {
       id: 9,
-      reward: "All Memory Chunks produce more Memories based on highest Glyph level",
+      reward: "모든 기억 청크는 최고 글리프 레벨에 기반한 더 많은 기억을 생성합니다.",
       effect: () => 1 + player.records.bestReality.glyphLevel / 7000,
       pet: "effarig",
       level: 5,
@@ -126,21 +122,21 @@ export const ra = {
     },
     glyphEffectCount: {
       id: 10,
-      reward: () => `Glyphs always have ${formatInt(4)} effects, and Effarig Glyphs can now have up to ${formatInt(7)}`,
+      reward: () => `글리프는 항상 ${formatInt(4)}개의 효과를 가지며, 에파리그 글리프는 이제 최대 ${formatInt(7)}개를 가질 수 있습니다.`,
       pet: "effarig",
       level: 10,
       displayIcon: `<span class="fas fa-braille"></span>`
     },
     enslavedUnlock: {
       id: 11,
-      reward: "Unlock Nameless's Memories",
+      reward: "이름없는 자의 기억을 해금합니다.",
       pet: "effarig",
       level: 8,
       displayIcon: `<span class="c-ra-pet-milestones-effarig-link">\uf0c1</span>`
     },
     relicShardGlyphLevelBoost: {
       id: 12,
-      reward: "Glyph level is increased based on Relic Shards gained",
+      reward: "글리프 레벨은 획득한 유물 파편에 기반해 증가합니다.",
       effect: () => 100 * Math.pow(Math.log10(Math.max(Effarig.shardsGained, 1)), 2),
       pet: "effarig",
       level: 15,
@@ -148,8 +144,7 @@ export const ra = {
     },
     maxGlyphRarityAndShardSacrificeBoost: {
       id: 13,
-      reward: () => `Glyphs are always generated with ${formatPercents(1)} rarity and
-        Glyph Sacrifice gain is raised to a power based on Relic Shards`,
+      reward: () => `글리프는 항상 ${formatPercents(1)} 희귀성으로 생성되며, 글리프 희생 획득은 유물 파편에 기반한 거듭제곱으로 상승합니다.`,
       effect: () => 1 + Effarig.maxRarityBoost / 100,
       pet: "effarig",
       level: 25,
@@ -157,7 +152,7 @@ export const ra = {
     },
     blackHolePowerAutobuyers: {
       id: 14,
-      reward: "Unlock Black Hole power upgrade autobuyers",
+      reward: "블랙홀 거듭제곱 업그레이드 자동구매자를 해금합니다.",
       pet: "enslaved",
       level: 1,
       displayIcon: `<span class="fas fa-circle"></span>`,
@@ -165,7 +160,7 @@ export const ra = {
     },
     improvedStoredTime: {
       id: 15,
-      reward: "Stored game time is amplified and you can store more real time, increasing with Nameless levels",
+      reward: "저장된 게임 시간이 증폭되고 더 많은 실시간을 저장할 수 있으며, 이름없는 자 레벨과 함께 증가합니다.",
       effects: {
         gameTimeAmplification: () => Math.pow(20, Math.clampMax(Ra.pets.enslaved.level, Ra.levelCap)),
         realTimeCap: () => 1000 * 3600 * Ra.pets.enslaved.level,
@@ -177,7 +172,7 @@ export const ra = {
     },
     enslavedXP: {
       id: 16,
-      reward: "All Memory Chunks produce more Memories based on total time played",
+      reward: "모든 기억 청크는 총 플레이 시간에 기반한 더 많은 기억을 생성합니다.",
       effect: () => 1 + Math.log10(player.records.totalTimePlayed) / 200,
       pet: "enslaved",
       level: 5,
@@ -185,8 +180,7 @@ export const ra = {
     },
     autoPulseTime: {
       id: 17,
-      reward: () => `Black Hole charging now only uses ${formatPercents(0.99)} of your game speed and you can
-        automatically discharge ${formatPercents(0.01)} of your stored game time every ${formatInt(5)} ticks.`,
+      reward: () => `블랙홀 충전은 이제 게임 속도의 ${formatPercents(0.99)}만 사용하며, 매 ${formatInt(5)} 틱마다 저장된 게임 시간의 ${formatPercents(0.01)}를 자동으로 방출할 수 있습니다.`,
       pet: "enslaved",
       level: 10,
       displayIcon: `<span class="fas fa-expand-arrows-alt"></span>`,
@@ -194,14 +188,14 @@ export const ra = {
     },
     vUnlock: {
       id: 18,
-      reward: "Unlock V's Memories",
+      reward: "V의 기억을 해금합니다.",
       pet: "enslaved",
       level: 8,
       displayIcon: `⌬`
     },
     peakGamespeedDT: {
       id: 19,
-      reward: "Gain more Dilated Time based on peak game speed in each Reality",
+      reward: "각 현실에서 최고 게임 속도에 기반해 더 많은 팽창된 시간을 획득합니다.",
       effect: () => Math.max(Math.pow(Math.log10(player.celestials.ra.peakGamespeed) - 90, 3), 1),
       pet: "enslaved",
       level: 15,
@@ -210,8 +204,7 @@ export const ra = {
     },
     allGamespeedGlyphs: {
       id: 20,
-      reward: `All basic Glyphs gain the increased game speed effect from Time Glyphs,
-        and Time Glyphs gain an additional effect`,
+      reward: `모든 기본 글리프는 시간 글리프로부터 증가된 게임 속도 효과를 얻으며, 시간 글리프는 추가 효과를 얻습니다.`,
       pet: "enslaved",
       level: 25,
       displayIcon: `<span class="fas fa-clock"></span>`,
@@ -224,7 +217,7 @@ export const ra = {
     },
     instantECAndRealityUpgradeAutobuyers: {
       id: 21,
-      reward: "Rebuyable Reality upgrades are bought automatically and Auto-Eternity Challenges happen instantly",
+      reward: "구매 가능한 현실 업그레이드가 자동으로 구매되고 자동 영원 도전이 즉시 발생합니다.",
       pet: "v",
       level: 1,
       displayIcon: `<span class="fas fa-sync-alt"></span>`,
@@ -232,15 +225,14 @@ export const ra = {
     },
     autoUnlockDilation: {
       id: 22,
-      reward: () => `In non-Celestial Realities, Time Dilation is unlocked automatically for free at
-        ${formatInt(TimeStudy.dilation.totalTimeTheoremRequirement)} Time Theorems`,
+      reward: () => `비셀레스티얼 현실에서, 시간 팽창은 ${formatInt(TimeStudy.dilation.totalTimeTheoremRequirement)} 시간 정리에서 자동으로 무료로 해금됩니다.`,
       pet: "v",
       level: 2,
       displayIcon: `<span class="fas fa-fast-forward"></span>`
     },
     vXP: {
       id: 23,
-      reward: "All Memory Chunks produce more Memories based on total Celestial levels.",
+      reward: "모든 기억 청크는 총 셀레스티얼 레벨에 기반한 더 많은 기억을 생성합니다.",
       effect: () => 1 + Ra.totalPetLevel / 50,
       pet: "v",
       level: 5,
@@ -248,8 +240,7 @@ export const ra = {
     },
     unlockHardV: {
       id: 24,
-      reward: () => `Unlock Hard V-Achievements and unlock a Triad Study every ${formatInt(6)} levels.
-        Triad Studies are located at the bottom of the Time Studies page`,
+      reward: () => `어려운 V 성취를 해금하고 ${formatInt(6)}레벨마다 삼중 연구를 해금합니다. 삼중 연구는 시간 연구 페이지의 하단에 위치합니다.`,
       effect: () => Math.floor(Ra.pets.v.level / 6),
       pet: "v",
       level: 6,
@@ -258,7 +249,7 @@ export const ra = {
     },
     continuousTTBoost: {
       id: 25,
-      reward: "Time Theorems boost all forms of continuous non-dimension production",
+      reward: "시간 정리는 모든 형태의 연속 비차원 생산을 강화합니다.",
       effects: {
         ttGen: () => Math.pow(10, 5 * Ra.theoremBoostFactor()),
         eternity: () => Math.pow(10, 2 * Ra.theoremBoostFactor()),
@@ -276,7 +267,7 @@ export const ra = {
     },
     achievementTTMult: {
       id: 26,
-      reward: "Achievement multiplier applies to Time Theorem generation",
+      reward: "성취 배율이 시간 정리 생성에 적용됩니다.",
       effect: () => Achievements.power,
       pet: "v",
       level: 15,
@@ -285,7 +276,7 @@ export const ra = {
     },
     achievementPower: {
       id: 27,
-      reward: () => `Achievement multiplier is raised ${formatPow(1.5, 1, 1)}`,
+      reward: () => `성취 배율이 ${formatPow(1.5, 1, 1)}로 상승합니다.`,
       effect: 1.5,
       pet: "v",
       level: 25,

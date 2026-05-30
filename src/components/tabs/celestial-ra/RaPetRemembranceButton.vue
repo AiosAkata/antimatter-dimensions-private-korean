@@ -50,10 +50,10 @@ export default {
     @click="toggleRemembrance"
   >
     <span v-if="hasRemembrance">
-      Remembrance given to {{ name }}
+      {{ name }}에게 기억을 부여함
     </span>
     <span v-else>
-      Give Remembrance to {{ name }}
+      {{ name }}에게 기억을 부여
     </span>
   </button>
 </template>

@@ -33,13 +33,13 @@ export default {
     pauseModeString() {
       switch (this.pauseMode) {
         case BLACK_HOLE_PAUSE_MODE.NO_PAUSE:
-          return "Do not pause";
+          return "일시 중지하지 않음";
         case BLACK_HOLE_PAUSE_MODE.PAUSE_BEFORE_BH1:
-          return this.hasBH2 ? "Before BH1" : "Before activation";
+          return this.hasBH2 ? "BH1 이전" : "활성화 이전";
         case BLACK_HOLE_PAUSE_MODE.PAUSE_BEFORE_BH2:
-          return "Before BH2";
+          return "BH2 이전";
         default:
-          throw new Error("Unrecognized BH offline pausing mode");
+          throw new Error("인식할 수 없는 BH 오프라인 일시 중지 모드");
       }
     },
   },
@@ -154,22 +154,22 @@ export default {
       class="c-black-hole-disabled-description"
     >
       <i v-if="isEnslaved">
-        You must... seek... other methods...
+        당신은 ... 다른 방법을 찾아야 합니다...
         <br>
       </i>
-      The physics of this Reality do not allow the existence of Black Holes.
+      이 현실의 물리학은 블랙홀의 존재를 허용하지 않습니다.
     </div>
     <div
       v-else-if="!isUnlocked"
       class="l-pre-unlock-text"
     >
       <BlackHoleUnlockButton @blackholeunlock="startAnimation" />
-      The Black Hole makes the entire game run significantly faster for a short period of time.
+      블랙홀은 전체 게임이 짧은 시간 동안 훨씬 빠르게 실행되도록 합니다.
       <br>
-      Starts at {{ formatX(180) }} faster for {{ formatInt(10) }} seconds, once per hour.
+      시간당 한 번, {{ formatInt(10) }}초 동안 {{ formatX(180) }}배 빠르게 시작됩니다.
       <br>
       <br>
-      Unlocking the Black Hole also gives {{ formatInt(10) }} Automator Points.
+      블랙홀 해금도 {{ formatInt(10) }} 자동화기 포인트를 제공합니다.
     </div>
     <template v-else>
       <div class="c-subtab-option-container">
@@ -177,14 +177,14 @@ export default {
           class="o-primary-btn o-primary-btn--subtab-option"
           @click="togglePause"
         >
-          {{ stateChange }} Black Hole
+          블랙홀 {{ stateChange }}
         </button>
         <button
           v-if="!isPermanent"
           class="o-primary-btn o-primary-btn--subtab-option l-auto-pause-button"
           @click="changePauseMode"
         >
-          Auto-pause: {{ pauseModeString }}
+          자동 일시 중지: {{ pauseModeString }}
         </button>
       </div>
       <canvas
@@ -202,17 +202,16 @@ export default {
         <span v-if="hasBH2 && !isPermanent">
           <b>{{ detailedBH2 }}</b>
           <br>
-          The timer for Black Hole 2 only advances while Black Hole 1 is active.
+          블랙홀 2의 타이머는 블랙홀 1이 활성화된 동안에만 진행됩니다.
           <br>
-          Upgrades affect the internal timer; the header shows real time until next activation.
+          업그레이드는 내부 타이머에 영향을 미칩니다. 헤더는 다음 활성화까지의 실시간을 표시합니다.
         </span>
         <br>
         <div v-if="!isPermanent">
-          Black holes become permanently active when they are active for more than {{ formatPercents(0.9999, 2) }}
-          of the time.
+          블랙홀은 {{ formatPercents(0.9999, 2) }} 이상의 시간 동안 활성화될 때 영구적으로 활성화됩니다.
           <br>
-          Active time percent: {{ formatPercents(blackHoleUptime[0], 3) }}
-          <span v-if="hasBH2">and {{ formatPercents(blackHoleUptime[1], 3) }}</span>
+          활성 시간 백분율: {{ formatPercents(blackHoleUptime[0], 3) }}
+          <span v-if="hasBH2">그리고 {{ formatPercents(blackHoleUptime[1], 3) }}</span>
         </div>
         <BlackHoleChargingSliders
           v-if="!isLaitela"

@@ -25,18 +25,18 @@ export default {
   computed: {
     autobuyStr() {
       return this.maxAutobuy === 4
-        ? "ON (all DMD)"
-        : `ON (max. DMD ${this.maxAutobuy})`;
+        ? "켜짐 (모든 DMD)"
+        : `켜짐 (최대 DMD ${this.maxAutobuy})`;
     },
     autoAscendStr() {
       return this.maxAutoAscend === 4
-        ? "ON (all DMD)"
-        : `ON (max. DMD ${this.maxAutoAscend})`;
+        ? "켜짐 (모든 DMD)"
+        : `켜짐 (최대 DMD ${this.maxAutoAscend})`;
     },
     autoSingularityStr() {
       return this.autoSingularityFactor === 1
-        ? "At Cap"
-        : `Cap ${formatX(this.autoSingularityFactor, 2, 2)}`;
+        ? "한계에서"
+        : `한계 ${formatX(this.autoSingularityFactor, 2, 2)}`;
     },
   },
   watch: {
@@ -82,28 +82,28 @@ export default {
       v-if="hasDimension"
       v-model="dimension"
       class="c-laitela-automation-toggle"
-      label="Auto-buy DMD:"
+      label="자동 DMD 구매:"
       :on="autobuyStr"
     />
     <PrimaryToggleButton
       v-if="hasAscension"
       v-model="ascension"
       class="c-laitela-automation-toggle"
-      label="Auto-Ascend:"
+      label="자동 상승:"
       :on="autoAscendStr"
     />
     <PrimaryToggleButton
       v-if="hasSingularity"
       v-model="singularity"
       class="c-laitela-automation-toggle"
-      label="Auto-Singularity:"
+      label="자동 특이점:"
       :on="autoSingularityStr"
     />
     <PrimaryToggleButton
       v-if="hasAnnihilated"
       v-model="annihilation"
       class="c-laitela-automation-toggle"
-      label="Auto-Annihilation:"
+      label="자동 소멸:"
     />
   </div>
 </template>

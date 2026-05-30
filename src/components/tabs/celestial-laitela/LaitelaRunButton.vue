@@ -19,8 +19,8 @@ export default {
   },
   computed: {
     completionTime() {
-      if (this.tierNotCompleted) return "Not completed at this tier";
-      return `Fastest Completion: ${TimeSpan.fromSeconds(this.realityTime).toStringShort()}`;
+      if (this.tierNotCompleted) return "이 단계에서 완료되지 않음";
+      return `가장 빠른 완료: ${TimeSpan.fromSeconds(this.realityTime).toStringShort()}`;
     },
     runEffects() {
       return GameDatabase.celestials.descriptions[5].effects().split("\n");
@@ -65,7 +65,7 @@ export default {
 <template>
   <button :class="classObject()">
     <span :class="{ 'o-pelle-disabled': isDoomed }">
-      <b>Start Lai'tela's Reality</b>
+      <b>라이텔라의 현실 시작</b>
     </span>
     <div
       :class="runButtonClassObject()"
@@ -73,19 +73,19 @@ export default {
     />
     <div v-if="realityReward > 1">
       <b>
-        All Dark Matter multipliers are {{ formatX(realityReward, 2, 2) }} higher.
+        모든 암흑 물질 배율이 {{ formatX(realityReward, 2, 2) }} 높습니다.
       </b>
       <span v-if="maxDimTier > 0">
         <br><br>
         {{ completionTime }}
         <br>
         <span v-if="maxDimTier <= 7">
-          <b>Highest active dimension: {{ formatInt(maxDimTier) }}</b>
+          <b>가장 높은 활성 차원: {{ formatInt(maxDimTier) }}</b>
         </span>
         <br><br>
-        Glyph Set:
+        글리프 세트:
         <GlyphSetPreview
-          text="Fastest Destabilization Glyph Set"
+          text="가장 빠른 불안정화 글리프 세트"
           :text-hidden="true"
           :force-name-color="false"
           :glyphs="bestSet"
@@ -94,10 +94,10 @@ export default {
       <span v-else>
         <br>
         <b>
-          You also gain an additional {{ formatX(8) }} Dark Energy.
+          추가로 {{ formatX(8) }} 암흑 에너지를 획득합니다.
         </b>
         <br><br>
-        Lai'tela's Reality has been fully destabilized and cannot have its reward further improved.
+        라이텔라의 현실은 완전히 불안정화되었으며 보상을 더 이상 개선할 수 없습니다.
       </span>
       <br>
     </div>
