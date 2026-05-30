@@ -51,21 +51,21 @@ export default {
     modeProps(mode) {
       switch (mode) {
         case AUTO_ETERNITY_MODE.AMOUNT: return {
-          title: "Eternity at X EP",
+          title: "X 영원 포인트에서 영원",
           input: {
             property: "amount",
             type: "decimal"
           },
         };
         case AUTO_ETERNITY_MODE.TIME: return {
-          title: "Seconds between Eternities",
+          title: "영원 사이의 초",
           input: {
             property: "time",
             type: "float"
           },
         };
         case AUTO_ETERNITY_MODE.X_HIGHEST: return {
-          title: "X times highest EP",
+          title: "최고 영원 포인트의 X배",
           input: {
             property: "xHighest",
             type: "decimal"
@@ -94,7 +94,7 @@ export default {
       >
         <template #header>
           <div class="o-primary-btn c-autobuyer-box__mode-select c-autobuyer-box__mode-select-header">
-            ▼ Current Setting: ▼
+            ▼ 현재 설정: ▼
             <br>
             {{ modeName(mode) }}
           </div>
@@ -128,7 +128,7 @@ export default {
           type="checkbox"
           class="o-clickable"
         >
-        Dynamic amount
+        동적 금액
       </label>
     </template>
   </AutobuyerBox>

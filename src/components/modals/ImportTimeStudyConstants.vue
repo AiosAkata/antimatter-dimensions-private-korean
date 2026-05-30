@@ -64,12 +64,12 @@ export default {
     @confirm="importConstants"
   >
     <template #header>
-      Importing Time Study Presets as Constants
+      시간 연구 프리셋을 상수로 가져오기
     </template>
     <div class="c-modal-message__text">
-      Confirming this modal will import all of your saved Time Study presets as new Automator constants.
-      Below are all the valid presets which will be imported, with the beginning and end of their contained
-      studies shown. Some names may be changed due to restrictions on constant name formatting.
+      이 모달을 확인하면 저장된 모든 시간 연구 프리셋을 새로운 자동화기 상수로 가져올 것입니다.
+      아래는 가져올 모든 유효한 프리셋이며, 포함된 연구의 시작과 끝이 표시됩니다. 상수 이름 형식의 제한으로 인해
+      일부 이름이 변경될 수 있습니다.
       <br>
       <br>
       <div
@@ -77,7 +77,7 @@ export default {
         :key="i"
         :class="{ 'l-not-imported' : !willImport[i-1] }"
       >
-        Name: {{ presets[i-1].name }} ➜ <b>{{ names[i-1] }}</b>
+        이름: {{ presets[i-1].name }} ➜ <b>{{ names[i-1] }}</b>
         <br>
         {{ shortenString(presets[i-1].studies) }}
         <span
@@ -85,7 +85,7 @@ export default {
           class="l-warn-text"
         >
           <br>
-          This will overwrite an existing constant!
+          기존 상수를 덮어쓸 것입니다!
         </span>
         <br>
         <br>
@@ -94,12 +94,12 @@ export default {
         v-if="missedImports() > 0"
         class="l-warn-text"
       >
-        {{ quantify("preset", missedImports()) }} in this list cannot be imported
-        due to the limit on constant count.
+        {{ quantify("프리셋", missedImports()) }}은(는) 상수 수 제한으로 인해
+        이 목록에서 가져올 수 없습니다.
       </div>
     </div>
     <template #confirm-text>
-      Import All
+      모두 가져오기
     </template>
   </ModalWrapperChoice>
 </template>

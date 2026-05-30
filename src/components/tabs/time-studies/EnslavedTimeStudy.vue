@@ -54,10 +54,10 @@ export default {
     @click="handleClick"
   >
     <span>
-      ... you ... have great potential ...
+      ... 당신 ... 큰 잠재력이 있습니다 ...
       <br>
       <br>
-      Cost: {{ format(-enslavedTT) }} Time Theorems
+      비용: {{ format(-enslavedTT) }} 시간 정리
     </span>
   </button>
 </template>

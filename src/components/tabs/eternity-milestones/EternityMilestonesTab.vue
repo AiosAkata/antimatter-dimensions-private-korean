@@ -34,9 +34,9 @@ export default {
 
 <template>
   <div class="l-eternity-milestone-grid">
-    <div>You have {{ quantify("Eternity", eternityCount, 3) }}.</div>
+    <div>{{ quantify("Eternity", eternityCount, 3) }}을 가지고 있습니다.</div>
     <div>
-      Offline generation milestones are only active under certain conditions, mouse-over to see these conditions.
+      오프라인 생성 마일스톤은 특정 조건 하에서만 활성화됩니다. 마우스를 가져가면 이러한 조건들을 볼 수 있습니다.
     </div>
     <div
       v-for="row in rows"

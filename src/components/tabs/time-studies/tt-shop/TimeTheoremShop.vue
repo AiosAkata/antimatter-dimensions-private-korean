@@ -52,16 +52,16 @@ export default {
     },
     TTgenRateText() {
       if (this.theoremGeneration.lt(1 / 3600)) {
-        return `one TT every ${TimeSpan.fromSeconds(
-          this.theoremGeneration.reciprocal().toNumber()).toStringShort(false)}`;
+        return `매 ${TimeSpan.fromSeconds(
+          this.theoremGeneration.reciprocal().toNumber()).toStringShort(false)}마다 1개 정리`;
       }
       if (this.theoremGeneration.lt(0.1)) {
-        return `${format(this.theoremGeneration.times(3600), 2, 2)} TT/hour`;
+        return `${format(this.theoremGeneration.times(3600), 2, 2)} 정리/시간`;
       }
-      return `${format(this.theoremGeneration, 2, 2)} TT/sec`;
+      return `${format(this.theoremGeneration, 2, 2)} 정리/초`;
     },
     totalTimeTheoremText() {
-      return `${quantify("total Time Theorem", this.totalTimeTheorems, 2, 2, this.formatTimeTheoremType)}`;
+      return `${quantify("전체 시간 정리", this.totalTimeTheorems, 2, 2, this.formatTimeTheoremType)}`;
     },
     minimizeArrowStyle() {
       return {
@@ -70,7 +70,7 @@ export default {
       };
     },
     saveLoadText() {
-      return this.$viewModel.shiftDown ? "Save:" : "Load:";
+      return this.$viewModel.shiftDown ? "저장:" : "로드:";
     },
     shopBottomRowHeightStyle() {
       return {
@@ -91,19 +91,19 @@ export default {
       player.timestudy.shopMinimized = !player.timestudy.shopMinimized;
     },
     formatAM(am) {
-      return `${format(am)} AM`;
+      return `${format(am)} 반물질`;
     },
     buyWithAM() {
       TimeTheorems.buyOne(false, "am");
     },
     formatIP(ip) {
-      return `${format(ip)} IP`;
+      return `${format(ip)} 무한 포인트`;
     },
     buyWithIP() {
       TimeTheorems.buyOne(false, "ip");
     },
     formatEP(ep) {
-      return `${format(ep, 2, 0)} EP`;
+      return `${format(ep, 2, 0)} 영원 포인트`;
     },
     buyWithEP() {
       TimeTheorems.buyOne(false, "ep");
@@ -155,11 +155,11 @@ export default {
         </button>
         <p class="timetheorems">
           <span class="c-tt-amount">
-            {{ quantify("Time Theorem", theoremAmount, 2, 0, formatTimeTheoremType) }}
+            {{ quantify("시간 정리", theoremAmount, 2, 0, formatTimeTheoremType) }}
           </span>
           <span v-if="showST">
             <br>
-            {{ quantifyInt("Space Theorem", STamount) }}
+            {{ quantifyInt("공간 정리", STamount) }}
           </span>
         </p>
         <div class="l-load-tree-area">
@@ -175,8 +175,8 @@ export default {
             <span
               v-if="hasTTGen"
               class="checkbox-margin"
-              ach-tooltip="This shows TT generation by default and total TT if you hold shift.
-                Check this box to swap this behavior."
+              ach-tooltip="이것은 기본적으로 정리 생성을 표시하고 시프트를 누르면 전체 정리를 표시합니다.
+                이 동작을 바꾸려면 이 상자를 선택하세요."
             >
               <input
                 v-model="invertTTgenDisplay"
@@ -187,10 +187,10 @@ export default {
               >
             </span>
             <span v-if="showTTGen">
-              You are gaining {{ TTgenRateText }}.
+              {{ TTgenRateText }}를 얻고 있습니다.
             </span>
             <span v-else>
-              You have {{ totalTimeTheoremText }}.
+              {{ totalTimeTheoremText }}가 있습니다.
             </span>
           </div>
         </div>
@@ -224,13 +224,13 @@ export default {
             class="o-tt-top-row-button c-tt-buy-button c-tt-buy-button--unlocked"
             @click="buyMaxTheorems"
           >
-            Buy max
+            최대 구매
           </button>
           <PrimaryToggleButton
             v-if="!minimized && hasTTAutobuyer"
             v-model="isAutobuyerOn"
             class="o-tt-autobuyer-button c-tt-buy-button c-tt-buy-button--unlocked"
-            label="Auto:"
+            label="자동:"
           />
         </div>
       </div>

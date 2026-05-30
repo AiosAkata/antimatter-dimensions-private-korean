@@ -54,35 +54,34 @@ export default {
         class="o-primary-btn--subtab-option"
         @click="maxAll"
       >
-        Max all
+        모두 최대
       </PrimaryButton>
       <PrimaryButton
         v-if="areAutobuyersUnlocked"
         class="o-primary-btn--subtab-option"
         @click="toggleAllAutobuyers"
       >
-        Toggle all autobuyers
+        모든 자동구매기 전환
       </PrimaryButton>
     </div>
     <div>
       <p>
-        You have gained
-        <span class="c-time-dim-description__accent">{{ formatInt(totalUpgrades) }}</span> Tickspeed upgrades from
-        <span class="c-time-dim-description__accent">{{ format(timeShards, 2, 1) }}</span> Time Shards.
+        당신은
+        <span class="c-time-dim-description__accent">{{ format(timeShards, 2, 1) }}</span> 시간 조각에서
+        <span class="c-time-dim-description__accent">{{ formatInt(totalUpgrades) }}</span>개의 틱속도 업그레이드를 획득했습니다.
       </p>
       <p>
-        Next Tickspeed upgrade at
-        <span class="c-time-dim-description__accent">{{ format(upgradeThreshold, 2, 1) }}</span>, increasing by
-        <span class="c-time-dim-description__accent">{{ formatX(multPerTickspeed, 2, 2) }}</span> per
-        Tickspeed upgrade gained.
+        다음 틱속도 업그레이드는
+        <span class="c-time-dim-description__accent">{{ format(upgradeThreshold, 2, 1) }}</span>에서이고,
+        <span class="c-time-dim-description__accent">{{ formatX(multPerTickspeed, 2, 2) }}</span>씩 증가합니다
+        획득한 틱속도 업그레이드마다.
       </p>
     </div>
     <div>
-      The amount each additional upgrade requires will start
-      increasing above {{ formatInt(tickspeedSoftcap) }} Tickspeed upgrades.
+      각 추가 업그레이드의 요구량은 {{ formatInt(tickspeedSoftcap) }}개 틱속도 업그레이드 이상에서 증가하기 시작합니다.
     </div>
     <div>
-      You are getting {{ format(shardsPerSecond, 2, 0) }} {{ incomeType }} per second.
+      당신은 초당 {{ format(shardsPerSecond, 2, 0) }}개의 {{ incomeType }}을 얻고 있습니다.
     </div>
     <div class="l-dimensions-container">
       <TimeDimensionRow
@@ -93,15 +92,15 @@ export default {
       />
     </div>
     <div>
-      Time Dimension costs jump at {{ format(costIncreases[0], 2, 2) }} and
-      {{ format(costIncreases[1]) }} Eternity Points,
+      시간 차원 비용은 {{ format(costIncreases[0], 2, 2) }}개와
+      {{ format(costIncreases[1]) }}개 영원 포인트에서 증가하고,
       <br>
-      and costs increase much faster after {{ format(costIncreases[2]) }} Eternity Points.
+      {{ format(costIncreases[2]) }}개 영원 포인트 이후에 훨씬 빠르게 증가합니다.
       <br>
       <div v-if="showLockedDimCostNote">
-        Hold shift to see the Eternity Point cost for locked Time Dimensions.
+        시프트를 누르고 있으면 잠금 해제된 시간 차원의 영원 포인트 비용을 볼 수 있습니다.
       </div>
-      Any 8th Time Dimensions purchased above {{ format(1e8) }} will not further increase the multiplier.
+      {{ format(1e8) }} 이상에서 구매된 8번째 시간 차원은 배율을 더 이상 증가시키지 않습니다.
     </div>
   </div>
 </template>

@@ -70,23 +70,23 @@ export default {
       @click="purchaseUpgrade"
     >
       <div :class="{ 'o-pelle-disabled': isDoomed }">
-        Multiply Eternity Points from all sources by {{ formatX(5) }}
+        모든 출처의 영원 포인트를 {{ formatX(5) }}로 곱하기
         <br>
-        Currently: {{ formatX(multiplier, 2, 0) }}
+        현재: {{ formatX(multiplier, 2, 0) }}
       </div>
       <br>
-      Cost: {{ quantify("Eternity Point", cost, 2, 0) }}
+      비용: {{ quantify("Eternity Point", cost, 2, 0) }}
     </button>
     <PrimaryButton
       class="l--spoon-btn-group__little-spoon o-primary-btn--small-spoon"
       @click="upgrade.buyMax(false)"
     >
-      Max Eternity Point mult
+      최대 영원 포인트 배율
     </PrimaryButton>
     <PrimaryToggleButton
       v-if="isAutoUnlocked"
       v-model="isAutobuyerActive"
-      label="Autobuy EP mult"
+      label="자동 구매 EP 배율"
       class="l--spoon-btn-group__little-spoon o-primary-btn--small-spoon"
     />
   </div>

@@ -31,20 +31,20 @@ export default {
     },
     requirement() {
       if (this.id === 1) {
-        return `Requirement: ${formatInt(5)} EC11 and EC12 completions
-          and ${formatInt(this.maxTT)}/${formatInt(TimeStudy.dilation.totalTimeTheoremRequirement)}
-          total Time Theorems`;
+        return `요구 사항: EC11 및 EC12 ${formatInt(5)}번 완료
+          및 ${formatInt(this.maxTT)}/${formatInt(TimeStudy.dilation.totalTimeTheoremRequirement)}
+          총 시간 정리`;
       }
       if (this.id === 6) {
-        const achRows = Perk.firstPerk.isBought ? "" : ` and ${formatInt(13)} rows of Achievements`;
-        return `Requirement: ${format("1e4000")} Eternity Points${achRows}`;
+        const achRows = Perk.firstPerk.isBought ? "" : ` 및 ${formatInt(13)}개의 업적 행`;
+        return `요구 사항: ${format("1e4000")} 영원 포인트${achRows}`;
       }
       return "";
     },
     theoremTimeEstimate() {
       if (this.study.isBought || !this.study.cost || this.ttGen.eq(0)) return null;
       const time = Decimal.sub(this.study.cost, this.currTT).dividedBy(this.ttGen);
-      return time.gt(0) ? `Enough TT in ${TimeSpan.fromSeconds(time.toNumber()).toStringShort()}` : null;
+      return time.gt(0) ? `${TimeSpan.fromSeconds(time.toNumber()).toStringShort()} 내에 충분한 정리` : null;
     }
   },
   methods: {

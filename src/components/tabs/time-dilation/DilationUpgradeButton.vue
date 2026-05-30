@@ -135,7 +135,7 @@ export default {
         v-if="!isBought && !isCapped"
         br
         :config="upgrade.config"
-        name="Dilated Time"
+        name="팽창 시간"
       />
     </button>
     <PrimaryToggleButton
@@ -151,7 +151,7 @@ export default {
 .o-dilation-upgrade {
   width: 19rem;
   height: 9rem;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Noto Sans KR", serif;
   font-size: 1rem;
   font-weight: bold;
   background: black;

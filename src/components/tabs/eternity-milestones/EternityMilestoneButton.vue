@@ -65,7 +65,7 @@ export default {
       :class="rewardClassObject"
     >
       <span :class="{ 'o-pelle-disabled': isUseless }">
-        {{ reward }} {{ (isLocked && !isReached) ? "(Locked behind a Pelle Upgrade)" : "" }}
+        {{ reward }} {{ (isLocked && !isReached) ? "(펠레 업그레이드 뒤에 잠겨 있음)" : "" }}
       </span>
     </button>
   </div>

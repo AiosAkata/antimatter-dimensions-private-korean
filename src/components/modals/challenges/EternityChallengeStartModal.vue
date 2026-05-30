@@ -20,15 +20,14 @@ export default {
       return this.challenge.isFullyCompleted;
     },
     message() {
-      return `You will Eternity (if possible) and start a new Eternity within the Challenge, with all the
-        Challenge-specific restrictions and modifiers active.
-        To complete the Challenge${this.challengeIsCompleted ? "" : " and gain its reward"},
-        you must reach the Challenge goal of
-        ${format(this.challenge.currentGoal)} Infinity Points. You can complete Eternity Challenges up to
-        ${formatInt(5)} times, with increasing goals and bonuses.`;
+      return `당신은 영원을 하고(가능하다면) 도전 내에서 새로운 영원을 시작할 것입니다. 모든
+        도전별 제한과 수정자가 활성화됩니다.
+        도전을 완료하려면${this.challengeIsCompleted ? "" : " 그리고 보상을 얻으려면"},
+        ${format(this.challenge.currentGoal)} 무한 포인트의 도전 목표에 도달해야 합니다. 영원 도전을
+        ${formatInt(5)}번까지 완료할 수 있으며, 목표와 보너스가 증가합니다.`;
     },
     entranceLabel() {
-      return `You are about to enter Eternity Challenge ${this.id}`;
+      return `당신은 영원 도전 ${this.id}에 진입할 준비가 되어있습니다`;
     },
     reward() {
       let rewardDescription = this.challenge._config.reward.description;
@@ -79,7 +78,7 @@ export default {
       {{ reward }}
     </div>
     <template #confirm-text>
-      Begin
+      시작
     </template>
   </ModalWrapperChoice>
 </template>

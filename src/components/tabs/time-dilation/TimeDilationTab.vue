@@ -126,9 +126,9 @@ export default {
 <template>
   <div class="l-dilation-tab">
     <span>
-      You have
+      당신은
       <span class="c-dilation-tab__tachyons">{{ format(tachyons, 2, 1) }}</span>
-      {{ pluralize("Tachyon Particle", tachyons) }}.
+      {{ pluralize("타키온 입자", tachyons) }}를 가지고 있습니다.
     </span>
     <div
       @mouseover="isHovering = true"
@@ -137,32 +137,32 @@ export default {
       <DilationButton />
     </div>
     <span>
-      You have
+      당신은
       <span class="c-dilation-tab__dilated-time">{{ format(dilatedTime, 2, 1) }}</span>
-      Dilated Time.
+      팽창 시간을 가지고 있습니다.
       <span class="c-dilation-tab__dilated-time-income">{{ dilatedTimeGainText }}/s</span>
     </span>
     <span>
-      Next
+      다음
       <span v-if="tachyonGalaxyGain > 1">{{ formatInt(tachyonGalaxyGain) }}</span>
-      {{ pluralize("Tachyon Galaxy", tachyonGalaxyGain) }} at
+      {{ pluralize("타키온 갤럭시", tachyonGalaxyGain) }}까지
       <span
         class="c-dilation-tab__galaxy-threshold"
         :ach-tooltip="galaxyTimeEstimate"
       >{{ format(galaxyThreshold, 2, 1) }}</span>
-      Dilated Time, gained total of
+      팽창 시간이 필요하며, 총
       <span
         class="c-dilation-tab__galaxies"
         :ach-tooltip="baseGalaxyText"
       >{{ formatInt(totalGalaxies) }}</span>
-      {{ pluralize("Tachyon Galaxy", totalGalaxies) }}
+      {{ pluralize("타키온 갤럭시", totalGalaxies) }}를 획득했습니다
     </span>
     <span v-if="hasMaxText">
-      Your maximum Dilated Time reached this Reality is
+      이 현실에서 도달한 최대 팽창 시간은
       <span
         v-tooltip="toMaxTooltip"
         class="max-accent"
-      >{{ format(maxDT, 2, 1) }}</span>.
+      >{{ format(maxDT, 2, 1) }}</span>입니다.
     </span>
     <div class="l-dilation-upgrades-grid">
       <div
