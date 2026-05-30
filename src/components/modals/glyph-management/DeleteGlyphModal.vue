@@ -44,12 +44,12 @@ export default {
 <template>
   <ModalWrapperChoice @confirm="handleYesClick">
     <template #header>
-      You are about to delete a Glyph
+      글리프를 삭제하려고 합니다
     </template>
     <div class="c-modal-message__text">
-      Deleting a Glyph will remove the Glyph from your inventory!
+      글리프를 삭제하면 글리프가 인벤토리에서 제거됩니다!
       <div class="c-modal-hard-reset-danger">
-        There is no benefit in deleting a Glyph before you have unlocked Glyph Sacrifice!
+        글리프 희생을 해금하기 전에 글리프를 삭제하면 이점이 없습니다!
       </div>
     </div>
   </ModalWrapperChoice>

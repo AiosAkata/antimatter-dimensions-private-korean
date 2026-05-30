@@ -46,8 +46,8 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      You are about to replace a Glyph
+      글리프를 교체하려고 합니다
     </template>
-    Replacing a Glyph will restart this {{ resetTerm }}.
+    글리프를 교체하면 이 {{ resetTerm }}이(가) 다시 시작됩니다.
   </ModalWrapperChoice>
 </template>

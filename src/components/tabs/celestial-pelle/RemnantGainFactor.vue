@@ -47,7 +47,7 @@ export default {
   <div class="c-remnant-factors-container">
     <ExpandingControlBox
       container-class="c-remnant-factors"
-      label="Remnant Gain Factors"
+      label="잔재 획득 요소"
       :style="{ opacity }"
     >
       <template #dropdown>

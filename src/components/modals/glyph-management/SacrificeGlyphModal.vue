@@ -60,7 +60,7 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      You are about to sacrifice a Glyph
+      글리프를 희생하려고 합니다
     </template>
     <div class="c-modal-message__text">
       {{ message }}

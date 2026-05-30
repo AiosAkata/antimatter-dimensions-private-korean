@@ -52,20 +52,20 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      Reality Glyph Creation
+      현실 글리프 생성
     </template>
     <div class="c-reality-glyph-creation">
       <div>
-        Create a level {{ formatInt(realityGlyphLevel) }} Reality Glyph.
-        Rarity will always be {{ formatPercents(1) }} and
-        level scales on your current Reality Resource amount (which is all consumed). All other Alchemy Resources will
-        be unaffected. Reality Glyphs have unique effects, some of which are only available with higher level Glyphs.
-        Reality Glyphs can also be sacrificed to increase all Memory Chunk gain. Like Effarig Glyphs,
-        you cannot equip more than one at the same time.
+        레벨 {{ formatInt(realityGlyphLevel) }} 현실 글리프를 생성합니다.
+        희귀도는 항상 {{ formatPercents(1) }}이며
+        현재 현실 자원 양(모두 소비됨)에 따라 레벨이 조정됩니다. 다른 모든 연금술 자원은 영향을 받지 않습니다.
+        현실 글리프는 고유한 효과를 가지며 일부는 더 높은 레벨의 글리프에서만 사용 가능합니다.
+        현실 글리프는 모든 메모리 청크 획득을 증가시키기 위해 희생할 수도 있습니다. 에파리그 글리프처럼
+        동시에 1개 이상을 장착할 수 없습니다.
       </div>
       <div class="o-available-effects-container">
         <div class="o-available-effects">
-          Available Effects:
+          사용 가능한 효과:
         </div>
         <div
           v-for="(effect, index) in possibleEffects"
@@ -78,19 +78,19 @@ export default {
         v-if="isDoomed"
         :enabled="false"
       >
-        You cannot create Reality Glyphs while Doomed
+        파멸한 상태에서 현실 글리프를 생성할 수 없습니다
       </PrimaryButton>
       <PrimaryButton
         v-else-if="realityGlyphLevel !== 0"
         @click="createRealityGlyph"
       >
-        Create a Reality Glyph!
+        현실 글리프 생성!
       </PrimaryButton>
       <PrimaryButton
         v-else
         :enabled="false"
       >
-        Reality Glyph level must be higher than {{ formatInt(0) }}
+        현실 글리프 레벨은 {{ formatInt(0) }}보다 높아야 합니다
       </PrimaryButton>
     </div>
   </ModalWrapper>

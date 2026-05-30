@@ -14,24 +14,22 @@ export default {
   },
   computed: {
     refiningSacrificingOrDeleting() {
-      if (this.isRefining) return `Refine`;
-      if (this.isSacrificing) return `Sacrifice`;
-      return `delete`;
+      if (this.isRefining) return `정제`;
+      if (this.isSacrificing) return `희생`;
+      return `삭제`;
     },
     topLabel() {
-      return `You are about to ${this.refiningSacrificingOrDeleting} all unprotected Glyphs`;
+      return `모든 보호되지 않은 글리프를 ${this.refiningSacrificingOrDeleting}하려고 합니다`;
     },
     message() {
-      return `Are you sure you want to ${this.refiningSacrificingOrDeleting} all unprotected Glyphs
-        in your inventory?`;
+      return `정말로 인벤토리의 모든 보호되지 않은 글리프를 ${this.refiningSacrificingOrDeleting}하시겠습니까?`;
     },
     extraMessage() {
-      if (this.glyphsDeleted === 0) return `This will ${this.refiningSacrificingOrDeleting} no Glyphs.`;
+      if (this.glyphsDeleted === 0) return `삭제할 글리프가 없습니다.`;
       if (this.glyphsDeleted === this.glyphsTotal) {
-        return `This will ${this.refiningSacrificingOrDeleting} all your Glyphs.`;
+        return `모든 글리프를 ${this.refiningSacrificingOrDeleting}합니다.`;
       }
-      return `This will ${this.refiningSacrificingOrDeleting} 
-        ${formatInt(this.glyphsDeleted)}/${formatInt(this.glyphsTotal)} of your Glyphs.`;
+      return `이것은 당신의 글리프 중 ${formatInt(this.glyphsDeleted)}/${formatInt(this.glyphsTotal)}를 ${this.refiningSacrificingOrDeleting}할 것입니다.`;
     },
 
     // These two don't need to be reactive since the modal force-closes itself whenever glyphs change

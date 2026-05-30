@@ -94,11 +94,11 @@ export default {
 <template>
   <ModalWrapper>
     <template #header>
-      Cracks in The Nameless Ones' Reality
+      이름없는 자의 현실의 균열
     </template>
     <div class="c-enslaved-hint-modal c-modal--short">
       <div>
-        This Reality seems to be resisting your efforts to complete it. So far you have done the following:
+        이 현실은 당신의 완료 노력에 저항하는 것 같습니다. 지금까지 당신이 한 일:
       </div>
       <br>
       <div
@@ -108,11 +108,11 @@ export default {
         <div v-if="!entry[0]">
           <span v-if="entry[1].hasHint && !entry[1].hasProgress">
             <i class="c-icon-wrapper fas fa-question-circle" />
-            <b>You have not figured out what this hint means yet.</b>
+            <b>아직 이 힌트가 무엇을 의미하는지 파악하지 못했습니다.</b>
           </span>
           <span v-else>
             <i class="c-icon-wrapper fa-solid fa-house-crack" />
-            <b>You have exposed a crack in the Reality:</b>
+            <b>당신은 현실의 균열을 드러냈습니다:</b>
           </span>
           <br>
           - {{ entry[1].hintInfo }}
@@ -120,21 +120,18 @@ export default {
           - {{ entry[1].hasProgress ? entry[1].completedInfo : "?????" }}
         </div>
         <div v-else>
-          <i class="fa-solid fa-shapes" /> <b>Glyph hint:</b>
+          <i class="fa-solid fa-shapes" /> <b>글리프 힌트:</b>
           <br>
           {{ entry[1] }}
         </div>
         <br>
       </div>
       <div v-if="realityHintsLeft + glyphHintsLeft > 0">
-        You can spend some time looking for some more cracks in the Reality, but every hint you spend Stored Time on
-        will increase the Stored Time needed for the next by a factor of {{ formatInt(3) }}. This cost bump will
-        gradually go away over {{ formatInt(24) }} hours and figuring out what the hint means will immediately
-        divide the cost by {{ formatInt(2) }}. The cost can't be reduced below {{ format(1e40) }} years.
+        현실의 균열을 더 찾는 데 시간을 쓸 수 있지만 저장된 시간을 소비한 모든 힌트는 다음에 필요한 저장된 시간을 {{ formatInt(3) }}배 증가시킵니다. 이 비용 인상은 {{ formatInt(24) }}시간에 걸쳐 점차 사라지며 힌트의 의미를 파악하면 비용이 즉시 {{ formatInt(2) }}로 나뉩니다. 비용은 {{ format(1e40) }}년 아래로 줄어들 수 없습니다.
         <br><br>
-        The next hint will cost {{ hintCost }} of Stored Time. You currently have {{ formattedStored }}.
+        다음 힌트는 {{ hintCost }}의 저장된 시간이 필요합니다. 현재 {{ formattedStored }}가 있습니다.
         <span v-if="currentStored < nextHintCost">
-          You will reach this if you charge your Black Hole for {{ timeEstimate }}.
+          검은 구멍을 {{ timeEstimate }} 동안 충전하면 이에 도달할 것입니다.
         </span>
         <br><br>
         <PrimaryButton
@@ -142,7 +139,7 @@ export default {
           class="l-enslaved-hint-button"
           @click="giveRealityHint(realityHintsLeft)"
         >
-          Get a hint about the Reality itself ({{ formatInt(realityHintsLeft) }} left)
+          현실 자체에 대한 힌트 받기 ({{ formatInt(realityHintsLeft) }} 남음)
         </PrimaryButton>
         <br>
         <PrimaryButton
@@ -150,11 +147,11 @@ export default {
           class="l-enslaved-hint-button"
           @click="giveGlyphHint(glyphHintsLeft)"
         >
-          Get a hint on what Glyphs to use ({{ formatInt(glyphHintsLeft) }} left)
+          사용할 글리프에 대한 힌트 받기 ({{ formatInt(glyphHintsLeft) }} 남음)
         </PrimaryButton>
       </div>
       <div v-else>
-        <b>There are no more hints left!</b>
+        <b>더 이상의 힌트가 없습니다!</b>
       </div>
     </div>
   </ModalWrapper>

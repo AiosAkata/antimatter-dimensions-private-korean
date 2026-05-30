@@ -71,7 +71,7 @@ export default {
           class="o-pelle-button"
           @click="showModal"
         >
-          Show effects in Doomed Reality
+          파멸한 현실에서 효과 표시
         </button>
       </div>
       <br>
@@ -84,7 +84,7 @@ export default {
       class="pelle-doom-button"
       @click="enterDoomModal"
     >
-      Doom<br>Your<br>Reality
+      파멸<br>현실을<br>맞이하라
       <div class="pelle-icon-container">
         <span class="pelle-icon">{{ symbol }}</span>
       </div>
@@ -93,13 +93,13 @@ export default {
       v-else
       class="pelle-unlock-requirements"
     >
-      You must have {{ formatInt(totalRows) }} rows of Achievements
-      and all of your Glyph Alchemy Resources capped to unlock Pelle, Celestial of Antimatter.
+      펠레(반물질 셀레스티얼)의 잠금을 해제하려면 {{ formatInt(totalRows) }}개의 업적 행과
+      모든 글리프 연금술 자원이 최대 상태여야 합니다.
       <br>
       <br>
-      {{ formatInt(completedRows) }} / {{ formatInt(totalRows) }} Achievement rows completed
+      {{ formatInt(completedRows) }} / {{ formatInt(totalRows) }} 업적 행 완료
       <br>
-      {{ formatInt(cappedResources) }} / {{ formatInt(totalAlchemyResources) }} capped Alchemy Resources
+      {{ formatInt(cappedResources) }} / {{ formatInt(totalAlchemyResources) }} 최대 연금술 자원
     </div>
   </div>
 </template>
