@@ -66,8 +66,8 @@ GameDatabase.celestials.descriptions = [
   {
     name: "Ra",
     effects() {
-      return `You only have ${formatInt(4)} Dimension Boosts and can not gain any more.
-      The Tickspeed purchase multiplier is fixed at ${formatX(1.1245, 0, 3)}.`;
+      return `차원 부스트가 ${formatInt(4)}개밖에 없으며 더 이상 획득할 수 없습니다.
+      Tickspeed 구매 승수는 ${formatX(1.1245, 0, 3)}로 고정됩니다.`;
     },
   },
   {

@@ -24,7 +24,7 @@ export default {
         Challenge-specific restrictions and modifiers active.
         To complete the Challenge${this.challengeIsCompleted ? "" : " and gain its reward"},
         you must reach Infinity again.
-        You do not start with any Dimension Boosts or Galaxies, regardless of upgrades.`;
+        업그레이드에 관계없이 차원 부스트나 갤럭시 없이 시작합니다.`;
     },
     entranceLabel() {
       return `You are about to enter Challenge ${this.id}`;

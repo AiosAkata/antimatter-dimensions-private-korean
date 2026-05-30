@@ -145,7 +145,7 @@ export class DimBoost {
     else if (newUnlock === "") boostEffects = `${formattedMultText} ${dimensionRange}`;
     else boostEffects = `${newUnlock} and ${formattedMultText} ${dimensionRange}`;
 
-    if (boostEffects === "") return "Dimension Boosts are currently useless";
+    if (boostEffects === "") return "현재 차원 부스트는 쓸모없습니다";
     const areDimensionsKept = (Perk.antimatterNoReset.isBought || Achievement(111).canBeApplied) &&
       (!Pelle.isDoomed || PelleUpgrade.dimBoostResetsNothing.isBought);
     if (areDimensionsKept) return boostEffects[0].toUpperCase() + boostEffects.substring(1);
