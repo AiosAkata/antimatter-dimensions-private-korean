@@ -71,10 +71,10 @@ export default {
     },
     dropdownLabel(script) {
       const labels = [];
-      if (script.id === this.currentScriptID) labels.push("viewing");
+      if (script.id === this.currentScriptID) labels.push("보기");
       if (script.id === this.runningScriptID) {
-        if (this.isRunning) labels.push("running");
-        else if (this.isPaused) labels.push("paused");
+        if (this.isRunning) labels.push("실행 중");
+        else if (this.isPaused) labels.push("일시정지됨");
       }
       const status = labels.length ? `(${labels.join(", ").capitalize()})` : "";
       return `${script.name} ${status}`;
@@ -107,13 +107,13 @@ export default {
       class="l-create-script c-automator-docs-script-select c-script-option-hover-effect"
       @click="createNewScript()"
     >
-      <i>Create a new script (You have {{ formatInt(scriptCount) }} / {{ formatInt(maxScriptCount) }})</i>
+      <i>새 스크립트 생성 ({{ formatInt(scriptCount) }} / {{ formatInt(maxScriptCount) }}개)</i>
     </div>
     <div
       v-else
       class="l-create-script c-automator-docs-script-select l-max-scripts"
     >
-      <i>You can only have {{ formatInt(maxScriptCount) }} scripts!</i>
+      <i>최대 {{ formatInt(maxScriptCount) }}개의 스크립트만 가질 수 있습니다!</i>
     </div>
   </div>
 </template>

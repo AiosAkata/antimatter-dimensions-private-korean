@@ -33,11 +33,11 @@ export default {
 
 <template>
   <div class="c-reality-currency">
-    You have
+    당신은
     <b :class="resourceClass()">
       {{ currencyValue }}
     </b>
-    {{ currencyName }}.
+    {{ currencyName }}를 가지고 있습니다.
   </div>
 </template>
 

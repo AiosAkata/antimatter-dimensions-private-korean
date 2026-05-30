@@ -72,7 +72,7 @@ export default {
           if (Enslaved.isRunning && currEC === 1) {
             completionText = `(${formatInt(nextCompletion)}/???)`;
           } else if (nextCompletion === 6) {
-            completionText = `(already completed)`;
+            completionText = `(이미 완료됨)`;
           } else {
             completionText = `(${formatInt(nextCompletion)}/${formatInt(5)})`;
           }
@@ -91,11 +91,11 @@ export default {
     },
     challengeDisplay() {
       if (this.inPelle && this.activeChallengeNames.length > 0) {
-        return `${this.activeChallengeNames.join(" + ")} in a Doomed Reality. Good luck.`;
+        return `${this.activeChallengeNames.join(" + ")} 파멸된 현실. 행운을 빈다.`;
       }
-      if (this.inPelle) return "a Doomed Reality. Good luck.";
+      if (this.inPelle) return "파멸된 현실. 행운을 빈다.";
       if (this.activeChallengeNames.length === 0) {
-        return "the Antimatter Universe (no active challenges)";
+        return "반물질 우주 (활성화된 도전 없음)";
       }
       return this.activeChallengeNames.join(" + ");
     },
@@ -177,10 +177,10 @@ export default {
       else Tab.celestials[celestial].show(true);
     },
     exitDisplay() {
-      if (Player.isInAnyChallenge) return player.options.retryChallenge ? "Retry Challenge" : "Exit Challenge";
-      if (player.dilation.active) return "Exit Dilation";
-      if (this.resetCelestial) return "Restart Reality";
-      return "Exit Reality";
+      if (Player.isInAnyChallenge) return player.options.retryChallenge ? "도전 재시도" : "도전 종료";
+      if (player.dilation.active) return "팽창 종료";
+      if (this.resetCelestial) return "현실 재시작";
+      return "현실 종료";
     },
     textClassObject() {
       return {
@@ -201,7 +201,7 @@ export default {
       :class="textClassObject()"
       @click="textClicked"
     >
-      You are currently in {{ challengeDisplay }}
+      당신은 현재 {{ challengeDisplay }} 있습니다
     </span>
     <FailableEcText v-if="isInFailableEC" />
     <span class="l-padding-line" />

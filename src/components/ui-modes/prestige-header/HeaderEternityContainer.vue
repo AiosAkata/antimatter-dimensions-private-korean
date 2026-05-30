@@ -39,10 +39,10 @@ export default {
       v-if="showEP"
       class="c-eternity-points"
     >
-      You have
+      당신은
       <span class="c-game-header__ep-amount">{{ format(eternityPoints, 2) }}</span>
-      {{ pluralize("Eternity Point", eternityPoints) }}.
-      <span v-if="showNextEP">(Next EP at {{ format(nextEP, 1) }} IP)</span>
+      {{ pluralize("영원 포인트", eternityPoints) }}를 가지고 있습니다.
+      <span v-if="showNextEP">(다음 영원 포인트는 {{ format(nextEP, 1) }} 무한 포인트)</span>
     </div>
     <UnlockInfinityDimButton />
     <EternityButton />

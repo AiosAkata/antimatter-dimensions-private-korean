@@ -19,8 +19,8 @@ export default {
   },
   computed: {
     enslavedText() {
-      return `${Enslaved.displayName} are helping you look for cracks in their Reality -
-        they can give you some advice in ${this.enslavedTimer}`;
+      return `${Enslaved.displayName}는 당신이 그들의 현실의 균열을 찾도록 도와주고 있습니다 -
+        그들은 ${this.enslavedTimer}에 조언을 할 수 있습니다`;
     }
   },
   methods: {
@@ -61,11 +61,11 @@ export default {
       this.isChallengePowerVisible = isChallengePowerVisible;
       if (isChallengePowerVisible) {
         const powerArray = [];
-        if (isC2Running) powerArray.push(`Production: ${formatPercents(player.chall2Pow, 2, 2)}`);
-        if (isC3Running) powerArray.push(`First dimension: ${formatX(player.chall3Pow, 3, 4)}`);
-        if (isIC6Running) powerArray.push(`Matter: Antimatter Dimensions /
+        if (isC2Running) powerArray.push(`생산: ${formatPercents(player.chall2Pow, 2, 2)}`);
+        if (isC3Running) powerArray.push(`첫 번째 차원: ${formatX(player.chall3Pow, 3, 4)}`);
+        if (isIC6Running) powerArray.push(`물질: 반물질 차원 /
           ${format(new Decimal(1).timesEffectOf(InfinityChallenge(6)), 2, 2)}`);
-        if (isIC8Running) powerArray.push(`Production: /
+        if (isIC8Running) powerArray.push(`생산: /
           ${format(new Decimal(1).timesEffectOf(InfinityChallenge(8)).reciprocal(), 2, 2)}`);
         this.challengePower = powerArray.join(", ");
       }
@@ -80,15 +80,15 @@ export default {
       {{ enslavedText }}
     </div>
     <div v-if="isInEffarig">
-      Game speed and multipliers are Dilated {{ effarigMultNerfText }}
+      게임 속도 및 배수는 팽창 {{ effarigMultNerfText }}
       <br>
-      Tickspeed is Dilated {{ effarigTickNerfText }}
+      틱속도는 팽창 {{ effarigTickNerfText }}
     </div>
     <div v-if="isInLaitela">
-      Entropy: {{ laitelaEntropy }} ({{ laitelaTimer }})
+      엔트로피: {{ laitelaEntropy }} ({{ laitelaTimer }})
     </div>
     <div v-if="isInMatterChallenge">
-      There is {{ format(matter, 2, 1) }} matter.
+      {{ format(matter, 2, 1) }} 물질이 있습니다.
     </div>
     <div v-if="isChallengePowerVisible">
       {{ challengePower }}

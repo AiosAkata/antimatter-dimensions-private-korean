@@ -107,7 +107,7 @@ export default {
 .o-pseudo-time-study {
   width: 2.7rem;
   height: 1.5rem;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Noto Sans KR", serif;
   font-size: 0.85rem;
   color: black;
   border: 0.15rem solid;

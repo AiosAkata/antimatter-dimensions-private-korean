@@ -109,13 +109,13 @@ export default {
       const glyphName = `${this.type.capitalize()}`;
       switch (this.type) {
         case "companion":
-          return "Companion Glyph";
+          return "동반자 글리프";
         case "cursed":
-          return "Cursed Glyph";
+          return "저주받은 글리프";
         case "reality":
-          return `Pure Glyph of ${glyphName}`;
+          return `순수 ${glyphName} 글리프`;
         default:
-          return `${this.rarityInfo.name} Glyph of ${glyphName}`;
+          return `${this.rarityInfo.name} ${glyphName} 글리프`;
       }
     },
     isLevelCapped() {
@@ -231,7 +231,7 @@ export default {
       const powerText = `${format(this.sacrificeReward, 2, 2)}`;
       const isCurrentAction = this.currentAction === "sacrifice";
       return `<span style="font-weight: ${isCurrentAction ? "bold" : ""};">
-              Sacrifice: ${powerText}
+              희생: ${powerText}
               </span>`;
     },
     refineText() {
@@ -239,18 +239,18 @@ export default {
       if (!AlchemyResource[this.type].isUnlocked) return "";
       let refinementText = `${format(this.uncappedRefineReward, 2, 2)} ${GLYPH_SYMBOLS[this.type]}`;
       if (this.uncappedRefineReward !== this.refineReward) {
-        refinementText += ` (Actual value due to cap: ${format(this.refineReward, 2, 2)} ${GLYPH_SYMBOLS[this.type]})`;
+        refinementText += ` (상한선으로 인한 실제 값: ${format(this.refineReward, 2, 2)} ${GLYPH_SYMBOLS[this.type]})`;
       }
       const isCurrentAction = this.currentAction === "refine";
       return `<span style="font-weight: ${isCurrentAction ? "bold" : ""};">
-              Refine: ${refinementText}
+              정제: ${refinementText}
               </span>`;
     },
     scoreText() {
       if (this.type === "companion" || this.type === "cursed" || this.type === "reality") return "";
       const showFilterScoreModes = [AUTO_GLYPH_SCORE.SPECIFIED_EFFECT, AUTO_GLYPH_SCORE.EFFECT_SCORE];
       if (!showFilterScoreModes.includes(this.scoreMode)) return "";
-      return `Score: ${format(AutoGlyphProcessor.filterValue(this.$parent.glyph), 1, 1)}`;
+      return `점수: ${format(AutoGlyphProcessor.filterValue(this.$parent.glyph), 1, 1)}`;
     }
   }
 };

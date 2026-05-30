@@ -55,12 +55,12 @@ export default {
       this.isAutoReleasing = player.celestials.enslaved.isAutoReleasing;
     },
     pauseButtonText() {
-      if (BlackHoles.arePaused && player.blackHoleNegative < 1) return "Uninvert BH";
-      if (BlackHoles.arePaused) return "Unpause BH";
+      if (BlackHoles.arePaused && player.blackHoleNegative < 1) return "블랙홀 반전해제";
+      if (BlackHoles.arePaused) return "블랙홀 재개";
       const accel = BlackHoles.unpauseAccelerationFactor;
-      if (accel !== 1) return `${formatPercents(accel, 1)} speed`;
-      if (player.blackHoleNegative < 1) return "Invert BH";
-      return "Pause BH";
+      if (accel !== 1) return `${formatPercents(accel, 1)} 속도`;
+      if (player.blackHoleNegative < 1) return "블랙홀 반전";
+      return "블랙홀 일시정지";
     },
     timeDisplayShort(ms) {
       return timeDisplayShort(ms);
@@ -92,10 +92,10 @@ export default {
         onclick="Enslaved.toggleStoreBlackHole()"
       >
         <span v-if="isCharging">
-          Stop Charging
+          충전 중지
         </span>
         <span v-else>
-          Charge
+          충전
         </span>
       </PrimaryButton>
     </span>
@@ -124,7 +124,7 @@ export default {
       <PrimaryToggleButton
         v-model="isAutoReleasing"
         class="o-primary-btn--buy-max c-primary-btn--black-hole-header"
-        label="Pulse:"
+        label="펄스:"
       />
     </span>
   </span>

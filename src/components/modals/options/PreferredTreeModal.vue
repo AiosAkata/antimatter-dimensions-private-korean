@@ -15,16 +15,16 @@ export default {
   computed: {
     dimensionOptions() {
       return {
-        "Antimatter": TIME_STUDY_PATH.ANTIMATTER_DIM,
-        "Infinity": TIME_STUDY_PATH.INFINITY_DIM,
-        "Time": TIME_STUDY_PATH.TIME_DIM,
+        "반물질": TIME_STUDY_PATH.ANTIMATTER_DIM,
+        "무한": TIME_STUDY_PATH.INFINITY_DIM,
+        "시간": TIME_STUDY_PATH.TIME_DIM,
       };
     },
     paceOptions() {
       return {
-        "Active": TIME_STUDY_PATH.ACTIVE,
-        "Passive": TIME_STUDY_PATH.PASSIVE,
-        "Idle": TIME_STUDY_PATH.IDLE
+        "활동": TIME_STUDY_PATH.ACTIVE,
+        "수동": TIME_STUDY_PATH.PASSIVE,
+        "유휴": TIME_STUDY_PATH.IDLE
       };
     },
     usePriority() {
@@ -54,12 +54,12 @@ export default {
     classList(name) {
       const pref = this.isPreferred(name);
       const types = {
-        "Antimatter": "antimatter-dim",
-        "Infinity": "infinity-dim",
-        "Time": "time-dim",
-        "Active": "active",
-        "Passive": "passive",
-        "Idle": "idle"
+        "반물질": "antimatter-dim",
+        "무한": "infinity-dim",
+        "시간": "time-dim",
+        "활동": "active",
+        "수동": "passive",
+        "유휴": "idle"
       };
       return [
         "o-time-study-selection-btn",
@@ -73,7 +73,7 @@ export default {
 
 <template>
   <ModalWrapperChoice @confirm="confirmPrefs">
-    <h2>Dimension Split Preference</h2>
+    <h2>차원 분할 선호도</h2>
     <div class="l-modal-split-preferences">
       <button
         v-for="(id, name) in dimensionOptions"
@@ -93,7 +93,7 @@ export default {
       </button>
     </div>
     <br>
-    <h2>Pace Split Preference</h2>
+    <h2>페이스 분할 선호도</h2>
     <div class="l-modal-split-preferences">
       <button
         v-for="(id, name) in paceOptions"

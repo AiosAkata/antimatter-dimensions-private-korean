@@ -12,10 +12,8 @@ export default {
     templates: () => GameDatabase.reality.automator.templates.scripts,
     pasteText() {
       return this.isBlock
-        ? `create a special block you can drag into your Automator where you would like it to be placed. It will then
-          automatically fill in all of the individual blocks needed for the template`
-        : `copy the template as text onto your clipboard. You can directly paste the template text into your Automator
-          wherever you would like it`;
+        ? `오토메이터로 드래그할 수 있는 특수 블록을 생성합니다. 배치하고 싶은 위치에 끌어다 놓으면 템플릿에 필요한 모든 개별 블록이 자동으로 채워집니다.`
+        : `템플릿을 텍스트로 클립보드에 복사합니다. 원하는 위치에 템플릿 텍스트를 오토메이터에 직접 붙여넣을 수 있습니다.`;
     }
   },
   methods: {
@@ -56,19 +54,16 @@ export default {
 
 <template>
   <div>
-    These templates will let you do some more common things within the Automator. They may be slightly slower than
-    manually-written scripts, but don't require you to have any previous programming experience to use. Clicking any
-    of these buttons will open up a prompt with some input fields, which will generate a template you can place into
-    your Automator.
+    이 템플릿을 사용하면 오토메이터 내에서 더 일반적인 작업을 수행할 수 있습니다. 수동으로 작성한 스크립트보다 약간 느릴 수 있지만 사용하기 위해 이전 프로그래밍 경험이 필요하지 않습니다. 이 버튼 중 하나를 클릭하면 입력 필드가 있는 프롬프트가 열려서 오토메이터에 배치할 템플릿이 생성됩니다.
     <button
       v-for="template in templates"
       :key="template.name"
       class="o-primary-btn c-automator-docs-template--button l-automator__button"
       @click="showModal(template)"
     >
-      Template: {{ template.name }}
+      템플릿: {{ template.name }}
     </button>
-    Since you are currently in the {{ isBlock ? "Block" : "Text" }} editor, this panel will {{ pasteText }}.
+    현재 {{ isBlock ? "블록" : "텍스트" }} 편집기를 사용 중이므로 이 패널은 {{ pasteText }}.
     <br>
     <br>
     <draggable

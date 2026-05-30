@@ -121,9 +121,9 @@ export default {
     },
     infoArray(run, index) {
       let name;
-      if (index === 0) name = "Last";
-      else if (index === 10) name = "Average";
-      else name = `${formatInt(index + 1)} ago`;
+      if (index === 0) name = "최근";
+      else if (index === 10) name = "평균";
+      else name = `${formatInt(index + 1)}회 전`;
 
       const cells = [name, this.gameTime(run)];
       if (this.hasRealTime) cells.push(this.realTime(run));
@@ -145,10 +145,10 @@ export default {
       return cells;
     },
     infoCol() {
-      const cells = ["Run", this.hasRealTime ? "Game Time" : "Time in Run"];
-      if (this.hasRealTime) cells.push("Real Time");
+      const cells = ["기록", this.hasRealTime ? "게임 시간" : "진행 시간"];
+      if (this.hasRealTime) cells.push("실제 시간");
       cells.push(...this.resourceTitles);
-      if (this.hasChallenges) cells.push("Challenge");
+      if (this.hasChallenges) cells.push("도전");
 
       for (let index = 0; index < this.layer.extra?.length && cells.length <= this.longestRow; index++) {
         if (!this.layer.showExtra[index]()) continue;
@@ -182,8 +182,8 @@ export default {
       const time = run[1];
       const rpm = ratePerMinute(amount, time);
       return Decimal.lt(rpm, 1)
-        ? `${format(Decimal.mul(rpm, 60), 2, 2)} per hour`
-        : `${format(rpm, 2, 2)} per min`;
+        ? `${format(Decimal.mul(rpm, 60), 2, 2)} / 시간`
+        : `${format(rpm, 2, 2)} / 분`;
     },
     challengeText(run) {
       // Special-case Nameless reality in order to keep this column small and not force a linebreak
@@ -258,11 +258,11 @@ export default {
           class="c-empty-row"
         >
           <i v-if="index === 10">
-            An average cannot be calculated with no {{ plural }}.
+            {{ plural }}이 없어서 평균을 계산할 수 없습니다.
           </i>
           <i v-else>
-            You have not done {{ formatInt(index + 1) }}
-            {{ index === 0 ? singular : plural }} yet.
+            아직 {{ formatInt(index + 1) }}
+            {{ index === 0 ? singular : plural }}을 하지 않았습니다.
           </i>
         </span>
         <span

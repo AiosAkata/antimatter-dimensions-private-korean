@@ -76,10 +76,10 @@ export default {
       return !this.isRecent(this.lastNotEmptyAt);
     },
     disabledText() {
-      if (!this.resource.isBase) return `Total effect inactive, disabled, or reduced to ${formatX(1)}`;
+      if (!this.resource.isBase) return `전체 효과 비활성화, 비활성화 또는 ${formatX(1)}로 감소`;
       return Decimal.eq(this.resource.mult, 0)
-        ? `You cannot gain this resource (prestige requirement not reached)`
-        : `You have no multipliers for this resource (will gain ${format(1)} on prestige)`;
+        ? `이 자원을 얻을 수 없음 (명성 요구사항 미충족)`
+        : `이 자원의 배수가 없음 (명성 시 ${format(1)}을 얻음)`;
     },
     // IC4 is the first time the player sees a power-based effect, not counting how infinity power is handled.
     // This doesn't need to be reactive because completing IC4 for the first time forces a tab switch
@@ -386,14 +386,14 @@ export default {
           <PrimaryToggleButton
             v-if="hasSeenPowers && allowPowerToggle"
             v-model="replacePowers"
-            v-tooltip="'Change Display for Power effects'"
+            v-tooltip="'지수 효과 표시 변경'"
             off="^N"
             on="×N"
             class="o-primary-btn c-change-display-btn"
           />
           <i
             v-if="groups.length > 1"
-            v-tooltip="'Change Multiplier Grouping'"
+            v-tooltip="'배수 그룹화 변경'"
             class="o-primary-btn c-change-display-btn fas fa-arrows-rotate"
             @click="changeGroup"
           />
@@ -403,7 +403,7 @@ export default {
         v-if="isEmpty"
         class="c-no-effect"
       >
-        No Active Effects
+        활성 효과 없음
         <br>
         <br>
         {{ disabledText }}
@@ -444,15 +444,10 @@ export default {
         class="c-no-effect"
       >
         <div>
-          "Base AD Production" is the amount of Antimatter that you would be producing with your current AD upgrades
-          as if you had waited a fixed amount of time ({{ formatInt(10) }}-{{ formatInt(40) }} seconds depending on
-          your AD count) after a Sacrifice. This may misrepresent your actual production if your ADs have been
-          producing for a while, but the relative mismatch will become smaller as you progress further in the game
-          and numbers become larger.
+          "기본 AD 생산"은 희생 후 고정된 시간(AD 개수에 따라 {{ formatInt(10) }}-{{ formatInt(40) }} 초)을 기다린 것처럼 현재 AD 업그레이드로 생산하는 반물질의 양입니다. AD가 한동안 생산해 온 경우 실제 생산을 잘못 표시할 수 있지만, 게임을 더 진행하고 숫자가 커질수록 상대적 불일치는 작아질 것입니다.
         </div>
         <div v-if="inNC12">
-          The breakdown in this tab within Normal Challenge 12 may be inaccurate for some entries, and might count
-          extra multipliers which apply to all Antimatter Dimensions rather than just the ones which are displayed.
+          일반 도전 12 내에서 이 탭의 분석은 일부 항목에 대해 부정확할 수 있으며, 표시되는 것들뿐만 아니라 모든 반물질 차원에 적용되는 추가 배수를 계산할 수 있습니다.
         </div>
       </div>
     </div>

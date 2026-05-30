@@ -23,30 +23,30 @@ export default {
   },
   computed: {
     formatMachinesGained() {
-      if (this.machinesGained.gt(0)) return `Machines gained: ${format(this.machinesGained, 2)}`;
-      return "No Machines gained";
+      if (this.machinesGained.gt(0)) return `획득한 현실 기계: ${format(this.machinesGained, 2)}`;
+      return "획득한 현실 기계 없음";
     },
     formatMachineStats() {
       if (!PlayerProgress.realityUnlocked() && this.nextMachineEP.gt("1e8000")) {
-        return `(Capped this Reality!)`;
+        return `(이 현실에서 한계 도달!)`;
       }
       if (this.machinesGained.gt(0) && this.machinesGained.lt(100)) {
-        return `(Next at ${format(this.nextMachineEP, 2)} EP)`;
+        return `(다음은 ${format(this.nextMachineEP, 2)} 영원 포인트)`;
       }
       if (this.machinesGained.eq(0) && this.newIMCap === 0) {
-        return `(Projected: ${format(this.projectedRM, 2)} RM)`;
+        return `(예상: ${format(this.projectedRM, 2)} RM)`;
       }
       if (this.newIMCap !== 0) {
-        return `(iM Cap: ${formatMachines(0, this.newIMCap)})`;
+        return `(iM 한계: ${formatMachines(0, this.newIMCap)})`;
       }
       if (this.machinesGained.lt(Number.MAX_VALUE)) {
-        return `(${format(this.machinesGained.divide(this.realityTime), 2, 2)} RM/min)`;
+        return `(${format(this.machinesGained.divide(this.realityTime), 2, 2)} RM/분)`;
       }
       return "";
     },
     formatGlyphLevel() {
-      if (this.glyphLevel >= 10000) return `Glyph level: ${formatInt(this.glyphLevel)}`;
-      return `Glyph level: ${formatInt(this.glyphLevel)} (${this.nextGlyphPercent} to next)`;
+      if (this.glyphLevel >= 10000) return `글리프 레벨: ${formatInt(this.glyphLevel)}`;
+      return `글리프 레벨: ${formatInt(this.glyphLevel)} (다음까지 ${this.nextGlyphPercent})`;
     },
     showShardsRate() {
       return this.currentShardsRate;
@@ -125,7 +125,7 @@ export default {
     },
     formatThresholdText(condition, threshold, resourceName) {
       if (condition) return "";
-      return `(${format(threshold, 2, 2)} ${resourceName} to improve)`;
+      return `(개선하려면 ${format(threshold, 2, 2)} ${resourceName} 필요)`;
     },
     // Make the button have a visual animation if Realitying will give a reward
     hasSpecialReward() {
@@ -149,27 +149,27 @@ export default {
       <div class="l-reality-button__contents">
         <template v-if="canReality">
           <div class="c-reality-button__header">
-            Make a new Reality
+            새 현실 만들기
           </div>
           <div>{{ formatMachinesGained }} {{ formatMachineStats }}</div>
           <div>{{ formatGlyphLevel }}</div>
         </template>
         <template v-else-if="hasRealityStudy">
-          <div>Get {{ format("1e4000") }} Eternity Points to unlock a new Reality</div>
+          <div>새 현실을 해금하려면 {{ format("1e4000") }} 영원 포인트를 획득해야 합니다</div>
         </template>
         <template v-else>
-          <div>Purchase the study in the Eternity tab to unlock a new Reality</div>
+          <div>영원 탭에서 연구를 구매하여 새 현실을 해금하세요</div>
         </template>
         <div
           v-if="canReality"
           class="infotooltiptext"
         >
-          <div>Other resources gained:</div>
-          <div>{{ quantifyInt("Perk Point", ppGained) }}</div>
+          <div>획득한 다른 자원:</div>
+          <div>{{ quantifyInt("특권 포인트", ppGained) }}</div>
           <div v-if="shardsGained !== 0">
-            {{ shardsGainedText }} ({{ format(currentShardsRate, 2) }}/min)
+            {{ shardsGainedText }} ({{ format(currentShardsRate, 2) }}/분)
             <br>
-            Peak: {{ format(bestShardRate, 2) }}/min at {{ format(bestShardRateVal, 2) }} RS
+            최고: {{ format(bestShardRate, 2) }}/분 ({{ format(bestShardRateVal, 2) }} RS)
           </div>
           <div
             v-for="(celestialInfo, i) in celestialRunText"

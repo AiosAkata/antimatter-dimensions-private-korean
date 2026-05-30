@@ -197,20 +197,16 @@ export const automatorBlocksMap = automatorBlocks.mapToObject(b => b.cmd, b => b
     draggable=".draggable-blocks"
   >
     <p>
-      Drag and drop these blocks to the area on the left! The blocks have names matching the commands in the reference
-      page, but may change appearance after being placed to describe what they do in a more natural-sounding manner.
-      If a block changes in this way, the alternate text will be shown as a tooltip when going to drag it over.
+      이 블록들을 왼쪽 영역으로 드래그 앤 드롭하세요! 블록들은 참조 페이지의 명령과 일치하는 이름을 가지고 있지만 배치 후에 더 자연스러운 방식으로 설명하기 위해 모양이 바뀔 수 있습니다.
+      블록이 이런 방식으로 변경되면 대체 텍스트가 드래그할 때 도구 설명으로 표시됩니다.
     </p>
     <br>
     <p>
-      Inputs with a <span class="c-automator-input-optional">brown</span> color are optional, while inputs with a
-      <span class="c-automator-input-required">teal</span> color are required.
-      <span class="c-automator-block-row-error">Red</span> inputs are causing errors and must be changed before the
-      script can be run. For more details, check the Scripting Information pane.
+      <span class="c-automator-input-optional">갈색</span> 입력은 선택사항이고 <span class="c-automator-input-required">청록색</span> 입력은 필수입니다.
+      <span class="c-automator-block-row-error">빨간색</span> 입력은 오류를 발생시키며 스크립트를 실행하기 전에 변경되어야 합니다. 자세한 내용은 스크립팅 정보 패널을 확인하세요.
     </p>
     <p>
-      Options in dropdown menus which start with a * will be replaced with a text box. This can be turned back into a
-      dropdown by clicking the <i class="fa-solid fa-circle-xmark" /> on the right side of the text box.
+      * 로 시작하는 드롭다운 메뉴의 옵션은 텍스트 상자로 대체됩니다. 텍스트 상자 오른쪽의 <i class="fa-solid fa-circle-xmark" /> 를 클릭하여 다시 드롭다운으로 변경할 수 있습니다.
     </p>
     <draggable
       class="block-container"
@@ -229,7 +225,7 @@ export const automatorBlocksMap = automatorBlocks.mapToObject(b => b.cmd, b => b
       </div>
     </draggable>
     <p>
-      Note: Blocks and their contents count towards the character limits as if the command was typed in text mode.
+      참고: 블록과 그 내용은 명령이 텍스트 모드에 입력된 것처럼 문자 제한에 포함됩니다.
     </p>
   </draggable>
 </template>

@@ -62,13 +62,13 @@ export default {
       const num = this.infinity.count;
       return num.gt(0)
         ? `${this.formatDecimalAmount(num)} ${pluralize("Infinity", num.floor())}`
-        : "no Infinities";
+        : "무한이 없음";
     },
     eternityCountString() {
       const num = this.eternity.count;
       return num.gt(0)
         ? `${this.formatDecimalAmount(num)} ${pluralize("Eternity", num.floor())}`
-        : "no Eternities";
+        : "영원이 없음";
     },
     fullGameCompletions() {
       return player.records.fullGameCompletions;
@@ -172,10 +172,10 @@ export default {
   <div class="c-stats-tab">
     <div>
       <PrimaryButton onclick="Modal.catchup.show(0)">
-        View Content Summary
+        내용 요약 보기
       </PrimaryButton>
       <div class="c-stats-tab-title c-stats-tab-general">
-        General
+        일반
       </div>
       <div class="c-stats-tab-general">
         <div>You have made a total of {{ format(totalAntimatter, 2, 1) }} antimatter.</div>
@@ -228,7 +228,7 @@ export default {
       class="c-stats-tab-subheader c-stats-tab-general"
     >
       <div class="c-stats-tab-title c-stats-tab-infinity">
-        Infinity
+        무한
       </div>
       <div>
         You have {{ infinityCountString }}<span v-if="eternity.isUnlocked"> this Eternity</span>.
@@ -261,7 +261,7 @@ export default {
       class="c-stats-tab-subheader c-stats-tab-general"
     >
       <div class="c-stats-tab-title c-stats-tab-eternity">
-        Eternity
+        영원
       </div>
       <div>
         You have {{ eternityCountString }}<span v-if="reality.isUnlocked"> this Reality</span>.
@@ -298,14 +298,14 @@ export default {
       class="c-stats-tab-subheader c-stats-tab-general"
     >
       <div :class="realityClassObject()">
-        {{ isDoomed ? "Doomed Reality" : "Reality" }}
+        {{ isDoomed ? "파멸한 현실" : "현실" }}
       </div>
       <div>You have {{ quantifyInt("Reality", reality.count) }}.</div>
       <div>Your fastest game-time Reality was {{ reality.best.toStringShort() }}.</div>
       <div>Your fastest real-time Reality was {{ reality.bestReal.toStringShort() }}.</div>
       <div :class="{ 'c-stats-tab-doomed' : isDoomed }">
         You have spent {{ reality.this.toStringShort() }}
-        in this {{ isDoomed ? "Armageddon" : "Reality" }}.
+        in this {{ isDoomed ? "아마겟돈" : "현실" }}.
         ({{ reality.thisReal.toStringShort() }} real time)
       </div>
       <div

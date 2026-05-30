@@ -31,17 +31,17 @@ export default {
 <template>
   <div>
     <div class="l-header">
-      You have {{ formatInt(totalPoints) }} / {{ formatInt(pointsForAutomator) }}
-      Automator Points towards unlocking the Automator.
+      오토메이터 잠금 해제를 향해 {{ formatInt(totalPoints) }} / {{ formatInt(pointsForAutomator) }}
+      오토메이터 포인트가 있습니다.
       <br>
-      You gain Automator Points from the following sources:
+      다음 출처에서 오토메이터 포인트를 획득합니다:
     </div>
     <div class="l-automator-points-list-container">
       <div class="l-automator-points-list-side-col c-automator-points-list-col">
         <span class="c-automator-points-list-symbol fas fa-project-diagram" />
         <span class="c-automator-points-list-ap--large">{{ formatInt(fromPerks) }} AP</span>
         <span class="l-large-text">
-          Perks
+          특성
         </span>
         <div
           v-for="perk in perkSources"
@@ -79,7 +79,7 @@ export default {
         <span class="c-automator-points-list-symbol fas fa-arrow-up" />
         <span class="c-automator-points-list-ap--large">{{ formatInt(fromUpgrades) }} AP</span>
         <span class="l-large-text">
-          Reality Upgrades
+          현실 업그레이드
         </span>
         <div
           v-for="upgrade in upgradeSources"
@@ -96,14 +96,14 @@ export default {
     </div>
     <br>
     <div>
-      The Automator allows (amongst other things) buying full Time Study Trees, entering Eternity Challenges,
-      or starting Dilation.
+      오토메이터는 (특히) 전체 시간 연구 트리 구매, 영원 도전 입장
+      또는 시간 팽창 시작을 허용합니다.
       <br>
-      It can also force prestige events on certain conditions independently from your Autobuyers or modify
-      some of your Autobuyer settings.
+      또한 자동구매기와 독립적으로 특정 조건에서 명성 이벤트를 강제하거나
+      자동구매기 설정을 수정할 수 있습니다.
       <br>
-      The speed of the Automator gradually increases as you get more Realities. If unlocked right now,
-      it would run {{ format(1000 / automatorInterval, 2, 2) }} commands per real-time second.
+      오토메이터의 속도는 현실을 더 많이 획득할수록 점진적으로 증가합니다. 지금 잠금 해제된다면
+      실시간 초당 {{ format(1000 / automatorInterval, 2, 2) }}개 명령이 실행됩니다.
     </div>
   </div>
 </template>

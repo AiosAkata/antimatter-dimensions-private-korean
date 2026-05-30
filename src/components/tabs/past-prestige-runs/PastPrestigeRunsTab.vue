@@ -47,13 +47,13 @@ export default {
     resourceText() {
       switch (this.resourceType) {
         case RECENT_PRESTIGE_RESOURCE.ABSOLUTE_GAIN:
-          return "total resource gain";
+          return "총 자원 획득";
         case RECENT_PRESTIGE_RESOURCE.RATE:
-          return "resource gain rate";
+          return "자원 획득 속도";
         case RECENT_PRESTIGE_RESOURCE.CURRENCY:
-          return "prestige currency";
+          return "승천 화폐";
         case RECENT_PRESTIGE_RESOURCE.PRESTIGE_COUNT:
-          return "prestige count";
+          return "승천 횟수";
         default:
           throw new Error("Unrecognized Statistics tab resource type");
       }
@@ -78,7 +78,7 @@ export default {
         class="o-primary-btn o-primary-btn--subtab-option"
         @click="cycleButton()"
       >
-        Showing {{ resourceText }}
+        표시 중: {{ resourceText }}
       </button>
     </div>
     <PastPrestigeRunsContainer

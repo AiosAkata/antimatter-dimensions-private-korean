@@ -58,7 +58,7 @@ export default {
     },
     spectateText() {
       return this.isSpectating
-        ? "Numbers here are unaffected by END so that you can see your final records."
+        ? "여기의 수치는 END의 영향을 받지 않으므로 최종 기록을 볼 수 있습니다."
         : null;
     }
   },
@@ -82,9 +82,9 @@ export default {
 
 <template>
   <div class="c-previous-runs">
-    <b>You have completed {{ quantify("speedrun", numRuns, 0, 0, x => x) }} prior to this playthrough.</b>
-    <b>Statistics of previous runs are below, mouseover icons for more details.</b>
-    <b>Click the magnifying glass to compare the milestones on a particular run to this run.</b>
+    <b>이 플레이스루 이전에 {{ quantify("speedrun", numRuns, 0, 0, x => x) }}을 완료했습니다.</b>
+    <b>이전 기록의 통계는 아래에 있으며, 아이콘에 마우스를 가져가면 더 자세한 정보를 볼 수 있습니다.</b>
+    <b>돋보기를 클릭하여 특정 기록의 마일스톤을 이 기록과 비교하세요.</b>
     <b>{{ spectateText }}</b>
     <br>
     <div
@@ -96,7 +96,7 @@ export default {
         :class="{ 'o-primary-btn--disabled' : runPage === 0 }"
         @click="changePage(-1)"
       />
-      Showing runs {{ 10 * runPage + 1 }} to {{ 10 * (runPage + 1) }} ({{ highestIndex }} total runs)
+      기록 {{ 10 * runPage + 1 }}에서 {{ 10 * (runPage + 1) }} (총 {{ highestIndex }}개 기록)
       <PrimaryButton
         class="o-primary-btn--subtab-option fas fa-arrow-right"
         :class="{ 'o-primary-btn--disabled' : runPage + 1 > highestIndex / 10 }"
@@ -128,16 +128,16 @@ export default {
     <br>
     <div class="c-legend">
       <div class="c-legend-cell">
-        <span class="o-box l-milestone-none" /> Not reached this run
+        <span class="o-box l-milestone-none" /> 이번 기록에서 도달하지 않음
       </div>
       <div class="c-legend-cell">
-        <span class="o-box l-milestone-slow" /> Slower than comparison
+        <span class="o-box l-milestone-slow" /> 비교 대상보다 느림
       </div>
       <div class="c-legend-cell">
-        <span class="o-box l-milestone-fast" /> Faster than comparison
+        <span class="o-box l-milestone-fast" /> 비교 대상보다 빠름
       </div>
       <div class="c-legend-cell">
-        <span class="o-box l-milestone-fastest" /> Faster than best
+        <span class="o-box l-milestone-fastest" /> 최고 기록보다 빠름
       </div>
     </div>
     <div class="l-speedrun-milestone-tab">

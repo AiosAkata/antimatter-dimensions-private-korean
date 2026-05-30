@@ -23,7 +23,7 @@ export default {
       return this.newestFirst ? sorted.reverse() : sorted;
     },
     clearTooltip() {
-      return `Clear all entries (Max. ${this.maxEntries})`;
+      return `모든 항목 지우기 (최대. ${this.maxEntries})`;
     },
     buttonClassObject() {
       return "c-automator-docs--button fas";
@@ -117,24 +117,22 @@ const AUTOMATOR_EVENT_TIMESTAMP_MODE = {
 <template>
   <div class="c-automator-docs-page">
     <div>
-      This panel keeps a running event log of all the commands which the automator has recently executed, with a little
-      extra info on some of the commands. It may be useful to help you find problems if you find your automator is
-      getting stuck in certain spots.
+      이 패널은 오토메이터가 최근에 실행한 모든 명령의 실행 로그를 보관합니다. 일부 명령에 대한 추가 정보가 있습니다. 오토메이터가 특정 위치에서 멈춰 있는 경우 문제를 찾는 데 도움이 될 수 있습니다.
       <br>
       <br>
-      While your settings are kept within your savefile, the actual events are not and will disappear on refresh.
+      설정은 저장 파일에 유지되지만 실제 이벤트는 유지되지 않으므로 새로고침하면 사라집니다.
       <br>
       <br>
-      <b>Entry Sorting:</b>
+      <b>항목 정렬:</b>
       <button
-        v-tooltip="'Oldest results first'"
+        v-tooltip="'가장 오래된 결과 먼저'"
         :style="sortStyle(!newestFirst)"
         :class="buttonClassObject"
         class="fa-angle-down"
         @click="newestFirst = false"
       />
       <button
-        v-tooltip="'Newest results first'"
+        v-tooltip="'가장 최근 결과 먼저'"
         :style="sortStyle(newestFirst)"
         :class="buttonClassObject"
         class="fa-angle-up"
@@ -147,14 +145,14 @@ const AUTOMATOR_EVENT_TIMESTAMP_MODE = {
         @click="clearLog"
       />
       <button
-        v-tooltip="'Clear event log every Reality'"
+        v-tooltip="'현실마다 이벤트 로그 지우기'"
         :style="clearRealityStyle()"
         :class="buttonClassObject"
         class="fa-eraser"
         @click="clearOnReality = !clearOnReality"
       />
       <button
-        v-tooltip="'Clear event log on script restart'"
+        v-tooltip="'스크립트 재시작 시 이벤트 로그 지우기'"
         :style="clearRestartStyle()"
         :class="buttonClassObject"
         class="fa-backspace"
@@ -162,37 +160,37 @@ const AUTOMATOR_EVENT_TIMESTAMP_MODE = {
       />
     </div>
     <div>
-      <b>Timestamp style:</b>
+      <b>타임스탬프 스타일:</b>
       <button
-        v-tooltip="'No timestamps'"
+        v-tooltip="'타임스탬프 없음'"
         :style="timestampStyle('DISABLED')"
         :class="buttonClassObject"
         class="fa-ban"
         @click="setTimestampMode('DISABLED')"
       />
       <button
-        v-tooltip="'Current time this Reality'"
+        v-tooltip="'현실에서의 현재 시간'"
         :style="timestampStyle('THIS_REALITY')"
         :class="buttonClassObject"
         class="fa-stopwatch"
         @click="setTimestampMode('THIS_REALITY')"
       />
       <button
-        v-tooltip="'Time elapsed since event'"
+        v-tooltip="'이벤트 이후 경과 시간'"
         :style="timestampStyle('RELATIVE_NOW')"
         :class="buttonClassObject"
         class="fa-clock"
         @click="setTimestampMode('RELATIVE_NOW')"
       />
       <button
-        v-tooltip="'Time since last event'"
+        v-tooltip="'마지막 이벤트 이후 시간'"
         :style="timestampStyle('RELATIVE_PREV')"
         :class="buttonClassObject"
         class="fa-arrow-left"
         @click="setTimestampMode('RELATIVE_PREV')"
       />
       <button
-        v-tooltip="'Date and time'"
+        v-tooltip="'날짜 및 시간'"
         :style="timestampStyle('DATE_TIME')"
         :class="buttonClassObject"
         class="fa-user-clock"
@@ -203,9 +201,9 @@ const AUTOMATOR_EVENT_TIMESTAMP_MODE = {
       v-for="(event, id) in events"
       :key="id"
     >
-      <b>Line {{ event.line }}{{ timestamp(event) }}:</b>
+      <b>{{ event.line }}번 줄{{ timestamp(event) }}:</b>
       <button
-        v-tooltip="'Jump to line'"
+        v-tooltip="'줄로 이동'"
         :class="buttonClassObject"
         class="fa-arrow-circle-right"
         @click="scrollToLine(event.line)"

@@ -33,16 +33,10 @@ export default {
 
 <template>
   <div class="l-panel-padding">
-    This page lets you import and export scripts with additional data attached; the encoded text will also include data
-    for any Time Study presets or constants used within the script. This will allow you to more easily transfer working
-    scripts between different save files, but you may have to overwrite existing data in the process due to limited
-    space for study presets and constants. Data exported from this page is also imported in the same way that single
-    script data is imported.
+    이 페이지에서는 추가 데이터가 첨부된 스크립트를 가져오고 내보낼 수 있습니다. 인코딩된 텍스트에는 스크립트 내에서 사용되는 모든 시간 연구 프리셋 또는 상수의 데이터도 포함됩니다. 이를 통해 다양한 저장 파일 간에 작동하는 스크립트를 더 쉽게 전송할 수 있지만 연구 프리셋 및 상수의 제한된 공간으로 인해 프로세스 중에 기존 데이터를 덮어써야 할 수 있습니다. 이 페이지에서 내보낸 데이터는 단일 스크립트 데이터를 가져오는 것과 동일한 방식으로 가져옵니다.
     <br>
     <br>
-    Note: Any mentions of constant names or full study-buying commands within comments will also be counted as being
-    "used" within a script. This is intentional, as the comment is assumed to be indicative of what the script itself
-    is attempting to do with presets or constants.
+    참고: 주석 내의 상수 이름 또는 전체 연구 구매 명령의 모든 언급도 스크립트 내에서 "사용됨"으로 계산됩니다. 이는 의도적입니다. 주석은 스크립트가 프리셋 또는 상수로 수행하려는 작업을 나타내는 것으로 가정하기 때문입니다.
     <br>
     <br>
     <div

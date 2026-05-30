@@ -3,18 +3,18 @@ import { createEntryInfo } from "./breakdown-entry-info";
 import MultiplierBreakdownEntry from "./MultiplierBreakdownEntry";
 
 const MULT_TAB_OPTIONS = [
-  { id: 0, key: "AM", text: "Antimatter Production" },
-  { id: 1, key: "tickspeed", text: "Tickspeed" },
-  { id: 2, key: "AD", text: "Antimatter Dimensions" },
-  { id: 3, key: "IP", text: "Infinity Points" },
-  { id: 4, key: "ID", text: "Infinity Dimensions" },
-  { id: 5, key: "infinities", text: "Infinities" },
-  { id: 6, key: "replicanti", text: "Replicanti Speed" },
-  { id: 7, key: "EP", text: "Eternity Points" },
-  { id: 8, key: "TD", text: "Time Dimensions" },
-  { id: 9, key: "eternities", text: "Eternities" },
-  { id: 10, key: "DT", text: "Dilated Time" },
-  { id: 11, key: "gamespeed", text: "Game Speed" },
+  { id: 0, key: "AM", text: "반물질 생산" },
+  { id: 1, key: "tickspeed", text: "틱 속도" },
+  { id: 2, key: "AD", text: "반물질 차원" },
+  { id: 3, key: "IP", text: "무한 포인트" },
+  { id: 4, key: "ID", text: "무한 차원" },
+  { id: 5, key: "infinities", text: "무한" },
+  { id: 6, key: "replicanti", text: "복제체 속도" },
+  { id: 7, key: "EP", text: "영원 포인트" },
+  { id: 8, key: "TD", text: "시간 차원" },
+  { id: 9, key: "eternities", text: "영원" },
+  { id: 10, key: "DT", text: "확장된 시간" },
+  { id: 11, key: "gamespeed", text: "게임 속도" },
 ];
 
 export default {
@@ -95,14 +95,11 @@ export default {
         :is-root="true"
       />
       <div class="c-multiplier-tab-text-line">
-        Note: Entries are only expandable if they contain multiple sources which can be different values.
-        For example, any effects which affect all Dimensions of any type equally will not expand into a
-        list of eight identical numbers.
+        참고: 항목은 서로 다른 값을 가질 수 있는 여러 원본을 포함하는 경우에만 확장 가능합니다.
+        예를 들어, 모든 종류의 차원에 동등하게 영향을 미치는 효과는 8개의 동일한 숫자 목록으로 확장되지 않습니다.
         <br>
         <b>
-          Some entries may cause lag if expanded out fully. Resizing happens over 200 ms (instead of instantly)
-          in order to reduce possible adverse effects due to photosensitivity. This may cause some visual weirdness
-          after prestige events.
+          일부 항목은 완전히 확장되면 렉을 유발할 수 있습니다. 광감성 관련 부작용을 줄이기 위해 크기 조정이 즉시가 아닌 200ms에 걸쳐 발생합니다. 이는 명성 이벤트 이후에 약간의 시각적 이상을 야기할 수 있습니다.
         </b>
       </div>
     </div>

@@ -12,16 +12,16 @@ export default {
   },
   computed: {
     text() {
-      const dimensionText = `a new ${this.hasIPUnlock ? "type of Dimension" : "Infinity Dimension"}.`;
+      const dimensionText = `새로운 ${this.hasIPUnlock ? "차원 유형" : "무한 차원"}.`;
       if (this.canUnlock) {
-        return `Unlock ${dimensionText}`;
+        return `${dimensionText} 해금`;
       }
       const amDisplay = format(this.amRequirement);
       const ipDisplay = format(this.ipRequirement);
       if (this.hasIPUnlock) {
-        return `Reach ${ipDisplay} Infinity Points and ${amDisplay} antimatter to unlock ${dimensionText}`;
+        return `${dimensionText} 해금하려면 ${ipDisplay} 무한 포인트와 ${amDisplay} 반물질에 도달해야 합니다`;
       }
-      return `Reach ${amDisplay} antimatter to unlock ${dimensionText}`;
+      return `${dimensionText} 해금하려면 ${amDisplay} 반물질에 도달해야 합니다`;
     },
     buttonClassObject() {
       return {

@@ -38,9 +38,9 @@ export default {
     class="c-prestige-button-container"
   >
     <div class="c-infinity-points">
-      You have
+      당신은
       <span class="c-game-header__ip-amount">{{ format(infinityPoints, 2) }}</span>
-      {{ pluralize("Infinity Point", infinityPoints) }}.
+      {{ pluralize("무한 포인트", infinityPoints) }}를 가지고 있습니다.
       <span
         v-if="isTesseractUnlocked"
         v-html="tesseractText"

@@ -37,10 +37,10 @@ export default {
       return `Notation: ${this.notation}`;
     },
     sidebarLabel() {
-      return `Sidebar (Modern UI): ${this.sidebarResource}`;
+      return `사이드바 (현대식 UI): ${this.sidebarResource}`;
     },
     UILabel() {
-      return `UI: ${this.$viewModel.newUI ? "Modern" : "Classic"}`;
+      return `UI: ${this.$viewModel.newUI ? "현대식" : "클래식"}`;
     }
   },
   watch: {
@@ -77,7 +77,7 @@ export default {
           class="o-primary-btn--option"
           onclick="Modal.newsOptions.show();"
         >
-          Open News Options
+          뉴스 옵션 열기
         </OptionsButton>
       </div>
       <div class="l-options-grid__row">
@@ -103,7 +103,7 @@ export default {
           class="o-primary-btn--option"
           onclick="Modal.notation.show();"
         >
-          Open Exponent Notation Options
+          지수 표기법 옵션 열기
         </OptionsButton>
       </div>
       <div class="l-options-grid__row">
@@ -111,19 +111,19 @@ export default {
           class="o-primary-btn--option"
           onclick="Modal.animationOptions.show();"
         >
-          Open Animation Options
+          애니메이션 옵션 열기
         </OptionsButton>
         <OptionsButton
           class="o-primary-btn--option"
           onclick="Modal.infoDisplayOptions.show()"
         >
-          Open Info Display Options
+          정보 표시 옵션 열기
         </OptionsButton>
         <OptionsButton
           class="o-primary-btn--option"
           onclick="Modal.awayProgressOptions.show()"
         >
-          Open Away Progress Options
+          자리 비움 진행 옵션 열기
         </OptionsButton>
       </div>
       <div class="l-options-grid__row">
@@ -131,12 +131,12 @@ export default {
           class="o-primary-btn--option"
           onclick="Modal.hiddenTabs.show()"
         >
-          Modify Visible Tabs
+          표시 탭 수정
         </OptionsButton>
         <PrimaryToggleButton
           v-model="headerTextColored"
           class="o-primary-btn--option l-options-grid__button"
-          label="Relative prestige gain text coloring:"
+          label="상대 명성 획득 텍스트 색칠:"
         />
         <ExpandingControlBox
           v-if="$viewModel.newUI"

@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     timePlayed() {
-      return `Time Played: ${TimeSpan.fromMilliseconds(this.saveData.realTimePlayed).toString()}`;
+      return `플레이 시간: ${TimeSpan.fromMilliseconds(this.saveData.realTimePlayed).toString()}`;
     },
     // Note that all of the four following entries have Pelle-specific resources at the highest priority, which
     // will generally lead to most of them being overridden almost immediately after Dooming (or practically close
@@ -35,7 +35,7 @@ export default {
     antimatter() {
       return this.compareLayeredValues(
         ["pelleAM", "totalAntimatter"],
-        ["Total Doomed Antimatter:", "Total Antimatter:"],
+        ["총 운명지은 반물질:", "총 반물질:"],
         [format, format],
         ""
       );
@@ -43,15 +43,15 @@ export default {
     prestigeCount() {
       return this.compareLayeredValues(
         ["remnants", "realities", "eternities", "infinities"],
-        ["Remnants:", "Realities:", "Eternities:", "Infinities:"],
+        ["잔재:", "현실:", "영원:", "무한:"],
         [format, this.formatSmall, this.formatSmall, this.formatSmall],
-        "(No prestige layers reached yet.)"
+        "(아직 승천 층에 도달하지 않았습니다.)"
       );
     },
     prestigeResource() {
       return this.compareLayeredValues(
         ["realityShards", "imaginaryMachines", "realityMachines", "eternityPoints", "infinityPoints"],
-        ["Reality Shards:", "Reality Machines:", "Reality Machines:", "Eternity Points:", "Infinity Points:"],
+        ["현실 조각:", "현실 기계:", "현실 기계:", "영원 포인트:", "무한 포인트:"],
         [format, x => formatMachines(this.saveData.realityMachines, x), format, format, format],
         ""
       );
@@ -60,7 +60,7 @@ export default {
     extraProgressIndicator() {
       return this.compareLayeredValues(
         ["pelleLore", "bestLevel", "dilatedTime"],
-        ["Your Reality is Doomed.", "Best Glyph Level:", "Dilated Time:"],
+        ["당신의 현실이 운명지었습니다.", "최고 글리프 레벨:", "팽창된 시간:"],
         [() => "", formatInt, format],
         ""
       );
@@ -132,13 +132,13 @@ export default {
 
 <template>
   <div class="l-modal-options__save-record">
-    <h3>{{ saveType }} <span v-if="saveId">(Slot #{{ saveId + 1 }}):</span></h3>
+    <h3>{{ saveType }} <span v-if="saveId">(슬롯 #{{ saveId + 1 }}):</span></h3>
     <span v-if="showName">
       <span v-if="name">
-        Save Name: {{ name }}
+        저장 이름: {{ name }}
       </span>
       <span v-else>
-        Unnamed Save
+        이름 없는 저장
       </span>
       <br>
     </span>

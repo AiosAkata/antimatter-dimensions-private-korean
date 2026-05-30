@@ -48,18 +48,18 @@ export default {
       const shadowsPrototype = ["constructor", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable",
         "toLocaleString", "toString", "toValueOf"].some(p => this.aliasString.match(p));
 
-      if (!isValidName) return "Constant name must be alphanumeric without spaces and cannot start with a number";
-      if (alreadyExists) return "You have already defined a constant with this name";
-      if (hasCommandConflict) return "Constant name conflicts with a command key word";
-      if (shadowsPrototype) return "Constant name cannot shadow a built-in Javascript prototype prop";
+      if (!isValidName) return "상수 이름은 공백 없이 영숫자여야 하며 숫자로 시작할 수 없습니다";
+      if (alreadyExists) return "이미 이 이름의 상수를 정의했습니다";
+      if (hasCommandConflict) return "상수 이름이 명령 키워드와 충돌합니다";
+      if (shadowsPrototype) return "상수 이름은 내장 Javascript 프로토타입 속성을 숨길 수 없습니다";
 
-      if (!this.valueString) return "Constant value cannot be empty";
+      if (!this.valueString) return "상수 값은 비워둘 수 없습니다";
 
       const isNumber = this.valueString.match(/^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?$/u);
       // Note: Does not do validation for studies existing
       const isStudyString = TimeStudyTree.isValidImportString(this.valueString);
 
-      if (!isNumber && !isStudyString) return "Constant value must either be a number or Time Study string";
+      if (!isNumber && !isStudyString) return "상수 값은 숫자 또는 시간 연구 문자열이어야 합니다";
       return null;
     },
     errorTooltip() {
@@ -105,7 +105,7 @@ export default {
       v-model="aliasString"
       class="c-define-textbox c-alias"
       :class="{ 'l-limit-textbox' : aliasString.length === maxNameLength }"
-      placeholder="New constant..."
+      placeholder="새로운 상수..."
       :maxlength="maxNameLength"
       @focusin="handleFocus(true)"
       @focusout="handleFocus(false)"
@@ -122,14 +122,14 @@ export default {
       v-model="valueString"
       class="c-define-textbox c-value"
       :class="{ 'l-limit-textbox' : valueString && valueString.length === maxValueLength }"
-      placeholder="Value for constant..."
+      placeholder="상수 값..."
       :maxlength="maxValueLength"
       @focusin="handleFocus(true)"
       @focusout="handleFocus(false)"
     >
     <button
       v-if="aliasString"
-      v-tooltip="'Delete this constant'"
+      v-tooltip="'이 상수 삭제'"
       class="c-delete-button fas fa-eraser"
       @click="deleteConstant"
     />
@@ -168,7 +168,7 @@ export default {
 
 .c-define-textbox {
   display: inline-block;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Noto Sans KR", serif;
   font-size: 1.1rem;
   background: var(--color-blockmator-block-background);
   border: 0.1rem solid var(--color-blockmator-block-border);

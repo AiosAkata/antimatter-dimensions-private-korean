@@ -24,7 +24,7 @@ export default {
       return GameStorage.loadFromBackup(this.slotData.id);
     },
     progressStr() {
-      if (!this.save) return "(Empty)";
+      if (!this.save) return "(비어있음)";
 
       // These will be checked in order; the first nonzero resource will be returned
       const resources = [this.save.celestials.pelle.realityShards,
@@ -34,12 +34,12 @@ export default {
         this.save.infinityPoints,
         this.save.antimatter
       ];
-      const names = ["Reality Shards",
-        "Imaginary Machine Cap",
-        "Reality Machines",
-        "Eternity Points",
-        "Infinity Points",
-        "Antimatter"];
+      const names = ["현실 조각",
+        "허수 기계 상한",
+        "현실 기계",
+        "영원 포인트",
+        "무한 포인트",
+        "반물질"];
 
       for (let index = 0; index < resources.length; index++) {
         const val = new Decimal(resources[index]);
@@ -47,17 +47,17 @@ export default {
       }
 
       // In practice this should never happen, unless a save triggers on the same tick the very first AD1 is bought
-      return "No resources";
+      return "자원 없음";
     },
     slotType() {
       const formattedTime = this.slotData.intervalStr?.();
       switch (this.slotData.type) {
         case BACKUP_SLOT_TYPE.ONLINE:
-          return `Saves every ${formattedTime} online`;
+          return `${formattedTime}마다 온라인 저장`;
         case BACKUP_SLOT_TYPE.OFFLINE:
-          return `Saves after ${formattedTime} offline`;
+          return `${formattedTime} 오프라인 이후 저장`;
         case BACKUP_SLOT_TYPE.RESERVE:
-          return "Pre-loading save";
+          return "사전 로딩 저장";
         default:
           throw new Error("Unrecognized backup save type");
       }
@@ -65,8 +65,8 @@ export default {
     lastSaved() {
       const lastSave = GameStorage.lastBackupTimes[this.slotData.id]?.date ?? 0;
       return lastSave
-        ? `Last saved: ${TimeSpan.fromMilliseconds(this.currTime - lastSave)} ago`
-        : "Slot not currently in use";
+        ? `마지막 저장: ${TimeSpan.fromMilliseconds(this.currTime - lastSave)} 전`
+        : "슬롯이 현재 사용 중이 아님";
     },
   },
   methods: {
@@ -112,7 +112,7 @@ export default {
       :class="{ 'o-primary-btn--disabled' : !save }"
       @click="load()"
     >
-      Load
+      불러오기
     </PrimaryButton>
   </div>
 </template>

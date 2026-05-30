@@ -49,35 +49,35 @@ export default {
 <template>
   <div class="l-entry-padding">
     <button
-      v-tooltip="'Export Full Script Data'"
+      v-tooltip="'전체 스크립트 데이터 내보내기'"
       class="l-button-margin fas fa-file-export"
       @click="exportData(script.id)"
     />
-    <b>Script name: {{ script.name }}</b>
+    <b>스크립트 이름: {{ script.name }}</b>
     <br>
     <span v-if="hasPresets">
       <span
         :class="iconClass(hidePresets)"
         @click="hidePresets = !hidePresets"
       />
-      References {{ quantifyInt("recognized study preset", presets.length) }}
+      {{ quantifyInt("인식된 연구 프리셋", presets.length) }}을(를) 참조합니다
       <span v-if="!hidePresets">
         <div
           v-for="id in presets"
           :key="id"
         >
-          <span v-if="presetData[id].name">"{{ presetData[id].name }}" (slot {{ id + 1 }}):</span>
-          <span v-else>Preset slot {{ id + 1 }}:</span>
+          <span v-if="presetData[id].name">"{{ presetData[id].name }}" (슬롯 {{ id + 1 }}):</span>
+          <span v-else>프리셋 슬롯 {{ id + 1 }}:</span>
           <br>
           <div class="l-value-padding">
             <span v-if="presetData[id].studies">{{ presetData[id].studies }}</span>
-            <i v-else>Empty Study Preset</i>
+            <i v-else>빈 연구 프리셋</i>
           </div>
         </div>
       </span>
     </span>
     <span v-else>
-      Does not reference any study presets.
+      연구 프리셋을 참조하지 않습니다.
     </span>
     <br>
     <span v-if="hasConstants">
@@ -85,7 +85,7 @@ export default {
         :class="iconClass(hideConstants)"
         @click="hideConstants = !hideConstants"
       />
-      References {{ quantifyInt("defined constant", constants.length) }}
+      {{ quantifyInt("정의된 상수", constants.length) }}을(를) 참조합니다
       <span v-if="!hideConstants">
         <div
           v-for="name in constants"
@@ -100,7 +100,7 @@ export default {
       </span>
     </span>
     <span v-else>
-      Does not reference any defined constants.
+      정의된 상수를 참조하지 않습니다.
     </span>
   </div>
 </template>
