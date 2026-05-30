@@ -61,13 +61,13 @@ export default {
     infinityCountString() {
       const num = this.infinity.count;
       return num.gt(0)
-        ? `${this.formatDecimalAmount(num)} ${pluralize("Infinity", num.floor())}`
+        ? `${this.formatDecimalAmount(num)} ${pluralize("무한", num.floor())}`
         : "무한이 없음";
     },
     eternityCountString() {
       const num = this.eternity.count;
       return num.gt(0)
-        ? `${this.formatDecimalAmount(num)} ${pluralize("Eternity", num.floor())}`
+        ? `${this.formatDecimalAmount(num)} ${pluralize("영원", num.floor())}`
         : "영원이 없음";
     },
     fullGameCompletions() {
@@ -178,33 +178,33 @@ export default {
         일반
       </div>
       <div class="c-stats-tab-general">
-        <div>You have made a total of {{ format(totalAntimatter, 2, 1) }} antimatter.</div>
-        <div>You have played for {{ realTimePlayed }}. (real time)</div>
+        <div>총 {{ format(totalAntimatter, 2, 1) }}의 반물질을 생성했습니다.</div>
+        <div>{{ realTimePlayed }} 동안 플레이했습니다. (실제 시간)</div>
         <div v-if="reality.isUnlocked">
-          Your existence has spanned {{ reality.totalTimePlayed }} of time. (game time)
+          당신의 존재는 {{ reality.totalTimePlayed }}의 시간에 걸쳐 있습니다. (게임 시간)
         </div>
         <div>
-          Your save was created on {{ startDate }} ({{ saveAge }} ago)
+          저장 파일이 {{ startDate }}에 생성되었습니다 ({{ saveAge }} 전)
         </div>
         <br>
         <div>
-          You have seen {{ quantifyInt("news message", totalNews) }} in total.
+          총 {{ quantifyInt("뉴스 메시지", totalNews) }}를 봤습니다.
         </div>
         <div>
-          You have seen {{ quantifyInt("unique news message", uniqueNews) }}.
+          {{ quantifyInt("고유한 뉴스 메시지", uniqueNews) }}를 봤습니다.
         </div>
         <div>
-          You have unlocked {{ quantifyInt("Secret Achievement", secretAchievementCount) }}.
+          {{ quantifyInt("비밀 업적", secretAchievementCount) }}을 해제했습니다.
         </div>
         <div v-if="paperclips">
-          You have {{ quantifyInt("useless paperclip", paperclips) }}.
+          {{ quantifyInt("쓸모없는 종이 클립", paperclips) }}을 가지고 있습니다.
         </div>
         <div v-if="fullGameCompletions">
           <br>
           <b>
-            You have completed the entire game {{ quantifyInt("time", fullGameCompletions) }}.
+            전체 게임을 {{ quantifyInt("번", fullGameCompletions) }} 완료했습니다.
             <br>
-            You have played for {{ fullTimePlayed }} across all playthroughs.
+            모든 플레이스루에서 {{ fullTimePlayed }} 동안 플레이했습니다.
           </b>
         </div>
       </div>
@@ -231,28 +231,26 @@ export default {
         무한
       </div>
       <div>
-        You have {{ infinityCountString }}<span v-if="eternity.isUnlocked"> this Eternity</span>.
+        {{ infinityCountString }}<span v-if="eternity.isUnlocked">을 이번 영원에서 달성했습니다</span><span v-else>을 달성했습니다</span>.
       </div>
       <div v-if="infinity.banked.gt(0)">
-        You have {{ formatDecimalAmount(infinity.banked.floor()) }}
-        {{ pluralize("Banked Infinity", infinity.banked.floor()) }}.
+        {{ formatDecimalAmount(infinity.banked.floor()) }}의
+        {{ pluralize("저장된 무한", infinity.banked.floor()) }}을 가지고 있습니다.
       </div>
       <div v-if="infinity.hasBest">
-        Your fastest Infinity was {{ infinity.best.toStringShort() }}.
+        가장 빠른 무한은 {{ infinity.best.toStringShort() }}입니다.
       </div>
       <div v-else>
-        You have no fastest Infinity<span v-if="eternity.isUnlocked"> this Eternity</span>.
+        가장 빠른 무한 기록이 없습니다<span v-if="eternity.isUnlocked"> (이번 영원에서)</span>.
       </div>
       <div>
-        You have spent {{ infinity.this.toStringShort() }} in this Infinity.
+        이번 무한에서 {{ infinity.this.toStringShort() }}를 소비했습니다.
         <span v-if="reality.isUnlocked">
-          ({{ infinity.thisReal.toStringShort() }} real time)
+          ({{ infinity.thisReal.toStringShort() }} 실제 시간)
         </span>
       </div>
       <div>
-        Your best Infinity Points per minute
-        <span v-if="eternity.count.gt(0)">this Eternity </span>
-        is {{ format(infinity.bestRate, 2, 2) }}.
+        최고 무한 포인트 분당 획득률<span v-if="eternity.count.gt(0)">(이번 영원)</span>은 {{ format(infinity.bestRate, 2, 2) }}입니다.
       </div>
       <br>
     </div>
@@ -264,32 +262,30 @@ export default {
         영원
       </div>
       <div>
-        You have {{ eternityCountString }}<span v-if="reality.isUnlocked"> this Reality</span>.
+        {{ eternityCountString }}<span v-if="reality.isUnlocked">을 이번 현실에서 달성했습니다</span><span v-else>을 달성했습니다</span>.
       </div>
       <div v-if="infinity.projectedBanked.gt(0)">
-        You will gain {{ formatDecimalAmount(infinity.projectedBanked.floor()) }}
-        {{ pluralize("Banked Infinity", infinity.projectedBanked.floor()) }} on Eternity
-        ({{ formatDecimalAmount(infinity.bankRate) }} per minute).
+        영원으로 {{ formatDecimalAmount(infinity.projectedBanked.floor()) }}의
+        {{ pluralize("저장된 무한", infinity.projectedBanked.floor()) }}을 획득할 것입니다
+        (분당 {{ formatDecimalAmount(infinity.bankRate) }}).
       </div>
       <div v-else-if="infinity.banked.gt(0)">
-        You will gain no Banked Infinities on Eternity.
+        영원으로 저장된 무한을 획득하지 못할 것입니다.
       </div>
       <div v-if="eternity.hasBest">
-        Your fastest Eternity was {{ eternity.best.toStringShort() }}.
+        가장 빠른 영원은 {{ eternity.best.toStringShort() }}입니다.
       </div>
       <div v-else>
-        You have no fastest Eternity<span v-if="reality.isUnlocked"> this Reality</span>.
+        가장 빠른 영원 기록이 없습니다<span v-if="reality.isUnlocked"> (이번 현실에서)</span>.
       </div>
       <div>
-        You have spent {{ eternity.this.toStringShort() }} in this Eternity.
+        이번 영원에서 {{ eternity.this.toStringShort() }}를 소비했습니다.
         <span v-if="reality.isUnlocked">
-          ({{ eternity.thisReal.toStringShort() }} real time)
+          ({{ eternity.thisReal.toStringShort() }} 실제 시간)
         </span>
       </div>
       <div>
-        Your best Eternity Points per minute
-        <span v-if="reality.isUnlocked">this Reality </span>
-        is {{ format(eternity.bestRate, 2, 2) }}.
+        최고 영원 포인트 분당 획득률<span v-if="reality.isUnlocked">(이번 현실)</span>은 {{ format(eternity.bestRate, 2, 2) }}입니다.
       </div>
       <br>
     </div>
@@ -300,24 +296,23 @@ export default {
       <div :class="realityClassObject()">
         {{ isDoomed ? "파멸한 현실" : "현실" }}
       </div>
-      <div>You have {{ quantifyInt("Reality", reality.count) }}.</div>
-      <div>Your fastest game-time Reality was {{ reality.best.toStringShort() }}.</div>
-      <div>Your fastest real-time Reality was {{ reality.bestReal.toStringShort() }}.</div>
+      <div>{{ quantifyInt("현실", reality.count) }}을 달성했습니다.</div>
+      <div>가장 빠른 게임 시간 현실은 {{ reality.best.toStringShort() }}입니다.</div>
+      <div>가장 빠른 실제 시간 현실은 {{ reality.bestReal.toStringShort() }}입니다.</div>
       <div :class="{ 'c-stats-tab-doomed' : isDoomed }">
-        You have spent {{ reality.this.toStringShort() }}
-        in this {{ isDoomed ? "아마겟돈" : "현실" }}.
-        ({{ reality.thisReal.toStringShort() }} real time)
+        이번 {{ isDoomed ? "아마겟돈" : "현실" }}에서 {{ reality.this.toStringShort() }}를 소비했습니다.
+        ({{ reality.thisReal.toStringShort() }} 실제 시간)
       </div>
       <div
         v-if="isDoomed"
         class="c-stats-tab-doomed"
       >
-        You have been Doomed for {{ realTimeDoomed.toStringShort() }}, real time.
+        {{ realTimeDoomed.toStringShort() }} 동안 파멸 상태입니다 (실제 시간).
       </div>
       <div>
-        Your best Reality Machines per minute is {{ format(reality.bestRate, 2, 2) }}.
+        최고 현실 기계 분당 획득률은 {{ format(reality.bestRate, 2, 2) }}입니다.
       </div>
-      <div>Your best Glyph rarity is {{ formatRarity(reality.bestRarity) }}.</div>
+      <div>최고 글리프 희귀도는 {{ formatRarity(reality.bestRarity) }}입니다.</div>
       <br>
     </div>
   </div>
