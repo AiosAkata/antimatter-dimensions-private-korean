@@ -81,7 +81,7 @@ export default {
       @click="toggleGroup"
     />
     <div class="l-autobuyer-box__title">
-      {{ name }}<br>Autobuyers
+      {{ name }}<br>자동구매기
       <!-- If we're showing as a group, then all attributes are the same and we can arbitrarily take the first one -->
       <AutobuyerIntervalLabel
         v-if="displayLabelAsGroup"
@@ -111,9 +111,9 @@ export default {
     v-else-if="isADBox && continuumActive"
     class="c-autobuyer-box-row"
   >
-    Continuum replaces your Antimatter Dimension and Tickspeed Autobuyers, as your production multipliers
+    연속체가 반물질 차원 및 속도 자동구매기를 대체하고, 생산 배수가
     <br>
-    now automatically and continuously scale based on how many purchases you would have had otherwise.
+    그렇지 않았을 경우 가졌을 구매 수에 따라 자동으로 지속적으로 확장됩니다.
   </span>
 </template>
 

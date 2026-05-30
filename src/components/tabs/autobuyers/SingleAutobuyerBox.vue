@@ -55,13 +55,13 @@ export default {
         v-if="isHiddenSacrifice"
         class="c-autobuyer-box__small-text"
       >
-        Automatic (Achievement 118)
+        자동 (업적 118)
       </b>
       <span
         v-else-if="autobuyer.hasInput"
         class="c-autobuyer-box__small-text"
       >
-        Multiplier:
+        배수:
         <AutobuyerInput
           class="c-small-autobuyer-input"
           :autobuyer="autobuyer"
