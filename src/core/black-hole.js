@@ -256,7 +256,7 @@ class BlackHoleState {
         this._data.phase -= this.duration;
         this._data.active = false;
         if (GameUI.notify.showBlackHoles) {
-          GameUI.notify.blackHole(`${this.description(true)} duration ended.`);
+          GameUI.notify.blackHole(`${this.description(true)} 지속 시간이 종료되었습니다.`);
         }
       }
     } else if (this.phase >= this.interval) {
@@ -264,7 +264,7 @@ class BlackHoleState {
       this._data.activations++;
       this._data.active = true;
       if (GameUI.notify.showBlackHoles) {
-        GameUI.notify.blackHole(`${this.description(true)} has activated!`);
+        GameUI.notify.blackHole(`${this.description(true)}이(가) 활성화되었습니다!`);
       }
     }
   }
@@ -309,9 +309,9 @@ class BlackHoleState {
 
   description(capitalized) {
     if (RealityUpgrade(20).isBought) {
-      return `Black Hole ${this.id}`;
+      return `블랙홀 ${this.id}번`;
     }
-    return capitalized ? "The Black Hole" : "the Black Hole";
+    return "블랙홀";
   }
 }
 
@@ -361,13 +361,13 @@ export const BlackHoles = {
     if (player.blackHolePause) player.requirementChecks.reality.slowestBH = 1;
     player.blackHolePause = !player.blackHolePause;
     player.blackHolePauseTime = player.records.realTimePlayed;
-    const blackHoleString = RealityUpgrade(20).isBought ? "Black Holes" : "Black Hole";
+    const blackHoleString = RealityUpgrade(20).isBought ? "블랙홀들이" : "블랙홀이";
     // If black holes are going unpaused -> paused, use "inverted" or "paused" depending o
     // whether the player's using negative BH (i.e. BH inversion); if going paused -> unpaused,
     // use "unpaused".
     // eslint-disable-next-line no-nested-ternary
-    const pauseType = player.blackHolePause ? (BlackHoles.areNegative ? "inverted" : "paused") : "unpaused";
-    const automaticString = automatic ? "automatically " : "";
+    const pauseType = player.blackHolePause ? (BlackHoles.areNegative ? "반전되었습니다" : "일시정지되었습니다") : "재개되었습니다";
+    const automaticString = automatic ? "자동으로 " : "";
     GameUI.notify.blackHole(`${blackHoleString} ${automaticString}${pauseType}`);
   },
 

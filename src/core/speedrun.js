@@ -5,10 +5,10 @@ export const Speedrun = {
   officialFixedSeed: 69420,
   unlock() {
     if (player.speedrun.isUnlocked) return;
-    Modal.message.show(`You have unlocked Speedrun Mode! This allows you to start a new save file with some slight
-      changes which can be helpful if you're trying to complete the game as quickly as possible. The option to
-      start a Speedrun Save is now available in the Options tab, under Saving. Choosing to start a Speedrun Save
-      will provide you with another modal with more in-depth information.`, {}, 3);
+    Modal.message.show(`스피드런 모드가 해금되었습니다! 최대한 빠르게 게임을 클리어하고자 할 때 유용한
+      약간의 변경사항이 적용된 새 저장 파일을 시작할 수 있습니다. 옵션 탭의 저장 항목에서
+      스피드런 저장 파일을 시작하는 옵션을 이용할 수 있습니다. 스피드런 저장 파일을 시작하면
+      더 자세한 정보가 담긴 창이 표시됩니다.`, {}, 3);
     player.speedrun.isUnlocked = true;
   },
   // Used to block the seed-changing modal from opening (other functions assume this is checked beforehand)
@@ -148,7 +148,7 @@ class SpeedrunMilestone extends GameMechanicState {
     if (this.isReached || !player.speedrun.isActive) return;
     // Rounding slightly reduces filesize by removing weird float rounding
     player.speedrun.records[this.config.id] = Math.round(player.records.realTimePlayed);
-    GameUI.notify.success(`Speedrun Milestone Reached: ${this.name}`);
+    GameUI.notify.success(`스피드런 이정표 달성: ${this.name}`);
   }
 }
 

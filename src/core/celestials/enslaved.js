@@ -159,7 +159,7 @@ export const Enslaved = {
     AutomatorData.recalculateErrors();
     if (AutomatorBackend.state.mode === AUTOMATOR_MODE.RUN && AutomatorData.currentErrors().length) {
       AutomatorBackend.stop();
-      GameUI.notify.error("This Reality forbids Black Holes! (Automator stopped)");
+      GameUI.notify.error("이 현실에서는 블랙홀을 사용할 수 없습니다! (자동화기 정지)");
     }
 
     this.quotes.startRun.show();
@@ -193,14 +193,14 @@ export const Enslaved = {
   },
   feelEternity() {
     if (this.feltEternity) {
-      Modal.message.show(`You have already exposed this crack in the Reality. Time in this Eternity is being multiplied
-        by your Eternity count, up to a maximum of ${formatX(1e66)}.`,
+      Modal.message.show(`이 현실의 균열은 이미 노출되었습니다. 이번 영원의 시간이
+        영원 횟수만큼 곱해지며, 최대 ${formatX(1e66)}까지 증가합니다.`,
       { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
     } else {
       EnslavedProgress.feelEternity.giveProgress();
       this.feltEternity = true;
-      Modal.message.show(`Time in this Eternity will be multiplied by your Eternity count,
-        up to a maximum of ${formatX(1e66)}.`, { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
+      Modal.message.show(`이번 영원의 시간이 영원 횟수만큼 곱해지며,
+        최대 ${formatX(1e66)}까지 증가합니다.`, { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
     }
   },
   get feltEternity() {
@@ -255,7 +255,7 @@ class EnslavedProgressState extends BitUpgradeState {
     // Bump the last hint time appropriately if the player found the hint
     if (this.hasHint && !this.hasProgress) {
       player.celestials.enslaved.zeroHintTime -= Math.log(2) / Math.log(3) * TimeSpan.fromDays(1).totalMilliseconds;
-      GameUI.notify.success("You found a crack in The Nameless Ones' Reality!", 10000);
+      GameUI.notify.success("이름 없는 자들의 현실에서 균열을 발견했습니다!", 10000);
     }
     player.celestials.enslaved.progressBits |= (1 << this.id);
   }

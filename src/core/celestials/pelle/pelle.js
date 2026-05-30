@@ -68,15 +68,15 @@ export const Pelle = {
     Glyphs.harshAutoClean();
     if (!Glyphs.unequipAll()) {
       Modal.hideAll();
-      Modal.message.show(`Dooming your Reality will unequip your Glyphs. Some of your
-        Glyphs could not be unequipped due to lack of inventory space.`, 1);
+      Modal.message.show(`현실을 파멸시키면 글리프가 해제됩니다. 일부 글리프가
+        인벤토리 공간 부족으로 해제되지 못했습니다.`, 1);
       return;
     }
     Glyphs.harshAutoClean();
     if (Glyphs.freeInventorySpace < 5) {
       Modal.hideAll();
-      Modal.message.show(`You must have enough empty unprotected Glyph slots for
-        ${formatInt(5)} additional Glyphs in order to Doom your Reality.`, 1);
+      Modal.message.show(`현실을 파멸시키려면 보호되지 않은 글리프 슬롯에
+        ${formatInt(5)}개의 빈 공간이 있어야 합니다.`, 1);
       return;
     }
     for (const type of BASIC_GLYPH_TYPES) Glyphs.addToInventory(GlyphGenerator.doomedGlyph(type));

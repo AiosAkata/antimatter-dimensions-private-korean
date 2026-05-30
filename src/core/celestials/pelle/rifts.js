@@ -137,7 +137,7 @@ class RiftState extends GameMechanicState {
 
   toggle() {
     const active = PelleRifts.all.filter(r => r.isActive).length;
-    if (!this.isActive && active === 2) GameUI.notify.error(`You can only have 2 rifts active at the same time!`);
+    if (!this.isActive && active === 2) GameUI.notify.error(`동시에 활성화할 수 있는 균열은 최대 2개입니다!`);
     else this.rift.active = !this.rift.active;
   }
 

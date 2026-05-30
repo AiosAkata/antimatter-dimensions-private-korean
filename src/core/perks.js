@@ -85,8 +85,8 @@ export function checkPerkValidity() {
   dev.respecPerks();
   if (Currency.perkPoints.gte(Perks.all.length)) {
     dev.buyAllPerks();
-    Modal.message.show("Some of your Perks were invalid, but you auto-bought all valid perks.");
+    Modal.message.show("일부 특전이 유효하지 않았지만, 유효한 특전은 모두 자동으로 구매되었습니다.");
   } else {
-    Modal.message.show("Some of your Perks were invalid, so your Perks have been reset and your Perk Points refunded.");
+    Modal.message.show("일부 특전이 유효하지 않아 특전이 초기화되고 특전 포인트가 환불되었습니다.");
   }
 }

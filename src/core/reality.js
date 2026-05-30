@@ -144,7 +144,7 @@ export function requestManualReality() {
     return;
   }
   if (GameCache.glyphInventorySpace.value === 0) {
-    Modal.message.show("No available inventory space; free up space by shift-clicking Glyphs to get rid of them.",
+    Modal.message.show("인벤토리 공간이 없습니다. Shift+클릭으로 글리프를 제거해 공간을 확보하세요.",
       { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
     return;
   }
@@ -328,11 +328,11 @@ function giveRealityRewards(realityProps) {
     const current = Teresa.runRewardMultiplier;
     const newMultiplier = Teresa.rewardMultiplier(player.antimatter);
     const isHigher = newMultiplier > current;
-    const modalText = `You have completed Teresa's Reality! ${isHigher
-      ? `Since you gained more Antimatter, you increased your
-      Glyph Sacrifice multiplier from ${format(current, 2, 2)} to ${format(newMultiplier, 2, 2)}`
-      : `You did not gain more Antimatter during this run, so the Glyph Sacrifice multiplier
-      from Teresa did not increase`}.`;
+    const modalText = `테레사의 현실을 완료했습니다! ${isHigher
+      ? `더 많은 반물질을 획득했기 때문에 글리프 희생 배율이
+      ${format(current, 2, 2)}에서 ${format(newMultiplier, 2, 2)}으로 증가했습니다`
+      : `이번 실행에서 더 많은 반물질을 획득하지 못해 테레사의 글리프 희생 배율이
+      증가하지 않았습니다`}.`;
     Modal.message.show(modalText, {}, 2);
     if (Currency.antimatter.gt(player.celestials.teresa.bestRunAM)) {
       player.celestials.teresa.bestRunAM = Currency.antimatter.value;

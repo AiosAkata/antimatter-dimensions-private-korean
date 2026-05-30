@@ -1083,7 +1083,7 @@ export const normalAchievements = [
     description: "모든 현실 업그레이드를 구입하세요.",
     checkRequirement: () => RealityUpgrades.allBought,
     checkEvent: GAME_EVENT.REALITY_UPGRADE_BOUGHT,
-    reward: "현실의 천상체, 테레사를 해금합니다."
+    reward: "현실의 셀레스티얼, 테레사를 해금합니다."
   },
   {
     id: 148,
@@ -1104,7 +1104,7 @@ export const normalAchievements = [
     },
     checkRequirement: () => player.galaxies >= 800 && player.requirementChecks.infinity.noAD8,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER,
-    reward: "업적의 천상체, V를 해금합니다."
+    reward: "업적의 셀레스티얼, V를 해금합니다."
   },
   {
     id: 152,
@@ -1231,7 +1231,7 @@ export const normalAchievements = [
   {
     id: 168,
     name: "이런, 절반이나 왔어",
-    get description() { return `라 천상체 기억 레벨 합계가 ${formatInt(50)}이 되게 하세요.`; },
+    get description() { return `라 셀레스티얼 기억 레벨 합계가 ${formatInt(50)}이 되게 하세요.`; },
     checkRequirement: () => Ra.totalPetLevel >= 50,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() { return `기억을 ${formatPercents(0.1)} 더 획득합니다.`; },

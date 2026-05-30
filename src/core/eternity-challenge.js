@@ -250,25 +250,21 @@ export class EternityChallengeState extends GameMechanicState {
     let reason;
     if (auto) {
       if (this.id === 4) {
-        reason = restriction => `Auto Eternity Challenge completion completed ` +
-        `Eternity Challenge ${this.id} and made the next tier ` +
-        `require having less Infinities (${quantifyInt("Infinity", restriction)} ` +
-        `or less) than you had`;
+        reason = restriction => `자동 영원 도전 완료로 영원 도전 ${this.id}번이 완료되었으며,
+        다음 단계는 무한 횟수가 ${quantifyInt("Infinity", restriction)}회 이하여야 합니다`;
       } else if (this.id === 12) {
-        reason = restriction => `Auto Eternity Challenge completion completed ` +
-        `Eternity Challenge ${this.id} and made the next tier ` +
-        `require spending less time in it (${quantify("in-game second", restriction, 0, 1)} ` +
-        `or less) than you had spent`;
+        reason = restriction => `자동 영원 도전 완료로 영원 도전 ${this.id}번이 완료되었으며,
+        다음 단계는 소요 시간이 ${quantify("in-game second", restriction, 0, 1)} 이하여야 합니다`;
       }
     } else if (this.id === 4) {
-      reason = restriction => `You failed Eternity Challenge ${this.id} due to ` +
-      `having more than ${quantifyInt("Infinity", restriction)}`;
+      reason = restriction => `무한 횟수가 ${quantifyInt("Infinity", restriction)}를 초과하여
+      영원 도전 ${this.id}번에 실패했습니다`;
     } else if (this.id === 12) {
-      reason = restriction => `You failed Eternity Challenge ${this.id} due to ` +
-      `spending more than ${quantify("in-game second", restriction, 0, 1)} in it`;
+      reason = restriction => `소요 시간이 ${quantify("in-game second", restriction, 0, 1)}를 초과하여
+      영원 도전 ${this.id}번에 실패했습니다`;
     }
-    Modal.message.show(`${reason(this.config.restriction(this.completions))}, ` +
-    `which has caused you to exit it.`,
+    Modal.message.show(`${reason(this.config.restriction(this.completions))},
+    이로 인해 도전에서 탈출되었습니다.`,
     { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
     EventHub.dispatch(GAME_EVENT.CHALLENGE_FAILED);
   }

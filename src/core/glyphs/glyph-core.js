@@ -298,7 +298,7 @@ export const Glyphs = {
     }
     if (this.active[targetSlot] === null) {
       if (sameSpecialTypeIndex >= 0) {
-        Modal.message.show(`You may only have one ${glyph.type.capitalize()} Glyph equipped!`,
+        Modal.message.show(`${glyph.type.capitalize()} 글리프는 하나만 장착할 수 있습니다!`,
           { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
         return;
       }
@@ -315,7 +315,7 @@ export const Glyphs = {
     } else {
       // We can only replace effarig/reality glyph
       if (sameSpecialTypeIndex >= 0 && sameSpecialTypeIndex !== targetSlot) {
-        Modal.message.show(`You may only have one ${glyph.type.capitalize()} Glyph equipped!`,
+        Modal.message.show(`${glyph.type.capitalize()} 글리프는 하나만 장착할 수 있습니다!`,
           { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
         return;
       }
@@ -353,9 +353,9 @@ export const Glyphs = {
     if (stillEquipped && !fastReality) {
       const target = player.options.respecIntoProtected ? "Protected slots" : "Main Inventory";
       const hasOther = this.findFreeIndex(!player.options.respecIntoProtected) !== -1;
-      setTimeout(() => Modal.message.show(`${quantifyInt("Glyph", stillEquipped)} could not be unequipped due to lack
-        of space. Free up some space in your ${target}${hasOther ? " or switch where you are unequipping to" : ""}
-        in order to unequip ${stillEquipped === 1 ? "it" : "them"}.`, { closeEvent: GAME_EVENT.GLYPHS_CHANGED }),
+      setTimeout(() => Modal.message.show(`글리프 ${stillEquipped}개를 인벤토리 공간 부족으로 해제할 수 없습니다.
+        ${target}의 공간을 확보${hasOther ? "하거나 해제 위치를 변경" : ""}하세요.`,
+        { closeEvent: GAME_EVENT.GLYPHS_CHANGED }),
       50);
     }
 
@@ -781,16 +781,16 @@ export const Glyphs = {
   },
   giveCursedGlyph() {
     if (GameCache.glyphInventorySpace.value === 0) {
-      Modal.message.show("No available inventory space; Sacrifice some Glyphs to free up space.",
+      Modal.message.show("인벤토리 공간이 없습니다. 글리프를 희생해 공간을 확보하세요.",
         { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
       return;
     }
     const cursedCount = this.allGlyphs.filter(g => g !== null && g.type === "cursed").length;
     if (cursedCount >= 5) {
-      GameUI.notify.error(`You don't need more than ${format(5)} Cursed Glyphs!`);
+      GameUI.notify.error(`저주받은 글리프는 ${format(5)}개를 초과할 필요가 없습니다!`);
     } else {
       this.addToInventory(GlyphGenerator.cursedGlyph());
-      GameUI.notify.error("Created a Cursed Glyph");
+      GameUI.notify.error("저주받은 글리프를 생성했습니다");
     }
   }
 };
@@ -849,7 +849,7 @@ export function getAdjustedGlyphLevel(glyph, realityGlyphBoost = Glyphs.levelBoo
 
 export function respecGlyphs() {
   if (!Glyphs.unequipAll()) {
-    Modal.message.show("Some of your Glyphs could not be unequipped due to lack of inventory space.",
+    Modal.message.show("인벤토리 공간 부족으로 일부 글리프를 해제할 수 없었습니다.",
       { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
   }
   player.reality.respec = false;
