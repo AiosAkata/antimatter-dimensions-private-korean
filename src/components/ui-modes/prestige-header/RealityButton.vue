@@ -52,7 +52,7 @@ export default {
       return this.currentShardsRate;
     },
     shardsGainedText() {
-      return quantify("Relic Shard", this.shardsGained, 2);
+      return quantify("유물 파편", this.shardsGained, 2);
     },
     classObject() {
       return {
@@ -105,7 +105,7 @@ export default {
       this.bestShardRateVal = player.records.thisReality.bestRSminVal * multiplier;
 
       const teresaReward = this.formatScalingMultiplierText(
-        "Glyph Sacrifice",
+        "글리프 희생",
         Teresa.runRewardMultiplier,
         Math.max(Teresa.runRewardMultiplier, Teresa.rewardMultiplier(Currency.antimatter.value)));
       const teresaThreshold = this.formatThresholdText(

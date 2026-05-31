@@ -54,19 +54,19 @@ export default {
     },
     gained() {
       const gainedResources = [];
-      gainedResources.push(`${quantifyInt("Reality", this.simRealities)}`);
-      gainedResources.push(`${quantifyInt("Perk Point", this.simRealities)}`);
-      gainedResources.push(`${quantify("Reality Machine", this.realityMachines, 2)}`);
+      gainedResources.push(`${quantifyInt("현실", this.simRealities)}`);
+      gainedResources.push(`${quantifyInt("특혜 포인트", this.simRealities)}`);
+      gainedResources.push(`${quantify("현실 기계", this.realityMachines, 2)}`);
       if (this.effarigUnlocked) {
-        gainedResources.push(`${quantify("Relic Shard", this.shardsGained, 2)}`);
+        gainedResources.push(`${quantify("유물 파편", this.shardsGained, 2)}`);
       }
-      return `You will gain ${makeEnumeration(gainedResources)}`;
+      return `${makeEnumeration(gainedResources)}을 획득합니다`;
     },
     levelStats() {
       // Bit annoying to read due to needing >, <, and =, with = needing a different format.
       return `현실에서 레벨 ${formatInt(this.level)} 글리프를 받을 것이며, 이는
         ${this.level === this.bestLevel ? "최고 기록과 같습니다" : `
-        최고 기록보다 ${quantifyInt("level", this.levelDifference)}
+        최고 기록보다 ${quantifyInt("레벨", this.levelDifference)}
         ${this.level > this.bestLevel ? "높습니다" : "낮습니다"}`}.`;
     },
     confirmationToDisable() {

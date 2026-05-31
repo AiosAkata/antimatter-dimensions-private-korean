@@ -81,7 +81,7 @@ export default {
     lastMachinesString() {
       return this.lastMachines.lt(DC.E10000)
         ? `${quantify("현실 기계", this.lastMachines, 2)}`
-        : `${quantify("상상의 기계", this.lastMachines.dividedBy(DC.E10000), 2)}`;
+        : `${quantify("허수 기계", this.lastMachines.dividedBy(DC.E10000), 2)}`;
     },
     unlockInfoTooltipArrowStyle() {
       return {
@@ -145,7 +145,7 @@ export default {
   <div class="l-teresa-celestial-tab">
     <CelestialQuoteHistory celestial="teresa" />
     <div>
-      현실 기계를 {{ quantify("Reality Machine", rm, 2, 2) }}개 가지고 있습니다.
+      현실 기계를 {{ quantify("현실 기계", rm, 2, 2) }}개 가지고 있습니다.
     </div>
     <div class="l-mechanics-container">
       <div
