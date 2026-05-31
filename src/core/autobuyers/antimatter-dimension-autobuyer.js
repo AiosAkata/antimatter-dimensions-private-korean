@@ -12,7 +12,7 @@ export class AntimatterDimensionAutobuyerState extends UpgradeableAutobuyerState
   }
 
   get fullName() {
-    return `${this.name} Antimatter Dimension`;
+    return `${this.name}번째 반물질 차원`;
   }
 
   get data() {
@@ -151,7 +151,7 @@ export class AntimatterDimensionAutobuyerState extends UpgradeableAutobuyerState
   }
 
   static get entryCount() { return 8; }
-  static get autobuyerGroupName() { return "Antimatter Dimension"; }
+  static get autobuyerGroupName() { return "반물질 차원"; }
 
   // These are toggled on and off from the group autobuyer checkbox
   static get isActive() { return player.auto.antimatterDims.isActive; }

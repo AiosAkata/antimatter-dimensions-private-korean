@@ -77,28 +77,28 @@ GameDatabase.celestials.descriptions = [
       const highestActive = 8 - Laitela.difficultyTier;
       switch (highestActive) {
         case 0:
-          disabledDims = "all Dimensions";
+          disabledDims = "모든 차원";
           break;
         case 1:
-          disabledDims = "2nd and higher Dimensions";
+          disabledDims = "2번째 이상의 차원";
           break;
         case 2:
-          disabledDims = "3rd and higher Dimensions";
+          disabledDims = "3번째 이상의 차원";
           break;
         case 7:
-          disabledDims = "8th Dimensions";
+          disabledDims = "8번째 차원";
           break;
         default:
-          disabledDims = `${highestActive + 1}th and higher Dimensions`;
+          disabledDims = `${highestActive + 1}번째 이상의 차원`;
           break;
       }
       const disabledText = highestActive === 8
         ? ""
-        : `Production from ${disabledDims} is disabled.`;
+        : `${disabledDims}의 생산이 비활성화됩니다.`;
 
-      return `Infinity Point and Eternity Point gain are Dilated.
-      Game speed is reduced to ${formatInt(1)} and gradually comes back over ${formatInt(10)} minutes.
-      Black Hole storing, discharging, pulsing, and inversion are all disabled.
+      return `무한 포인트 및 영원 포인트 획득이 팽창됩니다.
+      게임 속도가 ${formatInt(1)}로 감소하며 ${formatInt(10)}분에 걸쳐 서서히 회복됩니다.
+      블랙홀 저장, 방출, 펄싱, 반전이 모두 비활성화됩니다.
       ${disabledText}`;
     },
     description() {

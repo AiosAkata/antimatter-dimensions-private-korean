@@ -14,13 +14,13 @@ export class Sacrifice {
   }
 
   static get disabledCondition() {
-    if (NormalChallenge(10).isRunning) return "8th Dimensions are disabled";
-    if (EternityChallenge(3).isRunning) return "Eternity Challenge 3";
+    if (NormalChallenge(10).isRunning) return "8번째 차원이 비활성화됨";
+    if (EternityChallenge(3).isRunning) return "영원 도전 3";
     if (DimBoost.purchasedBoosts < 5) return `차원 부스트 ${formatInt(5)}개 필요`;
-    if (AntimatterDimension(8).totalAmount.eq(0)) return "No 8th Antimatter Dimensions";
-    if (this.nextBoost.lte(1)) return `${formatX(1)} multiplier`;
-    if (Player.isInAntimatterChallenge) return "Challenge goal reached";
-    return "Need to Crunch";
+    if (AntimatterDimension(8).totalAmount.eq(0)) return "8번째 반물질 차원 없음";
+    if (this.nextBoost.lte(1)) return `배율이 ${formatX(1)}`;
+    if (Player.isInAntimatterChallenge) return "도전 목표 달성됨";
+    return "크런치 필요";
   }
 
   static getSacrificeDescription(changes) {

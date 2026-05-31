@@ -2,9 +2,9 @@ export class DimensionState {
   constructor(getData, tier) {
     this._tier = tier;
     this._getData = getData;
-    const DISPLAY_NAMES = [null, "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth"];
+    const DISPLAY_NAMES = [null, "1번째", "2번째", "3번째", "4번째", "5번째", "6번째", "7번째", "8번째"];
     this._displayName = DISPLAY_NAMES[tier];
-    const SHORT_DISPLAY_NAMES = [null, "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
+    const SHORT_DISPLAY_NAMES = [null, "1", "2", "3", "4", "5", "6", "7", "8"];
     this._shortDisplayName = SHORT_DISPLAY_NAMES[tier];
   }
 

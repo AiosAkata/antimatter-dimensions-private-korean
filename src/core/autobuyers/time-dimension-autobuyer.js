@@ -10,7 +10,7 @@ export class TimeDimensionAutobuyerState extends IntervaledAutobuyerState {
   }
 
   get fullName() {
-    return `${this.name} Time Dimension`;
+    return `${this.name}번째 시간 차원`;
   }
 
   get data() {
@@ -51,7 +51,7 @@ export class TimeDimensionAutobuyerState extends IntervaledAutobuyerState {
   }
 
   static get entryCount() { return 8; }
-  static get autobuyerGroupName() { return "Time Dimension"; }
+  static get autobuyerGroupName() { return "시간 차원"; }
   static get isActive() { return player.auto.timeDims.isActive; }
   static set isActive(value) { player.auto.timeDims.isActive = value; }
 }
