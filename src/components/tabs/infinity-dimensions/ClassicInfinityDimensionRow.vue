@@ -48,7 +48,7 @@ export default {
     costDisplay() {
       if (this.isUnlocked || this.shiftDown) {
         if (this.isCapped) return "Capped";
-        return this.showCostTitle ? `Cost: ${format(this.cost)} IP` : `${format(this.cost)} IP`;
+        return this.showCostTitle ? `비용: ${format(this.cost)} IP` : `${format(this.cost)} IP`;
       }
 
       if (this.canUnlock) {
