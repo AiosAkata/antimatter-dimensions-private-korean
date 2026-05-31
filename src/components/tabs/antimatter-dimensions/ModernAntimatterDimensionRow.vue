@@ -37,7 +37,7 @@ export default {
   computed: {
     isDoomed: () => Pelle.isDoomed,
     name() {
-      return `${AntimatterDimension(this.tier).shortDisplayName} Antimatter Dimension`;
+      return `${AntimatterDimension(this.tier).shortDisplayName}번째 반물질 차원`;
     },
     costDisplay() {
       return this.buyUntil10 ? format(this.until10Cost) : format(this.singleCost);

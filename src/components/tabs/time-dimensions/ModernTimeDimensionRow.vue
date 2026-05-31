@@ -44,7 +44,7 @@ export default {
       return ui.view.shiftDown;
     },
     name() {
-      return `${TimeDimension(this.tier).shortDisplayName} Time Dimension`;
+      return `${TimeDimension(this.tier).shortDisplayName}번째 시간 차원`;
     },
     buttonContents() {
       if (this.showTTCost) {

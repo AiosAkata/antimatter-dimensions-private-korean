@@ -43,7 +43,7 @@ export default {
       return ui.view.shiftDown;
     },
     name() {
-      return `${InfinityDimension(this.tier).shortDisplayName} Infinity Dimension`;
+      return `${InfinityDimension(this.tier).shortDisplayName}번째 무한 차원`;
     },
     costDisplay() {
       if (this.isUnlocked || this.shiftDown) {
@@ -64,7 +64,7 @@ export default {
       return format(this.hardcap, 1, 1);
     },
     capTooltip() {
-      if (this.enslavedRunning) return `Nameless prevents the purchase of more than ${format(10)} Infinity Dimensions`;
+      if (this.enslavedRunning) return `이름없는 자가 ${format(10)}개 이상의 무한 차원 구매를 방지함`;
       if (this.isCapped) return `Cap reached at ${format(this.capIP)} IP`;
       return `Purchased ${quantifyInt("time", this.purchases)}`;
     },

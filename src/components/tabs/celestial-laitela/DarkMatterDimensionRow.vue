@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     name() {
-      return `${DarkMatterDimension(this.tier).shortDisplayName} Dark Matter Dimension`;
+      return `${DarkMatterDimension(this.tier).shortDisplayName}번째 암흑 물질 차원`;
     },
     ascensionText() {
       return `(⯅${formatInt(this.ascension)})`;

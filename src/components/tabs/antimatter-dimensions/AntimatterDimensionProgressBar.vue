@@ -93,9 +93,9 @@ export default {
       } else if (InfinityDimension(8).isUnlocked) {
         setProgress(Currency.infinityPoints.value, Player.eternityGoal, "Percentage to Eternity");
       } else if (player.break) {
-        const text = `Percentage to unlock a new ${InfinityDimensions.next().hasIPUnlock
-          ? "type of Dimension"
-          : "Infinity Dimension"}`;
+        const text = `새 ${InfinityDimensions.next().hasIPUnlock
+          ? "차원 유형"
+          : "무한 차원"} 해금까지의 진행도`;
         const nextID = InfinityDimensions.next();
         if (nextID.ipRequirementReached) {
           setProgress(player.records.thisEternity.maxAM, nextID.amRequirement, text);
