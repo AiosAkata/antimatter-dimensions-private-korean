@@ -51,7 +51,7 @@ export default {
     boughtTooltip() {
       if (this.isCapped) return `이름없는자가 ${format(1)}개 이상의 8번째 반물질 차원 구입 방지`;
       if (this.isContinuumActive) return "연속체가 모든 반물질 차원을 생성";
-      return `${quantifyInt("time", this.bought)}번 구입함`;
+      return `${formatInt(this.bought)}번 구입함`;
     },
     costUnit() {
       return `${AntimatterDimension(this.tier - 2).shortDisplayName} AD`;
@@ -65,7 +65,7 @@ export default {
     buttonValue() {
       if (this.isCapped) return "";
       if (this.isContinuumActive) return this.continuumString;
-      const prefix = this.showCostTitle(this.buyUntil10 ? this.until10Cost : this.singleCost) ? "Cost: " : "";
+      const prefix = this.showCostTitle(this.buyUntil10 ? this.until10Cost : this.singleCost) ? "비용: " : "";
       const suffix = this.isCostsAD ? this.costUnit : "AM";
       return `${prefix}${this.costDisplay} ${suffix}`;
     },

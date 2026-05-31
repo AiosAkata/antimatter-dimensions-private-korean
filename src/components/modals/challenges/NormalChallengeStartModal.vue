@@ -20,24 +20,23 @@ export default {
       return this.challenge.isCompleted;
     },
     message() {
-      return `You will Big Crunch (if possible) and start a new Infinity within the Challenge with all the
-        Challenge-specific restrictions and modifiers active.
-        To complete the Challenge${this.challengeIsCompleted ? "" : " and gain its reward"},
-        you must reach Infinity again.
-        업그레이드에 관계없이 차원 부스트나 갤럭시 없이 시작합니다.`;
+      return `빅 크런치(가능한 경우)를 수행하고 도전의 모든 제한 및 수정 사항이 활성화된 상태로 새 무한을 시작합니다.
+    도전을 완료${this.challengeIsCompleted ? "" : "하고 보상을 받으"}려면,
+    다시 무한에 도달해야 합니다.
+    업그레이드에 관계없이 차원 부스트나 갤럭시 없이 시작합니다.`;
     },
     entranceLabel() {
-      return `You are about to enter Challenge ${this.id}`;
+      return `도전 ${this.id}에 입장하려고 합니다`;
     },
     reward() {
-      return `The reward for completing this challenge is: ${this.challenge._config.reward}`;
+      return `이 도전의 보상: ${this.challenge._config.reward}`;
     },
     condition() {
       let conditionOfChallenge = this.challenge._config.description;
       if (typeof conditionOfChallenge === "function") {
         conditionOfChallenge = conditionOfChallenge();
       }
-      return `Inside this Challenge, ${conditionOfChallenge}`;
+      return `이 도전 안에서는, ${conditionOfChallenge}`;
     }
   },
   created() {
@@ -73,7 +72,7 @@ export default {
       {{ reward }}
     </div>
     <template #confirm-text>
-      Begin
+      시작
     </template>
   </ModalWrapperChoice>
 </template>
