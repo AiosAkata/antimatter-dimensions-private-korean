@@ -17,7 +17,7 @@ export const ShopPurchaseData = {
   },
 
   get isIAPEnabled() {
-    return Cloud.loggedIn && this.availableSTD >= 0 && player.IAP.enabled;
+    return window.devSTDMode || (Cloud.loggedIn && this.availableSTD >= 0 && player.IAP.enabled);
   },
 
   // We also allow for respecs if it's been at least 3 days since the last one
@@ -174,10 +174,21 @@ class ShopPurchaseState extends RebuyableMechanicState {
     return this.config.formatEffect?.(effect) || formatX(effect, 2, 0);
   }
 
+  devPurchase() {
+    ShopPurchaseData.spentSTD += this.cost;
+    ShopPurchaseData[this.config.key] = (ShopPurchaseData[this.config.key] ?? 0) + 1;
+    if (this.config.instantPurchase) this.config.onPurchase();
+    GameStorage.save();
+    GameUI.update();
+    return true;
+  }
+
   async purchase() {
     if (!this.canBeBought) return false;
     if (GameEnd.creditsEverClosed) return false;
     if (this.config.instantPurchase && ui.$viewModel.modal.progressBar) return false;
+
+    if (window.devSTDMode) return this.devPurchase();
 
     const cosmeticId = this.config.key === "singleCosmeticSet"
       ? GlyphAppearanceHandler.chosenFromModal?.id
