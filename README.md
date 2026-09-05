@@ -1,25 +1,79 @@
-# Antimatter Dimensions
+# Antimatter Dimensions 한국어 현지화
 
-## Run
+[IvarK의 Antimatter Dimensions](https://github.com/IvarK/AntimatterDimensionsSourceCode)를 기반으로 진행한 한국어 현지화 프로젝트입니다. Claude Sonnet 4.6을 활용해 파트별로 번역을 진행하고, 각 파트의 번역 결과를 직접 검수했습니다. 검수할 게임 구간에 빠르게 접근하기 위해 번역에 앞서 게임 속도 조절 기능인 **Speed Modifier**를 추가했습니다.
 
-To run the game locally, you will need to install
-[Node.js](https://nodejs.org/) (LTS suggested).
+원본 게임의 코드와 게임 시스템은 원작자 및 기여자들의 작업입니다. 이 프로젝트의 포트폴리오 범위는 **검수 편의 기능 추가, 파트별 한국어 번역, 직접 검수와 후속 보완**입니다.
 
-First, run the following command in your terminal (or command line) while being
-inside the checked out repository:
+## 진행 과정
 
-```
+### 1. 검수 환경 준비: Speed Modifier 추가
+
+게임 진행에 따라 열리는 화면과 콘텐츠의 번역을 확인하기 위해, 먼저 진행 속도를 조절할 수 있는 기능을 추가했습니다.
+
+- 배속 직접 입력, 배율 조절 버튼, 기본 배속 복귀 기능을 제공했습니다.
+- 기본 게임 진행뿐 아니라 일부 실시간 기반 시스템에도 배속이 반영되도록 적용 범위를 확장했습니다.
+- 배속 상한과 두 번째 블랙홀 해금의 100일 대기 조건을 제거했습니다.
+
+따라서 이 버전에는 한국어 번역 외에 진행 속도와 해금 조건 변경도 포함되어 있습니다.
+
+### 2. 번역 대상 파트 나누기
+
+게임 진행 단계와 공통 UI를 기준으로 작업 대상을 나누었습니다. Git 기록에 남아 있는 주요 번역 범위는 다음과 같습니다.
+
+| 파트 | 주요 대상 |
+| --- | --- |
+| 업적·시스템 메시지 | 업적 설명, 알림 및 시스템 문구 |
+| 반물질 | 차원, 자동구매기, 도전 및 관련 UI |
+| 무한(Infinity) | 무한 단계 콘텐츠와 관련 UI |
+| 영원(Eternity) | 영원 단계 콘텐츠와 관련 UI |
+| 현실(Reality) | 현실, 글리프, 천체 관련 콘텐츠와 모달 |
+| 공통 UI | 탭 이름, 설정, 통계, 저장, 자동화 도구, 상점 |
+
+### 3. 파트별 번역 → 직접 검수 → 보완
+
+각 파트의 번역에 Claude Sonnet 4.6을 활용하고, 번역 결과를 직접 검수하는 방식으로 진행했습니다. 이후 남아 있는 영문과 한국어 표시 문제를 보완했습니다.
+
+후속 수정 기록에는 다음 작업이 포함되어 있습니다.
+
+- 한국어 폰트 **Noto Sans KR** 추가 및 버튼 폰트 수정
+- 탭 이름과 통계 화면의 미번역 문구 수정
+- 공통 표시 컴포넌트의 `Cost`, `Reach` 등 영문 문구 번역
+- 차원 이름과 클래식·모던 UI의 차원 행 표시 보완
+- 한국어 표시를 위한 스타일 조정
+
+## 주요 작업 기록
+
+아래 커밋은 검수 환경 준비부터 번역 및 후속 수정까지의 흐름을 보여줍니다.
+
+| 시기 | 작업 | 대표 커밋 |
+| --- | --- | --- |
+| 2026-05-26~27 | Speed Modifier 추가 및 적용 범위 확장 | `4566fbd`, `77c2848`, `fbcf388` |
+| 2026-05-30 | 업적, 시스템 메시지, 반물질 단계 번역 | `9b4d315`, `aa4838a`, `edc3e31` |
+| 2026-05-31 | 무한, 영원, 현실 단계 번역 | `470e1f7`, `77eecb9`, `d3216c9` |
+| 2026-05-31 | 공통 UI 및 상점 번역 | `b68add0`, `a8c5c39`, `b7b09c4` |
+| 2026-05-31 | 폰트, 스타일, 남은 영문 및 차원 표시 보완 | `9b9fc88`, `83091f1`, `fde8977`, `50166f1`, `9dcb3d8` |
+
+## AI 활용과 본인 역할
+
+- **AI 활용:** Claude Sonnet 4.6을 활용한 파트별 한국어 번역 작업
+- **본인 역할:** 검수 편의를 위한 Speed Modifier 우선 추가 결정, 번역 파트 구분, 각 파트의 번역 결과 직접 검수
+- **저장소의 변경 결과:** 속도 조절 기능, 한국어 번역, 폰트·스타일 및 미번역 문구 보완
+
+## 로컬 실행
+
+Node.js와 npm이 설치된 환경에서 프로젝트 폴더를 열고 실행합니다.
+
+```sh
 npm ci
-```
-
-After all the packages are installed, start up the game:
-
-```
 npm run serve
 ```
 
-This will make the game served via your localhost, and the playable link will
-be displayed in your terminal. The server **doesn't** need to be restarted
-after you've made changes - just reload the page. The server **can**
-occasionally crash, so check your terminal from time to time and run `serve`
-again if needed.
+실행 후 터미널에 표시되는 로컬 주소로 접속합니다. 코드 수정 사항은 개발 서버에서 반영되며, 서버가 종료되면 `npm run serve`로 다시 실행할 수 있습니다.
+
+## 원본 및 라이선스
+
+- 원본 프로젝트: [IvarK/AntimatterDimensionsSourceCode](https://github.com/IvarK/AntimatterDimensionsSourceCode)
+- 원본 저작권 표시: Copyright (c) 2017 IvarK
+- 라이선스: [MIT License](./LICENSE)
+
+원본의 저작권 표시와 MIT 라이선스 전문을 보존합니다. 프로젝트를 복제하거나 배포할 때에도 해당 고지를 함께 포함해야 합니다.
